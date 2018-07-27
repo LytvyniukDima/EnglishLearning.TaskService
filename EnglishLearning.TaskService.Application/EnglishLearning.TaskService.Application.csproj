@@ -7,4 +7,7 @@
       <Version>2.1.1</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EnglishLearning.TaskService.Persistence\EnglishLearning.TaskService.Persistence.csproj" />
+  </ItemGroup>
 </Project>
