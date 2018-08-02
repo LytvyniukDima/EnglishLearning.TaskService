@@ -9,11 +9,11 @@ using MongoDB.Driver;
 namespace EnglishLearning.TaskService.Web.Controllers
 {
     [Route("api/[controller]")]
-    public class TasksController
+    public class TasksController : Controller
     {
         // GET api/values
         [HttpGet]
-        public async Task<IEnumerable<string>> Get()
+        public async Task<ActionResult<IEnumerable<string>>> Get()
         {
             var client = new MongoClient("mongodb://localhost:27017");
             var database = client.GetDatabase("EnglishLearning");
@@ -23,13 +23,15 @@ namespace EnglishLearning.TaskService.Web.Controllers
                 Count = 10,
                 Answer = "answer",
                 Example = "example",
-                Text = "text"
+                Text = "text",
+                EnglishLevel = EnglishLevel.Advanced
             });
             var values = collection
                 .Find(new BsonDocument())
                 .ToList()
                 .Select(x => x.Id.ToString());
-            return values;
+
+            return Ok(values);
         }
 
         // GET api/values/5
