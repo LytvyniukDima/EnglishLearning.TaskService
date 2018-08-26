@@ -28,7 +28,7 @@ namespace EnglishLearning.TaskService.Persistence.Repositories
             return await _collection.Find(filter).FirstOrDefaultAsync();
         }
 
-        public virtual async Task<IEnumerable<T>> FinAllAsync(Expression<Func<T, bool>> filter)
+        public virtual async Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> filter)
         {
             return await _collection.Find(filter).ToListAsync();
         }
@@ -46,11 +46,11 @@ namespace EnglishLearning.TaskService.Persistence.Repositories
 
         public virtual async Task<bool> UpdateAsync(string id, T item)
         {
-            var actionResult = _collection.ReplaceOneAsync(x => x.Id == id, item);
-            return actionResult.IsCompleted;
+            var actionResult = await _collection.ReplaceOneAsync(x => x.Id == id, item);
+            return actionResult.IsAcknowledged && actionResult.ModifiedCount > 0;
         }
 
-        public virtual async Task<bool> DeleteAll()
+        public virtual async Task<bool> DeleteAllAsync()
         {
             DeleteResult actionResult = await _collection.DeleteManyAsync(_ => true);
             return actionResult.IsAcknowledged && actionResult.DeletedCount > 0;

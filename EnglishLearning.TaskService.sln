@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.TaskService
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.TaskService.Persistence", "EnglishLearning.TaskService.Persistence\EnglishLearning.TaskService.Persistence.csproj", "{155D3FDA-76C1-4738-B695-CB5D8062DD31}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.TaskService.Tests", "EnglishLearning.TaskService.Tests\EnglishLearning.TaskService.Tests.csproj", "{0E62BB34-A4C6-477B-AE99-DA17DBF7900F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -72,5 +74,17 @@ Global
 		{155D3FDA-76C1-4738-B695-CB5D8062DD31}.Release|x64.Build.0 = Release|Any CPU
 		{155D3FDA-76C1-4738-B695-CB5D8062DD31}.Release|x86.ActiveCfg = Release|Any CPU
 		{155D3FDA-76C1-4738-B695-CB5D8062DD31}.Release|x86.Build.0 = Release|Any CPU
+		{0E62BB34-A4C6-477B-AE99-DA17DBF7900F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E62BB34-A4C6-477B-AE99-DA17DBF7900F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E62BB34-A4C6-477B-AE99-DA17DBF7900F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0E62BB34-A4C6-477B-AE99-DA17DBF7900F}.Debug|x64.Build.0 = Debug|Any CPU
+		{0E62BB34-A4C6-477B-AE99-DA17DBF7900F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0E62BB34-A4C6-477B-AE99-DA17DBF7900F}.Debug|x86.Build.0 = Debug|Any CPU
+		{0E62BB34-A4C6-477B-AE99-DA17DBF7900F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E62BB34-A4C6-477B-AE99-DA17DBF7900F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E62BB34-A4C6-477B-AE99-DA17DBF7900F}.Release|x64.ActiveCfg = Release|Any CPU
+		{0E62BB34-A4C6-477B-AE99-DA17DBF7900F}.Release|x64.Build.0 = Release|Any CPU
+		{0E62BB34-A4C6-477B-AE99-DA17DBF7900F}.Release|x86.ActiveCfg = Release|Any CPU
+		{0E62BB34-A4C6-477B-AE99-DA17DBF7900F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -9,10 +9,10 @@ namespace EnglishLearning.TaskService.Persistence.Abstract
     {
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> FindAsync(Expression<Func<T, bool>> filter);
-        Task<IEnumerable<T>> FinAllAsync(Expression<Func<T, bool>> filter);
+        Task<IEnumerable<T>> FindAllAsync(Expression<Func<T, bool>> filter);
         Task AddAsync(T item);
         Task<bool> DeleteAsync(Expression<Func<T, bool>> filter);
         Task<bool> UpdateAsync(string id, T item);
-        Task<bool> DeleteAll();
+        Task<bool> DeleteAllAsync();
     }
 }
