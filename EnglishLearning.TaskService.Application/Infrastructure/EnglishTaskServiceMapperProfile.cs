@@ -10,30 +10,38 @@ namespace EnglishLearning.TaskService.Application.Infrastructure
         public EnglishTaskServiceMapperProfile()
         {
             CreateMap<EnglishTaskCreateDto, EnglishTask>()
-                .ForMember("TaskType", 
+                .ForMember(e => e.TaskType, 
                     opt => opt.MapFrom(x => (TaskType) Enum.Parse(typeof(TaskType), x.TaskType)))
-                .ForMember("GrammarPart",
+                .ForMember(e => e.GrammarPart,
                     opt => opt.MapFrom(x => (GrammarPart) Enum.Parse(typeof(GrammarPart), x.GrammarPart)))
-                .ForMember("EnglishLevel",
+                .ForMember(e => e.EnglishLevel,
                     opt => opt.MapFrom(x => (EnglishLevel) Enum.Parse(typeof(EnglishLevel), x.GrammarPart)));
             
             CreateMap<EnglishTaskDto, EnglishTask>()
-                .ForMember("TaskType", 
+                .ForMember(e => e.TaskType, 
                     opt => opt.MapFrom(x => (TaskType) Enum.Parse(typeof(TaskType), x.TaskType)))
-                .ForMember("GrammarPart",
+                .ForMember(e => e.GrammarPart,
                     opt => opt.MapFrom(x => (GrammarPart) Enum.Parse(typeof(GrammarPart), x.GrammarPart)))
-                .ForMember("EnglishLevel",
+                .ForMember(e => e.EnglishLevel,
                     opt => opt.MapFrom(x => (EnglishLevel) Enum.Parse(typeof(EnglishLevel), x.GrammarPart)));
 
+            CreateMap<EnglishTaskFilterDto, EnglishTask>()
+                .ForMember(e => e.TaskType, 
+                    opt => opt.MapFrom(x => (TaskType) Enum.Parse(typeof(TaskType), x.TaskType)))
+                .ForMember(e => e.GrammarPart,
+                    opt => opt.MapFrom(x => (GrammarPart) Enum.Parse(typeof(GrammarPart), x.GrammarPart)))
+                .ForMember(e => e.EnglishLevel,
+                    opt => opt.MapFrom(x => (EnglishLevel) Enum.Parse(typeof(EnglishLevel), x.GrammarPart)));
+            
             CreateMap<EnglishTask, EnglishTaskDto>()
-                .ForMember("TaskType", opt => opt.MapFrom(x => x.TaskType.ToString()))
-                .ForMember("GrammarPart", opt => opt.MapFrom(x => x.GrammarPart.ToString()))
-                .ForMember("EnglishLevel", opt => opt.MapFrom(x => x.EnglishLevel.ToString()));
+                .ForMember(e => e.TaskType, opt => opt.MapFrom(x => x.TaskType.ToString()))
+                .ForMember(e => e.GrammarPart, opt => opt.MapFrom(x => x.GrammarPart.ToString()))
+                .ForMember(e => e.EnglishLevel, opt => opt.MapFrom(x => x.EnglishLevel.ToString()));
             
             CreateMap<EnglishTask, EnglishTaskInfoDto>()
-                .ForMember("TaskType", opt => opt.MapFrom(x => x.TaskType.ToString()))
-                .ForMember("GrammarPart", opt => opt.MapFrom(x => x.GrammarPart.ToString()))
-                .ForMember("EnglishLevel", opt => opt.MapFrom(x => x.EnglishLevel.ToString())); 
+                .ForMember(e => e.TaskType, opt => opt.MapFrom(x => x.TaskType.ToString()))
+                .ForMember(e => e.GrammarPart, opt => opt.MapFrom(x => x.GrammarPart.ToString()))
+                .ForMember(e => e.EnglishLevel, opt => opt.MapFrom(x => x.EnglishLevel.ToString()));
         }
     }
 }

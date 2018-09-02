@@ -1,4 +1,6 @@
-﻿using EnglishLearning.TaskService.Application.Infrastructure;
+﻿using EnglishLearning.TaskService.Application.Abstract;
+using EnglishLearning.TaskService.Application.Infrastructure;
+using EnglishLearning.TaskService.Application.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EnglishLearning.TaskService.Application.Configuration
@@ -9,6 +11,9 @@ namespace EnglishLearning.TaskService.Application.Configuration
         {
             services.AddSingleton(new EnglishTaskServiceMapper());
 
+            services.AddTransient<IEnglishTaskService, EnglishTaskService>();
+            services.AddTransient<IFilterEnglishTaskService, FilterEnglishTaskService>();
+            
             return services;
         }
     }
