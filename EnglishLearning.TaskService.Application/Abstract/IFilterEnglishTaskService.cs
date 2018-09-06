@@ -8,16 +8,10 @@ namespace EnglishLearning.TaskService.Application.Abstract
 {
     public interface IFilterEnglishTaskService
     {
-        Task<IEnumerable<EnglishTaskDto>> FindAllEnglishTaskAsync(Expression<Func<EnglishTaskFilterDto, bool>> filter);
-        Task<IEnumerable<EnglishTaskDto>> FindAllEnglishTaskAsync(string[] taskType, string[] grammarPart, string[] englishLevels);
+        Task<IEnumerable<EnglishTaskDto>> FindAllEnglishTaskAsync(string[] taskTypes = null, string[] grammarParts = null, string[] englishLevels = null);
+        Task<EnglishTaskDto> FindRandomEnglishTaskAsync(string[] taskTypes = null, string[] grammarParts = null, string[] englishLevels = null);
         
-        Task<EnglishTaskDto> FindRandomEnglishTaskAsync(Expression<Func<EnglishTaskFilterDto, bool>> filter);
-        Task<EnglishTaskDto> FindRandomEnglishTaskAsync(string[] taskType, string[] grammarPart, string[] englishLevels);
-        
-        Task<IEnumerable<EnglishTaskInfoDto>> FindAllInfoEnglishTaskAsync(Expression<Func<EnglishTaskFilterDto, bool>> filter);
-        Task<IEnumerable<EnglishTaskInfoDto>> FindAllInfoEnglishTaskAsync(string[] taskType, string[] grammarPart, string[] englishLevels);
-        
-        Task<EnglishTaskInfoDto> FindRandomInfoEnglishTaskAsync(Expression<Func<EnglishTaskFilterDto, bool>> filter);
-        Task<EnglishTaskInfoDto> FindRandomInfoEnglishTaskAsync(string[] taskType, string[] grammarPart, string[] englishLevels);
+        Task<IEnumerable<EnglishTaskInfoDto>> FindAllInfoEnglishTaskAsync(string[] taskTypes = null, string[] grammarParts = null, string[] englishLevels = null);
+        Task<EnglishTaskInfoDto> FindRandomInfoEnglishTaskAsync(string[] taskTypes = null, string[] grammarParts = null, string[] englishLevels = null);
     }
 }

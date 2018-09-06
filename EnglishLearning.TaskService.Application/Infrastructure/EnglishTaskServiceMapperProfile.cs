@@ -15,7 +15,7 @@ namespace EnglishLearning.TaskService.Application.Infrastructure
                 .ForMember(e => e.GrammarPart,
                     opt => opt.MapFrom(x => (GrammarPart) Enum.Parse(typeof(GrammarPart), x.GrammarPart)))
                 .ForMember(e => e.EnglishLevel,
-                    opt => opt.MapFrom(x => (EnglishLevel) Enum.Parse(typeof(EnglishLevel), x.GrammarPart)));
+                    opt => opt.MapFrom(x => (EnglishLevel) Enum.Parse(typeof(EnglishLevel), x.EnglishLevel)));
             
             CreateMap<EnglishTaskDto, EnglishTask>()
                 .ForMember(e => e.TaskType, 
@@ -23,15 +23,7 @@ namespace EnglishLearning.TaskService.Application.Infrastructure
                 .ForMember(e => e.GrammarPart,
                     opt => opt.MapFrom(x => (GrammarPart) Enum.Parse(typeof(GrammarPart), x.GrammarPart)))
                 .ForMember(e => e.EnglishLevel,
-                    opt => opt.MapFrom(x => (EnglishLevel) Enum.Parse(typeof(EnglishLevel), x.GrammarPart)));
-
-            CreateMap<EnglishTaskFilterDto, EnglishTask>()
-                .ForMember(e => e.TaskType, 
-                    opt => opt.MapFrom(x => (TaskType) Enum.Parse(typeof(TaskType), x.TaskType)))
-                .ForMember(e => e.GrammarPart,
-                    opt => opt.MapFrom(x => (GrammarPart) Enum.Parse(typeof(GrammarPart), x.GrammarPart)))
-                .ForMember(e => e.EnglishLevel,
-                    opt => opt.MapFrom(x => (EnglishLevel) Enum.Parse(typeof(EnglishLevel), x.GrammarPart)));
+                    opt => opt.MapFrom(x => (EnglishLevel) Enum.Parse(typeof(EnglishLevel), x.EnglishLevel)));
             
             CreateMap<EnglishTask, EnglishTaskDto>()
                 .ForMember(e => e.TaskType, opt => opt.MapFrom(x => x.TaskType.ToString()))

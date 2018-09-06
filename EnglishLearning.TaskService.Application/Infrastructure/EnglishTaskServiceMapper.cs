@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using AutoMapper.Extensions.ExpressionMapping;
 
 namespace EnglishLearning.TaskService.Application.Infrastructure
 {
@@ -8,7 +7,6 @@ namespace EnglishLearning.TaskService.Application.Infrastructure
         public EnglishTaskServiceMapper()
         {
             Mapper = new MapperConfiguration(x => x
-                .AddExpressionMapping()
                 .AddProfile(new EnglishTaskServiceMapperProfile()))
              .CreateMapper();
         }

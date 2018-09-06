@@ -1,8 +1,6 @@
-﻿using System;
-using EnglishLearning.TaskService.Persistence.Abstract;
+﻿using EnglishLearning.TaskService.Persistence.Abstract;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson.Serialization.IdGenerators;
 
 namespace EnglishLearning.TaskService.Persistence.Entities
 {
@@ -10,8 +8,8 @@ namespace EnglishLearning.TaskService.Persistence.Entities
     {
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
-        
-        public TaskType TaskType { get; set; }
+         
+        public TaskType TaskType { get; set; } 
         public GrammarPart GrammarPart { get; set; }
         public EnglishLevel EnglishLevel { get; set; }
         

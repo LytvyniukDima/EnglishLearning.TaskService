@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -26,18 +25,6 @@ namespace EnglishLearning.TaskService.Application.Services
             _dbRepository = dbRepository;
             _mapper = englishTaskServiceMapper.Mapper;
         }
-        
-        public async Task<IEnumerable<EnglishTaskDto>> FindAllEnglishTaskAsync(Expression<Func<EnglishTaskFilterDto, bool>> filter)
-        {
-            IEnumerable<EnglishTask> englishTasks = await GetAllEnglishTasks(filter);
-
-            if (!englishTasks.Any())
-                return Enumerable.Empty<EnglishTaskDto>();
-            
-            var englishTaskDtos = _mapper.Map<IEnumerable<EnglishTask>, IEnumerable<EnglishTaskDto>>(englishTasks);
-            
-            return englishTaskDtos;
-        }
 
         public async Task<IEnumerable<EnglishTaskDto>> FindAllEnglishTaskAsync(
             string[] taskTypes = null, 
@@ -47,7 +34,7 @@ namespace EnglishLearning.TaskService.Application.Services
             if (taskTypes.IsNullOrEmpty() && grammarParts.IsNullOrEmpty() && englishLevels.IsNullOrEmpty())
                 return Enumerable.Empty<EnglishTaskDto>();
 
-            Expression<Func<EnglishTaskFilterDto, bool>> expression =
+            Expression<Func<EnglishTask, bool>> expression =
                 CreateExpression(taskTypes, grammarParts, englishLevels);
             
             IEnumerable<EnglishTask> englishTasks = await GetAllEnglishTasks(expression);
@@ -58,20 +45,6 @@ namespace EnglishLearning.TaskService.Application.Services
             var englishTaskDtos = _mapper.Map<IEnumerable<EnglishTask>, IEnumerable<EnglishTaskDto>>(englishTasks);
             
             return englishTaskDtos;
-        }
-
-        public async Task<EnglishTaskDto> FindRandomEnglishTaskAsync(Expression<Func<EnglishTaskFilterDto, bool>> filter)
-        {
-            IEnumerable<EnglishTask> englishTasks = await GetAllEnglishTasks(filter);
-
-            if (!englishTasks.Any())
-                return null;
-
-            var englishTask = englishTasks.GetRandomValue();
-            
-            var englishTaskDto = _mapper.Map<EnglishTask, EnglishTaskDto>(englishTask);
-            
-            return englishTaskDto;
         }
 
         public async Task<EnglishTaskDto> FindRandomEnglishTaskAsync(
@@ -82,7 +55,7 @@ namespace EnglishLearning.TaskService.Application.Services
             if (taskTypes.IsNullOrEmpty() && grammarParts.IsNullOrEmpty() && englishLevels.IsNullOrEmpty())
                 return null;
 
-            Expression<Func<EnglishTaskFilterDto, bool>> expression =
+            Expression<Func<EnglishTask, bool>> expression =
                 CreateExpression(taskTypes, grammarParts, englishLevels);
             
             IEnumerable<EnglishTask> englishTasks = await GetAllEnglishTasks(expression);
@@ -97,18 +70,6 @@ namespace EnglishLearning.TaskService.Application.Services
             return englishTaskDto;
         }
 
-        public async Task<IEnumerable<EnglishTaskInfoDto>> FindAllInfoEnglishTaskAsync(Expression<Func<EnglishTaskFilterDto, bool>> filter)
-        {
-            IEnumerable<EnglishTask> englishTasks = await GetAllEnglishTasks(filter);
-
-            if (!englishTasks.Any())
-                return Enumerable.Empty<EnglishTaskInfoDto>();
-            
-            var englishTaskDtos = _mapper.Map<IEnumerable<EnglishTask>, IEnumerable<EnglishTaskInfoDto>>(englishTasks);
-            
-            return englishTaskDtos;
-        }
-
         public async Task<IEnumerable<EnglishTaskInfoDto>> FindAllInfoEnglishTaskAsync(
             string[] taskTypes = null, 
             string[] grammarParts = null, 
@@ -117,7 +78,7 @@ namespace EnglishLearning.TaskService.Application.Services
             if (taskTypes.IsNullOrEmpty() && grammarParts.IsNullOrEmpty() && englishLevels.IsNullOrEmpty())
                 return Enumerable.Empty<EnglishTaskInfoDto>();
 
-            Expression<Func<EnglishTaskFilterDto, bool>> expression =
+            Expression<Func<EnglishTask, bool>> expression =
                 CreateExpression(taskTypes, grammarParts, englishLevels);
             
             IEnumerable<EnglishTask> englishTasks = await GetAllEnglishTasks(expression);
@@ -128,20 +89,6 @@ namespace EnglishLearning.TaskService.Application.Services
             var englishTaskDtos = _mapper.Map<IEnumerable<EnglishTask>, IEnumerable<EnglishTaskInfoDto>>(englishTasks);
             
             return englishTaskDtos;
-        }
-
-        public async Task<EnglishTaskInfoDto> FindRandomInfoEnglishTaskAsync(Expression<Func<EnglishTaskFilterDto, bool>> filter)
-        {
-            IEnumerable<EnglishTask> englishTasks = await GetAllEnglishTasks(filter);
-
-            if (!englishTasks.Any())
-                return null;
-            
-            var englishTask = englishTasks.GetRandomValue();
-            
-            var englishTaskDto = _mapper.Map<EnglishTask, EnglishTaskInfoDto>(englishTask);
-            
-            return englishTaskDto;
         }
 
         public async Task<EnglishTaskInfoDto> FindRandomInfoEnglishTaskAsync(
@@ -152,7 +99,7 @@ namespace EnglishLearning.TaskService.Application.Services
             if (taskTypes.IsNullOrEmpty() && grammarParts.IsNullOrEmpty() && englishLevels.IsNullOrEmpty())
                 return null;
 
-            Expression<Func<EnglishTaskFilterDto, bool>> expression =
+            Expression<Func<EnglishTask, bool>> expression =
                 CreateExpression(taskTypes, grammarParts, englishLevels);
             
             IEnumerable<EnglishTask> englishTasks = await GetAllEnglishTasks(expression);
@@ -167,30 +114,30 @@ namespace EnglishLearning.TaskService.Application.Services
             return englishTaskDto;
         }
 
-        private async Task<IEnumerable<EnglishTask>> GetAllEnglishTasks(Expression<Func<EnglishTaskFilterDto, bool>> filter)
+        private async Task<IEnumerable<EnglishTask>> GetAllEnglishTasks(Expression<Func<EnglishTask, bool>> filter)
         {
-            var englishTaskFilter = _mapper.Map<Expression<Func<EnglishTask, bool>>>(filter);
-
-            var englishTasks = await _dbRepository.FindAllAsync(englishTaskFilter);
+            var englishTasks = await _dbRepository.FindAllAsync(filter);
 
             return englishTasks;
         }
 
-        private Expression<Func<EnglishTaskFilterDto, bool>> CreateExpression(
+        private Expression<Func<EnglishTask, bool>> CreateExpression(
             string[] taskTypes = null,
             string[] grammarParts = null,
             string[] englishLevels = null)
         {
-            Expression<Func<EnglishTaskFilterDto, bool>> finalExpression = default(Expression<Func<EnglishTaskFilterDto, bool>>);;
+            Expression<Func<EnglishTask, bool>> finalExpression = default(Expression<Func<EnglishTask, bool>>);;
 
             if (taskTypes.IsNullOrEmpty() && grammarParts.IsNullOrEmpty() && englishLevels.IsNullOrEmpty())
                 return finalExpression;
 
-            if (taskTypes.Any())
+            if (!taskTypes.IsNullOrEmpty())
             {
-                var taskTypeExpression = new List<Expression<Func<EnglishTaskFilterDto, bool>>>();
+                var enumTaskTypes = ConverToEnumArray<TaskType>(taskTypes);
+                
+                var taskTypeExpression = new List<Expression<Func<EnglishTask, bool>>>();
 
-                foreach (var taskType in taskTypes)
+                foreach (var taskType in enumTaskTypes)
                     taskTypeExpression.Add(x => x.TaskType == taskType);                
 
                 finalExpression = taskTypeExpression[0];
@@ -199,37 +146,54 @@ namespace EnglishLearning.TaskService.Application.Services
                     finalExpression = finalExpression.Or(taskTypeExpression[i]);
             }
 
-            if (grammarParts.Any())
+            if (!grammarParts.IsNullOrEmpty())
             {
-                var grammarTypeExpressions = new List<Expression<Func<EnglishTaskFilterDto, bool>>>();
+                var enumGrammarParts = ConverToEnumArray<GrammarPart>(grammarParts);
+                
+                var grammarTypeExpressions = new List<Expression<Func<EnglishTask, bool>>>();
 
-                foreach (var grammarPart in grammarParts)           
+                foreach (var grammarPart in enumGrammarParts)           
                     grammarTypeExpressions.Add(x => x.GrammarPart == grammarPart);
 
-                Expression<Func<EnglishTaskFilterDto, bool>> grammarTypeExpression = grammarTypeExpressions[0];
+                Expression<Func<EnglishTask, bool>> grammarTypeExpression = grammarTypeExpressions[0];
 
                 for (var i = 1; i < grammarTypeExpressions.Count; i++)
-                    grammarTypeExpression.Or(grammarTypeExpressions[i]);
+                    grammarTypeExpression = grammarTypeExpression.Or(grammarTypeExpressions[i]);
 
-                finalExpression.And(grammarTypeExpression);
+                finalExpression = finalExpression.And(grammarTypeExpression);
             }
 
-            if (englishLevels.Any())
+            if (!englishLevels.IsNullOrEmpty())
             {
-                var englishLevelExpresions = new List<Expression<Func<EnglishTaskFilterDto, bool>>>();
+                var enumEnglishLevels = ConverToEnumArray<EnglishLevel>(englishLevels);
+                
+                var englishLevelExpressions = new List<Expression<Func<EnglishTask, bool>>>();
 
-                foreach (var englishLevel in englishLevels)
-                    englishLevelExpresions.Add(x => x.EnglishLevel == englishLevel);
+                foreach (var englishLevel in enumEnglishLevels)
+                    englishLevelExpressions.Add(x => x.EnglishLevel == englishLevel);
 
-                Expression<Func<EnglishTaskFilterDto, bool>> englishLevelExpression = englishLevelExpresions[0];
+                Expression<Func<EnglishTask, bool>> englishLevelExpression = englishLevelExpressions[0];
 
-                for (var i = 1; i < englishLevelExpresions.Count; i++)
-                    englishLevelExpression.Or(englishLevelExpresions[i]);
+                for (var i = 1; i < englishLevelExpressions.Count; i++)
+                    englishLevelExpression = englishLevelExpression.Or(englishLevelExpressions[i]);
 
-                finalExpression.And(englishLevelExpression);
+                finalExpression = finalExpression.And(englishLevelExpression);
             }
 
             return finalExpression;
+        }
+
+        private IEnumerable<T> ConverToEnumArray<T>(string[] stringValues)
+        {
+            foreach (var stringValue in stringValues)
+            {
+                yield return ConvertToEnum<T>(stringValue);
+            }
+        }
+        
+        private T ConvertToEnum<T>(string stringValue)
+        {
+            return (T) Enum.Parse(typeof(T), stringValue);
         }
     }
 }
