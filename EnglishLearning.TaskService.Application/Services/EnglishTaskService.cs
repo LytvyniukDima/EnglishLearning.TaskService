@@ -38,7 +38,11 @@ namespace EnglishLearning.TaskService.Application.Services
         public async Task<EnglishTaskDto> GetByIdEnglishTaskAsync(string id)
         {
             var englishTask = await GetEnglishTask(id);
-
+            
+            // TODO: Throw NotFoundException
+            if (englishTask == null)
+                return null;
+            
             var englishTaskDto = _mapper.Map<EnglishTask, EnglishTaskDto>(englishTask);
 
             return englishTaskDto;
@@ -67,7 +71,10 @@ namespace EnglishLearning.TaskService.Application.Services
         public async Task<EnglishTaskInfoDto> GetByIdEnglishTaskInfoAsync(string id)
         {
             var englishTask = await GetEnglishTask(id);
-
+            // TODO: Throw NotFoundException
+            if (englishTask == null)
+                return null;
+            
             var englishTaskDto = _mapper.Map<EnglishTask, EnglishTaskInfoDto>(englishTask);
 
             return englishTaskDto;
