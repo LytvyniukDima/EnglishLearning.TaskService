@@ -122,7 +122,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
             [FromQuery] string[] englishLevel)
         {
             IEnumerable<EnglishTaskDto> englishTakDtos = await _englishTaskService.FindAllEnglishTaskAsync(tasktype, grammarPart, englishLevel);
-            if (englishTakDtos.Any())
+            if (!englishTakDtos.Any())
                 return NotFound();
 
             var englishTaskModels = _mapper.Map<IEnumerable<EnglishTaskModel>>(englishTakDtos);
@@ -138,7 +138,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
             [FromQuery] string[] englishLevel)
         {
             IEnumerable<EnglishTaskInfoDto> englishTakDtos = await _englishTaskService.FindAllInfoEnglishTaskAsync(tasktype, grammarPart, englishLevel);
-            if (englishTakDtos.Any())
+            if (!englishTakDtos.Any())
                 return NotFound();
 
             var englishTaskModels = _mapper.Map<IEnumerable<EnglishTaskModel>>(englishTakDtos);
