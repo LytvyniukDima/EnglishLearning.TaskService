@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace EnglishLearning.TaskService.Application.Common
+namespace EnglishLearning.TaskService.Infrastructure.Extensions
 {
     public static class ArrayExtensions
     {

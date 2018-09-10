@@ -49,7 +49,7 @@ namespace EnglishLearning.TaskService.Tests.Application
             EnglishTaskDto englishTaskDto = EnglishTaskDtos.First();
             
             // Act
-            bool result = await englishTaskService.UpdateEnglishTaskAsync(englishTaskDto);
+            bool result = await englishTaskService.UpdateEnglishTaskAsync("myId",englishTaskDto);
 
             // Assert
             result.Should().BeTrue();

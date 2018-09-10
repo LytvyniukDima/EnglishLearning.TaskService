@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace EnglishLearning.TaskService.Application.Common
+namespace EnglishLearning.TaskService.Infrastructure.ExpressionHelpers
 {
     public class ParameterRebinder : ExpressionVisitor
     {

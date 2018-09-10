@@ -2,53 +2,46 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
 using EnglishLearning.TaskService.Application.DTO;
 using EnglishLearning.TaskService.Persistence.Abstract;
 using EnglishLearning.TaskService.Persistence.Entities;
+using EnglishLearning.TaskService.Web.Infrastructure;
+using EnglishLearning.TaskService.Web.Models;
 using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace EnglishLearning.TaskService.Web.Controllers
 {
-    [Route("api/filter")]
+    [Route("api/englishtasks/filter")]
     public class FilterEnglishTaskController : Controller
     {
         private readonly IFilterEnglishTaskService _filterService;
-        private readonly IEnglishTaskService _englishTaskService;
+        private readonly IMapper _mapper;
         
         public FilterEnglishTaskController(
-            IEnglishTaskService englishTaskService,
-            IFilterEnglishTaskService filterService)
+            IFilterEnglishTaskService filterService,
+            EnglishTaskWebMapper englishTaskWebMapper)
         {
-            _englishTaskService = englishTaskService;
             _filterService = filterService;
+            _mapper = englishTaskWebMapper.Mapper;
         }
         
         // GET api/values
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<EnglishTaskDto>>> Get()
+        public async Task<ActionResult> GetAllByFilter(
+            [FromQuery] string[] tasktype, 
+            [FromQuery] string[] grammarPart, 
+            [FromQuery] string[] englishLevel)
         {
-            var model = new EnglishTaskCreateDto
-            {
-                TaskType = "SimpleBrackets",
-                GrammarPart = "PRSimple",
-                EnglishLevel = "PreIntermediate",
-                Count = 10,
-                Example = "example",
-                Text = "text",
-                Answer = "answer"
-            };
+            IEnumerable<EnglishTaskDto> englishTakDtos = await _filterService.FindAllEnglishTaskAsync(tasktype, grammarPart, englishLevel);
+            if (englishTakDtos.Any())
+                return NotFound();
 
-            await _englishTaskService.CreateEnglishTaskAsync(model);
-
-            var taskTypes = new string[] {"SimpleBrackets", "CorrectAlternative"};
-            var grammarParts = new string[] {"PRSimple", "PRContinuous"};
-            var englishLevels = new string[] {"PreIntermediate"};
+            var englishTaskModels = _mapper.Map<IEnumerable<EnglishTaskModel>>(englishTakDtos);
             
-            var englishTasks = await _filterService.FindAllInfoEnglishTaskAsync(taskTypes: taskTypes, grammarParts: grammarParts, englishLevels: englishLevels);
-            
-            return Ok(englishTasks);
+            return Ok(englishTaskModels);
         }
 
         // GET api/values/5

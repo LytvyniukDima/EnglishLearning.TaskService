@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace EnglishLearning.TaskService.Application.Common
+namespace EnglishLearning.TaskService.Infrastructure.ExpressionHelpers
 {
     public static class Utility
     {
