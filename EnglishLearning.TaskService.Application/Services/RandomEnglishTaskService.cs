@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
-using EnglishLearning.TaskService.Application.Common.Extensions;
 using EnglishLearning.TaskService.Application.DTO;
 using EnglishLearning.TaskService.Application.Infrastructure;
 using EnglishLearning.TaskService.Application.InternalServices;

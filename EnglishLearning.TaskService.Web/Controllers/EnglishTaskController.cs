@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
@@ -10,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EnglishLearning.TaskService.Web.Controllers
 {
-    [Route("api/englishtasks")]
+    [Route("api/tasks")]
     public class EnglishTaskController : Controller
     {
         private readonly IEnglishTaskService _englishTaskService;
@@ -88,6 +89,61 @@ namespace EnglishLearning.TaskService.Web.Controllers
                 return BadRequest();
             
             return Ok();
+        }
+        
+        [AllowAnonymous]
+        [HttpGet("/info")]
+        public async Task<IActionResult> GetAllInfo()
+        {
+            IEnumerable<EnglishTaskInfoDto> englishTaskDtos = await _englishTaskService.GetAllEnglishTaskInfoAsync();
+            var englishTaskModels = _mapper.Map<IEnumerable<EnglishTaskInfoDto>, IEnumerable<EnglishTaskInfoModel>>(englishTaskDtos);
+
+            return Ok(englishTaskModels);
+        }
+        
+        [AllowAnonymous]
+        [HttpGet("/info/{id}")]
+        public async Task<IActionResult> GetInfoById(string id)
+        {
+            EnglishTaskDto englishTask = await _englishTaskService.GetByIdEnglishTaskAsync(id);
+            if (englishTask == null)
+                return NotFound();
+
+            var englishTaskModel = _mapper.Map<EnglishTaskDto, EnglishTaskModel>(englishTask);
+            
+            return Ok(englishTaskModel);
+        }
+        
+        [AllowAnonymous]
+        [HttpGet("/filter")]
+        public async Task<ActionResult> GetAllByFilter(
+            [FromQuery] string[] tasktype, 
+            [FromQuery] string[] grammarPart, 
+            [FromQuery] string[] englishLevel)
+        {
+            IEnumerable<EnglishTaskDto> englishTakDtos = await _englishTaskService.FindAllEnglishTaskAsync(tasktype, grammarPart, englishLevel);
+            if (englishTakDtos.Any())
+                return NotFound();
+
+            var englishTaskModels = _mapper.Map<IEnumerable<EnglishTaskModel>>(englishTakDtos);
+            
+            return Ok(englishTaskModels);
+        }
+        
+        [AllowAnonymous]
+        [HttpGet("/info/filter")]
+        public async Task<ActionResult> GetAllInfoByFilter(
+            [FromQuery] string[] tasktype, 
+            [FromQuery] string[] grammarPart, 
+            [FromQuery] string[] englishLevel)
+        {
+            IEnumerable<EnglishTaskInfoDto> englishTakDtos = await _englishTaskService.FindAllInfoEnglishTaskAsync(tasktype, grammarPart, englishLevel);
+            if (englishTakDtos.Any())
+                return NotFound();
+
+            var englishTaskModels = _mapper.Map<IEnumerable<EnglishTaskModel>>(englishTakDtos);
+            
+            return Ok(englishTaskModels);
         }
     }
 }
