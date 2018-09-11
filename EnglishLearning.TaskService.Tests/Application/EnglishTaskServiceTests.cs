@@ -46,7 +46,7 @@ namespace EnglishLearning.TaskService.Tests.Application
                 .UpdateAsync(Arg.Any<string>(), Arg.Any<EnglishTask>())
                 .Returns(Task.FromResult(true));
             var englishTaskService = new EnglishTaskService(_dbRepository, _mapper);
-            EnglishTaskDto englishTaskDto = EnglishTaskDtos.First();
+            EnglishTaskCreateDto englishTaskDto = defaultEnglishTaskCreateDto;
             
             // Act
             bool result = await englishTaskService.UpdateEnglishTaskAsync("myId",englishTaskDto);

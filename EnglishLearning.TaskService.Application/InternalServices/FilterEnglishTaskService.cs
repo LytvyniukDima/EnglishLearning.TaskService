@@ -31,7 +31,7 @@ namespace EnglishLearning.TaskService.Application.InternalServices
             string[] grammarParts = null,
             string[] englishLevels = null)
         {
-            Expression<Func<EnglishTask, bool>> finalExpression = default(Expression<Func<EnglishTask, bool>>);;
+            Expression<Func<EnglishTask, bool>> finalExpression = null;
 
             if (taskTypes.IsNullOrEmpty() && grammarParts.IsNullOrEmpty() && englishLevels.IsNullOrEmpty())
                 return finalExpression;
@@ -65,7 +65,10 @@ namespace EnglishLearning.TaskService.Application.InternalServices
                 for (var i = 1; i < grammarTypeExpressions.Count; i++)
                     grammarTypeExpression = grammarTypeExpression.Or(grammarTypeExpressions[i]);
 
-                finalExpression = finalExpression.And(grammarTypeExpression);
+                if (finalExpression != null)
+                    finalExpression = finalExpression.And(grammarTypeExpression);
+                else
+                    finalExpression = grammarTypeExpression;
             }
 
             if (!englishLevels.IsNullOrEmpty())
@@ -82,7 +85,10 @@ namespace EnglishLearning.TaskService.Application.InternalServices
                 for (var i = 1; i < englishLevelExpressions.Count; i++)
                     englishLevelExpression = englishLevelExpression.Or(englishLevelExpressions[i]);
 
-                finalExpression = finalExpression.And(englishLevelExpression);
+                if (finalExpression != null)
+                    finalExpression = finalExpression.And(englishLevelExpression);
+                else
+                    finalExpression = englishLevelExpression;
             }
 
             return finalExpression;

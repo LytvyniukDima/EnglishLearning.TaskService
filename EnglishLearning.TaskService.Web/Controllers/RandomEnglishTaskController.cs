@@ -30,7 +30,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
             [FromQuery] string[] grammarParts, 
             [FromQuery] string[] englishLevels)
         {
-            EnglishTaskDto englishTakDto = await _randomEnglishTaskService.FindRandomEnglishTaskAsync(tasktypes, englishLevels, grammarParts);
+            EnglishTaskDto englishTakDto = await _randomEnglishTaskService.FindRandomEnglishTaskAsync(tasktypes, grammarParts, englishLevels);
             if (englishTakDto == null)
                 return NotFound();
 
@@ -46,7 +46,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
             [FromQuery] string[] grammarParts, 
             [FromQuery] string[] englishLevels)
         {
-            EnglishTaskInfoDto englishTakDto = await _randomEnglishTaskService.FindRandomInfoEnglishTaskAsync(tasktypes, englishLevels, grammarParts);
+            EnglishTaskInfoDto englishTakDto = await _randomEnglishTaskService.FindRandomInfoEnglishTaskAsync(tasktypes, grammarParts, englishLevels);
             if (englishTakDto == null)
                 return NotFound();
 
@@ -89,11 +89,11 @@ namespace EnglishLearning.TaskService.Web.Controllers
             [FromQuery] string[] grammarParts, 
             [FromQuery] string[] englishLevels)
         {
-            IEnumerable<EnglishTaskDto> englishTakDtos = await _randomEnglishTaskService.FindRandomCountEnglishTask(count, tasktypes, englishLevels, grammarParts);
+            IEnumerable<EnglishTaskDto> englishTakDtos = await _randomEnglishTaskService.FindRandomCountEnglishTask(count, tasktypes, grammarParts, englishLevels);
             if (!englishTakDtos.Any())
                 return NotFound();
 
-            var englishTaskModels = _mapper.Map<EnglishTaskModel>(englishTakDtos);
+            var englishTaskModels = _mapper.Map<IEnumerable<EnglishTaskModel>>(englishTakDtos);
             
             return Ok(englishTaskModels);
         }
@@ -106,11 +106,11 @@ namespace EnglishLearning.TaskService.Web.Controllers
             [FromQuery] string[] grammarParts, 
             [FromQuery] string[] englishLevels)
         {
-            IEnumerable<EnglishTaskInfoDto> englishTakDtos = await _randomEnglishTaskService.FindRandomInfoCountEnglishTask(count, tasktypes, englishLevels, grammarParts);
+            IEnumerable<EnglishTaskInfoDto> englishTakDtos = await _randomEnglishTaskService.FindRandomInfoCountEnglishTask(count, tasktypes, grammarParts, englishLevels);
             if (!englishTakDtos.Any())
                 return NotFound();
 
-            var englishTaskModels = _mapper.Map<EnglishTaskInfoModel>(englishTakDtos);
+            var englishTaskModels = _mapper.Map<IEnumerable<EnglishTaskInfoModel>>(englishTakDtos);
             
             return Ok(englishTaskModels);
         }

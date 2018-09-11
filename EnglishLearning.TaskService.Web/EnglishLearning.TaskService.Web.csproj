@@ -10,7 +10,4 @@
   <ItemGroup>
     <ProjectReference Include="..\EnglishLearning.TaskService.Application\EnglishLearning.TaskService.Application.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Configuration" />
-  </ItemGroup>
 </Project>
