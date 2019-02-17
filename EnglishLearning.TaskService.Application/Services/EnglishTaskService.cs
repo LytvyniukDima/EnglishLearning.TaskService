@@ -6,9 +6,9 @@ using EnglishLearning.TaskService.Application.Abstract;
 using EnglishLearning.TaskService.Application.DTO;
 using EnglishLearning.TaskService.Application.Infrastructure;
 using EnglishLearning.TaskService.Application.InternalServices;
-using EnglishLearning.TaskService.Infrastructure.Extensions;
 using EnglishLearning.TaskService.Persistence.Abstract;
 using EnglishLearning.TaskService.Persistence.Entities;
+using EnglishLearning.Utilities.Linq.Extensions;
 
 namespace EnglishLearning.TaskService.Application.Services
 {
