@@ -47,7 +47,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
         }
         
         [AllowAnonymous]
-        [HttpGet("/filter")]
+        [HttpGet("filter")]
         public async Task<ActionResult> GetAllInfoByFilter(
             [FromQuery] string[] tasktype, 
             [FromQuery] string[] grammarPart, 

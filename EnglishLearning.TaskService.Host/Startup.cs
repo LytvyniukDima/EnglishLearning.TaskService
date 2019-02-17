@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EnglishLearning.TaskService.Application.Configuration;
+using EnglishLearning.TaskService.Host.Infrastructure;
 using EnglishLearning.TaskService.Persistence.Configuration;
 using EnglishLearning.TaskService.Web.Configuration;
 using Microsoft.AspNetCore.Builder;
@@ -39,6 +40,8 @@ namespace EnglishLearning.TaskService.Host
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            services.AddSwaggerDocumentation();
+            
             services.PersistenceConfiguration(Configuration);
             services.ApplicationConfiguration();
             services.WebConfiguration();
@@ -58,6 +61,9 @@ namespace EnglishLearning.TaskService.Host
 
             app.UseCors("CorsPolicy");
             app.UseHttpsRedirection();
+
+            app.UseSwaggerDocumentation();
+            
             app.UseMvc();
         }
     }

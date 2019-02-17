@@ -25,7 +25,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
         }
         
         [AllowAnonymous]
-        [HttpGet("/filter")]
+        [HttpGet("filter")]
         public async Task<ActionResult> FindRandomTaskByFilter(
             [FromQuery] string[] tasktypes, 
             [FromQuery] string[] grammarParts, 
@@ -54,7 +54,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
         }
         
         [AllowAnonymous]
-        [HttpGet("/{count}/filter")]
+        [HttpGet("{count}/filter")]
         public async Task<ActionResult> FindRandomCountTasksByFilter(
             int count,
             [FromQuery] string[] tasktypes, 
