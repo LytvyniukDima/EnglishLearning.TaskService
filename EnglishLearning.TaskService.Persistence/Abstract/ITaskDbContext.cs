@@ -1,5 +1,4 @@
-﻿using EnglishLearning.TaskService.Persistence.Entities;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 
 namespace EnglishLearning.TaskService.Persistence.Abstract
 {

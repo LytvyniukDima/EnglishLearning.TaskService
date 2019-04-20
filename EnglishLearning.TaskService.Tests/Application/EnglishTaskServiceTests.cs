@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using EnglishLearning.TaskService.Application.DTO;
@@ -10,7 +8,6 @@ using EnglishLearning.TaskService.Application.Services;
 using EnglishLearning.TaskService.Persistence.Abstract;
 using EnglishLearning.TaskService.Persistence.Entities;
 using FluentAssertions;
-using MongoDB.Bson.Serialization.IdGenerators;
 using NSubstitute;
 using Xunit;
 

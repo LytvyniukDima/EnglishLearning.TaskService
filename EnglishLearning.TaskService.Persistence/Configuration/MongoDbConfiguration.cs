@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace EnglishLearning.TaskService.Persistence.Configuration
+﻿namespace EnglishLearning.TaskService.Persistence.Configuration
 {
     public class MongoDbConfiguration
     {

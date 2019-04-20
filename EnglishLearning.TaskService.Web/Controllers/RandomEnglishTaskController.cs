@@ -6,7 +6,6 @@ using EnglishLearning.TaskService.Application.Abstract;
 using EnglishLearning.TaskService.Application.DTO;
 using EnglishLearning.TaskService.Web.Infrastructure;
 using EnglishLearning.TaskService.Web.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EnglishLearning.TaskService.Web.Controllers
@@ -24,7 +23,6 @@ namespace EnglishLearning.TaskService.Web.Controllers
             _mapper = englishTaskWebMapper.Mapper;
         }
         
-        [AllowAnonymous]
         [HttpGet("filter")]
         public async Task<ActionResult> FindRandomTaskByFilter(
             [FromQuery] string[] tasktypes, 
@@ -40,7 +38,6 @@ namespace EnglishLearning.TaskService.Web.Controllers
             return Ok(englishTaskModel);
         }
         
-        [AllowAnonymous]
         [HttpGet("{count}")]
         public async Task<ActionResult> GetRandomFromAll(int count)
         {
@@ -53,7 +50,6 @@ namespace EnglishLearning.TaskService.Web.Controllers
             return Ok(englishTaskModel);
         }
         
-        [AllowAnonymous]
         [HttpGet("{count}/filter")]
         public async Task<ActionResult> FindRandomCountTasksByFilter(
             int count,

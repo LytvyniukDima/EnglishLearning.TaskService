@@ -6,7 +6,6 @@ using EnglishLearning.TaskService.Application.Abstract;
 using EnglishLearning.TaskService.Application.DTO;
 using EnglishLearning.TaskService.Web.Infrastructure;
 using EnglishLearning.TaskService.Web.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EnglishLearning.TaskService.Web.Controllers
@@ -23,7 +22,6 @@ namespace EnglishLearning.TaskService.Web.Controllers
             _mapper = englishTaskWebMapper.Mapper;
         }
         
-        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAllInfo()
         {
@@ -33,7 +31,6 @@ namespace EnglishLearning.TaskService.Web.Controllers
             return Ok(englishTaskModels);
         }
         
-        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetInfoById(string id)
         {
@@ -46,7 +43,6 @@ namespace EnglishLearning.TaskService.Web.Controllers
             return Ok(englishTaskModel);
         }
         
-        [AllowAnonymous]
         [HttpGet("filter")]
         public async Task<ActionResult> GetAllInfoByFilter(
             [FromQuery] string[] tasktype, 

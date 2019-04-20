@@ -6,7 +6,7 @@ using EnglishLearning.TaskService.Application.Abstract;
 using EnglishLearning.TaskService.Application.DTO;
 using EnglishLearning.TaskService.Web.Infrastructure;
 using EnglishLearning.TaskService.Web.Models;
-using Microsoft.AspNetCore.Authorization;
+using EnglishLearning.Utilities.Identity.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EnglishLearning.TaskService.Web.Controllers
@@ -23,7 +23,6 @@ namespace EnglishLearning.TaskService.Web.Controllers
             _mapper = englishTaskWebMapper.Mapper;
         }
         
-        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -33,7 +32,6 @@ namespace EnglishLearning.TaskService.Web.Controllers
             return Ok(englishTaskModels);
         }
         
-        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {
@@ -46,6 +44,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
             return Ok(englishTaskModel);
         }
         
+        [EnglishLearningAuthorize(AuthorizeRole.Admin)]
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] EnglishTaskCreateModel englishTaskCreateModel)
         {
@@ -56,6 +55,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
             return Ok();
         }
         
+        [EnglishLearningAuthorize(AuthorizeRole.Admin)]
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(string id, [FromBody] EnglishTaskCreateModel englishTaskCreateModel)
         {
@@ -69,6 +69,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
             return Ok();
         }
         
+        [EnglishLearningAuthorize(AuthorizeRole.Admin)]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
@@ -80,6 +81,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
             return Ok();
         }
         
+        [EnglishLearningAuthorize(AuthorizeRole.Admin)]
         [HttpDelete]
         public async Task<IActionResult> Delete()
         {
@@ -91,7 +93,6 @@ namespace EnglishLearning.TaskService.Web.Controllers
             return Ok();
         }
         
-        [AllowAnonymous]
         [HttpGet("filter")]
         public async Task<ActionResult> GetAllByFilter(
             [FromQuery] string[] tasktype, 

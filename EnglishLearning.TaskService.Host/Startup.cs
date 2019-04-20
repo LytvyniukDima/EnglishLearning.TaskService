@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using EnglishLearning.TaskService.Application.Configuration;
+﻿using EnglishLearning.TaskService.Application.Configuration;
 using EnglishLearning.TaskService.Host.Infrastructure;
 using EnglishLearning.TaskService.Persistence.Configuration;
 using EnglishLearning.TaskService.Web.Configuration;
+using EnglishLearning.Utilities.General.Extensions;
+using EnglishLearning.Utilities.Identity.Configuration;
+using EnglishLearning.Utilities.Persistence.Redis.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace EnglishLearning.TaskService.Host
 {
@@ -38,13 +33,17 @@ namespace EnglishLearning.TaskService.Host
                         .AllowCredentials());
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(options => options.AddEnglishLearningIdentityFilters());
 
             services.AddSwaggerDocumentation();
             
-            services.PersistenceConfiguration(Configuration);
-            services.ApplicationConfiguration();
-            services.WebConfiguration();
+            services.PersistenceConfiguration(Configuration)
+                .ApplicationConfiguration()
+                .WebConfiguration();
+
+            services
+                .AddRedis(Configuration)
+                .AddEnglishLearningIdentity();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,11 +53,8 @@ namespace EnglishLearning.TaskService.Host
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseHsts();
-            }
-
+            app.UseEnglishLearningExceptionMiddleware();
+                
             app.UseCors("CorsPolicy");
             app.UseHttpsRedirection();
 
