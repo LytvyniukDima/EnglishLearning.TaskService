@@ -1,7 +1,7 @@
 {
 	"TaskType": "SimpleBrackets",
 	"GrammarPart": "PRSimple",
-	"EnglishLevel": "Intermediate",
+	"EnglishLevel": "PreIntermediate",
 	"Count": 8,
 	"Example": "",
 	"Text": "Margaret __ four languages - English, French, German and Spanish.|speak\nI __ my job. It's very boring.|like\n'Where's Steve?' 'I'm sorry. I __ .'|know\nSue is a very quiet person. She __ very much.|talk\nAndy __ a lot of tea. It's his favourite drink.|drink\nIt's not true! I __ it!|believe\nThat's a very beautiful picture. I __ it very much.|like\nMark is a vegetarian. He __ meat.|eat",
@@ -9,19 +9,19 @@
 }
 {
 	"TaskType": "CorrectOption",
-	"GrammarPart": "PRContinuous",
+	"GrammarPart": "Test",
 	"EnglishLevel": "UpperIntermediate",
 	"Count": 10,
 	"Example": "",
-	"Text": "string",
-	"Answer": "string"
+	"Text": "Do you know __________ ?|she's going/whether she's going/where is she going\nSign up for the classes as soon as you can - there is <br> __________, so do it as soon as possible.|limited enrolment/fill in your details/free trial\nA: Your clothes are soaking wet! <br>B: Yes, I __________ in the rain.|walked/'ve waked/'ve been walking\n__________ violence is a growing problem in <br> times of unemployment.|Domestic/Economic/Global\nThey __________ the report for days and it's still not finished.|'ve been writing/'ve written/'ve been written\nCould you tell me __________?|what means that/what that means/what does that mean\nI'm phoning __________ a course.|to enquire about/about enquiring/enquire about\nCorruption isn't only deeply __________, it's also __________.|disturbing irresponible/reasonable unethical/disturbing unethical\nWe need to __________ all their comings and goings over the next twenty-four hours.|keep track of/surveillance/permit\nI felt some __________ when I couldn't make myself understood in Spanish.|frustrating/frustration/frustrated",
+	"Answer": "2\n1\n3\n1\n1\n2\n1\n3\n1\n2"
 }
 {
 	"TaskType": "DivisionBySlash",
-	"GrammarPart": "PRSimple",
-	"EnglishLevel": "PreIntermediate",
-	"Count": 10,
+	"GrammarPart": "PrSimpleAndPrContinuous",
+	"EnglishLevel": "Intermediate",
+	"Count": 8,
 	"Example": "",
-	"Text": "string",
-	"Answer": "string"
+	"Text": "A: I**'ve never been/didn't go** to Hollywood.<br>B: Haven't you? I **went/'ve been** there last year.\nA: How many films **have you acted/did you act** in so far?<br>B: I**'ve acted/acted** in seven films up to now.\nA: He's only twenty-two years old? but he **travelled/has travelled** all around the world.<br>B: Which countries **did he visit/has he visited**?.\nA: She **has won/won** four Oscars for her performances.<br>B: That's right. She **has won/won** an award for Best Actress last month.\nA: They **have lived/lived** in California for twenty years.<br>B: When **did they move/have they moved** to Texas?\nA: **Have you been/Were you** here long?<br>B: Yes. I **arrived/have arrived** over an hour ago.\nA: **We've been married/were married** for forty years now.<br>B: Do you remember the day we **'ve met/met**?\nA: **Did you enjoy/Have you enjoyed the film?<br>B: I **didn't have/haven't had** time to watch it yet.",
+	"Answer": "1/1\n2/1\n2/2\n1/2\n2/1\n1/1\n1/2\n1/2"
 }

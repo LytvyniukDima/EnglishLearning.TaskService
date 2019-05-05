@@ -1,4 +1,21 @@
 Speakout Wb p.9:
 
-A: I**\'ve never been/didn\'t go** to Hollywood.<br>B: Haven\'t you? I **went/\'ve been** there last year.
-A: How many films **have you acted/did you act** in so far?<br>B: I**\'ve acted/acted** in seven films up to now.
+A: I**'ve never been/didn't go** to Hollywood.<br>B: Haven't you? I **went/'ve been** there last year.
+A: How many films **have you acted/did you act** in so far?<br>B: I**'ve acted/acted** in seven films up to now.
+A: He's only twenty-two years old? but he **travelled/has travelled** all around the world.<br>B: Which countries **did he visit/has he visited**?.
+A: She **has won/won** four Oscars for her performances.<br>B: That's right. She **has won/won** an award for Best Actress last month.
+A: They **have lived/lived** in California for twenty years.<br>B: When **did they move/have they moved** to Texas?
+A: **Have you been/Were you** here long?<br>B: Yes. I **arrived/have arrived** over an hour ago.
+A: **We've been married/were married** for forty years now.<br>B: Do you remember the day we **'ve met/met**?
+A: **Did you enjoy/Have you enjoyed the film?<br>B: I **didn't have/haven't had** time to watch it yet.
+
+    Answer:
+    1/1
+    2/1
+    2/2
+    1/2
+    2/1
+    1/1
+    1/2
+    1/2
+    

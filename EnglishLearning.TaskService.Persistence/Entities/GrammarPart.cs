@@ -3,6 +3,9 @@
     public enum GrammarPart
     {
         PRSimple,
-        PRContinuous
+        PRContinuous,
+        AllSentences,
+        Test,
+        PrSimpleAndPrContinuous
     }
 }
