@@ -13,7 +13,9 @@ Mark is a vegetarian. He __ meat.|eat
     speaks
     don't like/do not like
     don't know/do not know
+    does not talk/doesn't talk
     drinks
     don't belive/do not believe
     like
-    doesn't eat/does not eat"
+    doesn't eat/does not eat
+    

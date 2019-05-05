@@ -7,7 +7,7 @@ A: She **has won/won** four Oscars for her performances.<br>B: That's right. She
 A: They **have lived/lived** in California for twenty years.<br>B: When **did they move/have they moved** to Texas?
 A: **Have you been/Were you** here long?<br>B: Yes. I **arrived/have arrived** over an hour ago.
 A: **We've been married/were married** for forty years now.<br>B: Do you remember the day we **'ve met/met**?
-A: **Did you enjoy/Have you enjoyed the film?<br>B: I **didn't have/haven't had** time to watch it yet.
+A: **Did you enjoy/Have you enjoyed** the film?<br>B: I **didn't have/haven't had** time to watch it yet.
 
     Answer:
     1/1
@@ -18,4 +18,3 @@ A: **Did you enjoy/Have you enjoyed the film?<br>B: I **didn't have/haven't had*
     1/1
     1/2
     1/2
-    
