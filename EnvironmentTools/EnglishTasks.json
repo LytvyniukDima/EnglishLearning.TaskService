@@ -1,0 +1,27 @@
+{
+	"TaskType": "SimpleBrackets",
+	"GrammarPart": "PRSimple",
+	"EnglishLevel": "Intermediate",
+	"Count": 8,
+	"Example": "",
+	"Text": "Margaret __ four languages - English, French, German and Spanish.|speak\nI __ my job. It's very boring.|like\n'Where's Steve?' 'I'm sorry. I __ .'|know\nSue is a very quiet person. She __ very much.|talk\nAndy __ a lot of tea. It's his favourite drink.|drink\nIt's not true! I __ it!|believe\nThat's a very beautiful picture. I __ it very much.|like\nMark is a vegetarian. He __ meat.|eat",
+	"Answer": "speaks\ndon't like/do not like\ndon't know/do not know\ndrinks\ndon't belive/do not believe\nlike\ndoesn't eat/does not eat"
+}
+{
+	"TaskType": "CorrectOption",
+	"GrammarPart": "PRContinuous",
+	"EnglishLevel": "UpperIntermediate",
+	"Count": 10,
+	"Example": "",
+	"Text": "string",
+	"Answer": "string"
+}
+{
+	"TaskType": "DivisionBySlash",
+	"GrammarPart": "PRSimple",
+	"EnglishLevel": "PreIntermediate",
+	"Count": 10,
+	"Example": "",
+	"Text": "string",
+	"Answer": "string"
+}

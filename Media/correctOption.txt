@@ -1,0 +1,6 @@
+Speakout p.18 check unit 1 - 2 and Speakout p.15 ex.6
+
+constLine = __________
+
+Jose is __________ - he speaks Spanish and<br>English.|monolingual/bilingual/multilingual
+How should you dress before an interwiew?|messily/briliantly/smartly

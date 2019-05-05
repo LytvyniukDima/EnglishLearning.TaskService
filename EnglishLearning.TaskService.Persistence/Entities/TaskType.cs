@@ -6,6 +6,7 @@
         WordsFromBox,
         CorrectAlternative,
         CorrectOrder,
-        DivisionBySlash
+        DivisionBySlash,
+        CorrectOption
     }
 }
