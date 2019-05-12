@@ -25,11 +25,11 @@ namespace EnglishLearning.TaskService.Web.Controllers
         
         [HttpGet("filter")]
         public async Task<ActionResult> FindRandomTaskByFilter(
-            [FromQuery] string[] tasktypes, 
-            [FromQuery] string[] grammarParts, 
-            [FromQuery] string[] englishLevels)
+            [FromQuery] string[] taskType, 
+            [FromQuery] string[] grammarPart, 
+            [FromQuery] string[] englishLevel)
         {
-            EnglishTaskDto englishTakDto = await _randomEnglishTaskService.FindRandomEnglishTaskAsync(tasktypes, grammarParts, englishLevels);
+            EnglishTaskDto englishTakDto = await _randomEnglishTaskService.FindRandomEnglishTaskAsync(taskType, grammarPart, englishLevel);
             if (englishTakDto == null)
                 return NotFound();
 
@@ -53,11 +53,11 @@ namespace EnglishLearning.TaskService.Web.Controllers
         [HttpGet("{count}/filter")]
         public async Task<ActionResult> FindRandomCountTasksByFilter(
             int count,
-            [FromQuery] string[] tasktypes, 
-            [FromQuery] string[] grammarParts, 
-            [FromQuery] string[] englishLevels)
+            [FromQuery] string[] taskType, 
+            [FromQuery] string[] grammarPart, 
+            [FromQuery] string[] englishLevel)
         {
-            IEnumerable<EnglishTaskDto> englishTakDtos = await _randomEnglishTaskService.FindRandomCountEnglishTask(count, tasktypes, grammarParts, englishLevels);
+            IEnumerable<EnglishTaskDto> englishTakDtos = await _randomEnglishTaskService.FindRandomCountEnglishTask(count, taskType, grammarPart, englishLevel);
             if (!englishTakDtos.Any())
                 return NotFound();
 

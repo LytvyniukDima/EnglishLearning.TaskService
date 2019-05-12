@@ -95,11 +95,11 @@ namespace EnglishLearning.TaskService.Web.Controllers
         
         [HttpGet("filter")]
         public async Task<ActionResult> GetAllByFilter(
-            [FromQuery] string[] tasktype, 
+            [FromQuery] string[] taskType, 
             [FromQuery] string[] grammarPart, 
             [FromQuery] string[] englishLevel)
         {
-            IEnumerable<EnglishTaskDto> englishTakDtos = await _englishTaskService.FindAllEnglishTaskAsync(tasktype, grammarPart, englishLevel);
+            IEnumerable<EnglishTaskDto> englishTakDtos = await _englishTaskService.FindAllEnglishTaskAsync(taskType, grammarPart, englishLevel);
             if (!englishTakDtos.Any())
                 return NotFound();
 

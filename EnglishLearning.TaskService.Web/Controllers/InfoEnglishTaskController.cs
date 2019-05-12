@@ -38,7 +38,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
             if (englishTask == null)
                 return NotFound();
 
-            var englishTaskModel = _mapper.Map<EnglishTaskDto, EnglishTaskModel>(englishTask);
+            var englishTaskModel = _mapper.Map<EnglishTaskDto, EnglishTaskInfoModel>(englishTask);
             
             return Ok(englishTaskModel);
         }
@@ -53,7 +53,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
             if (!englishTakDtos.Any())
                 return NotFound();
 
-            var englishTaskModels = _mapper.Map<IEnumerable<EnglishTaskModel>>(englishTakDtos);
+            var englishTaskModels = _mapper.Map<IEnumerable<EnglishTaskInfoModel>>(englishTakDtos);
             
             return Ok(englishTaskModels);
         }
