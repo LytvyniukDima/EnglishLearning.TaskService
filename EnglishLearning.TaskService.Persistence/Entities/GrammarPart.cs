@@ -6,6 +6,11 @@
         PRContinuous,
         AllSentences,
         Test,
-        PrSimpleAndPrContinuous
+        PrSimpleAndPrContinuous,
+        FuturePlans,
+        QuestionTags,
+        PossessiveAdjectives,
+        Suffixes,
+        PRPerfect
     }
 }

@@ -18,3 +18,10 @@ A: **Did you enjoy/Have you enjoyed** the film?<br>B: I **didn't have/haven't ha
     1/1
     1/2
     1/2
+
+We'd like to buy our own house in a **term/year** or two.\n
+In the long **term/year**, I think she made the right decision.\n
+I'd like to start my own business at some point in the future, but that will be a ** short/long** time from now.\n
+In the **short/long** term, over the next few weeks, we want to see busiess improve.\n
+In ten ** next/years'** time, I hope to be surgeon.\n
+**Next/Years'** month, we will celebrate twenty years of marriage.",
