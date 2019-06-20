@@ -30,7 +30,8 @@ namespace EnglishLearning.TaskService.Host
                     builder => builder.AllowAnyOrigin()
                         .AllowAnyMethod()
                         .AllowAnyHeader()
-                        .AllowCredentials());
+                        .AllowCredentials()
+                        .WithExposedHeaders("Authorization"));
             });
 
             services.AddMvc(options => options.AddEnglishLearningIdentityFilters());
