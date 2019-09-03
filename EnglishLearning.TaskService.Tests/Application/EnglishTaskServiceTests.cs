@@ -15,7 +15,7 @@ namespace EnglishLearning.TaskService.Tests.Application
 {
     public class EnglishTaskServiceTests
     {
-        private readonly IMongoDbRepository<EnglishTask> _dbRepository = Substitute.For<IMongoDbRepository<EnglishTask>>();
+        private readonly IEnglishTaskRepository _dbRepository = Substitute.For<IEnglishTaskRepository>();
 
         private readonly EnglishTaskServiceMapper _mapper = new EnglishTaskServiceMapper();
         
@@ -40,7 +40,7 @@ namespace EnglishLearning.TaskService.Tests.Application
         {
             // Arrange
             _dbRepository
-                .UpdateAsync(Arg.Any<string>(), Arg.Any<EnglishTask>())
+                .UpdateAsync(Arg.Any<EnglishTask>())
                 .Returns(Task.FromResult(true));
             var englishTaskService = new EnglishTaskService(_dbRepository, _mapper);
             EnglishTaskCreateDto englishTaskDto = defaultEnglishTaskCreateDto;

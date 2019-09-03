@@ -14,11 +14,11 @@ namespace EnglishLearning.TaskService.Application.Services
 {
     public class RandomEnglishTaskService : IRandomEnglishTaskService
     {
-        private readonly IMongoDbRepository<EnglishTask> _dbRepository;
+        private readonly IEnglishTaskRepository _dbRepository;
         private readonly IMapper _mapper;
 
         public RandomEnglishTaskService(
-            IMongoDbRepository<EnglishTask> dbRepository,
+            IEnglishTaskRepository dbRepository,
             EnglishTaskServiceMapper englishTaskServiceMapper)
         {
             _dbRepository = dbRepository;

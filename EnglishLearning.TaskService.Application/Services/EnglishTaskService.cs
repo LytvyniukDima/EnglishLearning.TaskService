@@ -14,10 +14,10 @@ namespace EnglishLearning.TaskService.Application.Services
 {
     public class EnglishTaskService : IEnglishTaskService
     {
-        private readonly IMongoDbRepository<EnglishTask> _dbRepository;
+        private readonly IEnglishTaskRepository _dbRepository;
         private readonly IMapper _mapper;
         
-        public EnglishTaskService(IMongoDbRepository<EnglishTask> dbRepository, EnglishTaskServiceMapper englishTaskServiceMappermapper)
+        public EnglishTaskService(IEnglishTaskRepository dbRepository, EnglishTaskServiceMapper englishTaskServiceMappermapper)
         {
             _dbRepository = dbRepository;
             _mapper = englishTaskServiceMappermapper.Mapper;
@@ -36,7 +36,7 @@ namespace EnglishLearning.TaskService.Application.Services
             var englishTask = _mapper.Map<EnglishTaskCreateDto, EnglishTask>(englishTaskDto);
             englishTask.Id = id;
             
-            return await _dbRepository.UpdateAsync(englishTask.Id, englishTask);
+            return await _dbRepository.UpdateAsync(englishTask);
         }
 
         public async Task<EnglishTaskDto> GetByIdEnglishTaskAsync(string id)

@@ -13,7 +13,7 @@ namespace EnglishLearning.TaskService.Application.InternalServices
     internal static class FilterEnglishTaskService
     {
         internal static async Task<IEnumerable<EnglishTask>> GetAllFilteredEnglishTasks(
-            IMongoDbRepository<EnglishTask> dbRepository, 
+            IEnglishTaskRepository dbRepository, 
             string[] taskTypes = null, 
             string[] grammarParts = null,
             string[] englishLevels = null)

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using EnglishLearning.TaskService.Persistence.Abstract;
-using EnglishLearning.TaskService.Persistence.Configuration;
-using EnglishLearning.TaskService.Persistence.Contexts;
 using EnglishLearning.TaskService.Persistence.Entities;
 using EnglishLearning.TaskService.Persistence.Repositories;
+using EnglishLearning.Utilities.Configurations.MongoConfiguration;
+using EnglishLearning.Utilities.Persistence.Mongo.Configuration;
+using EnglishLearning.Utilities.Persistence.Mongo.Contexts;
 using FluentAssertions;
 using Microsoft.Extensions.Options;
 using MongoDB.Bson;
@@ -15,18 +15,21 @@ namespace EnglishLearning.TaskService.Tests.Persistence
 {
     public class EnglishTaskMongoDbRepositoryTests : IDisposable
     {
-        private readonly MongoDbConfiguration _configuration = new MongoDbConfiguration
+        private readonly MongoConfiguration _configuration = new MongoConfiguration
         {
             ServerAddress = "mongodb://localhost:27017",
             DatabaseName = "EnglishTasks_UnitTests"
         };
 
-        private readonly ITaskDbContext _dbContext;
+        private readonly MongoCollectionNamesProvider _mongoCollectionNamesProvider = new MongoCollectionNamesProvider();
+        
+        private readonly MongoContext _dbContext;
         private readonly EnglishTaskMongoDbRepository _repository;
 
         public EnglishTaskMongoDbRepositoryTests()
         {
-            _dbContext = new TaskDbContext(Options.Create<MongoDbConfiguration>(_configuration));
+            _mongoCollectionNamesProvider.Add<EnglishTask>("EnglishTasks");
+            _dbContext = new MongoContext(Options.Create<MongoConfiguration>(_configuration), _mongoCollectionNamesProvider);
             _repository = new EnglishTaskMongoDbRepository(_dbContext);
         }
 
@@ -304,7 +307,7 @@ namespace EnglishLearning.TaskService.Tests.Persistence
             // Act
             task.GrammarPart = GrammarPart.PRSimple;
             task.EnglishLevel = EnglishLevel.Intermediate;
-            bool actionResult = await _repository.UpdateAsync(task.Id, task);
+            bool actionResult = await _repository.UpdateAsync(task);
             
             // Assert
             var tasksFromDb = new List<EnglishTask>(await _repository.GetAllAsync());

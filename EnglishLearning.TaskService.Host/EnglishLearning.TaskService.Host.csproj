@@ -7,13 +7,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="EnglishLearning.Utilities.General">
-      <Version>1.1.0-CI-20190512-073346</Version>
+      <Version>1.1.0-CI-20190903-092043</Version>
     </PackageReference>
     <PackageReference Include="EnglishLearning.Utilities.Identity">
-      <Version>1.1.0-CI-20190512-073346</Version>
+      <Version>1.1.0-CI-20190903-092043</Version>
     </PackageReference>
     <PackageReference Include="EnglishLearning.Utilities.Persistence.Redis">
-      <Version>1.1.0-CI-20190512-073346</Version>
+      <Version>1.1.0-CI-20190903-092043</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Serilog.AspNetCore">
