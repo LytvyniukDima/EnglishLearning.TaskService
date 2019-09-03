@@ -1,5 +1,4 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using EnglishLearning.TaskService.Application.DTO;
 using EnglishLearning.TaskService.Persistence.Entities;
 
@@ -9,31 +8,17 @@ namespace EnglishLearning.TaskService.Application.Infrastructure
     {
         public EnglishTaskServiceMapperProfile()
         {
-            CreateMap<EnglishTaskCreateDto, EnglishTask>()
-                .ForMember(e => e.TaskType, 
-                    opt => opt.MapFrom(x => (TaskType) Enum.Parse(typeof(TaskType), x.TaskType)))
-                .ForMember(e => e.GrammarPart,
-                    opt => opt.MapFrom(x => (GrammarPart) Enum.Parse(typeof(GrammarPart), x.GrammarPart)))
-                .ForMember(e => e.EnglishLevel,
-                    opt => opt.MapFrom(x => (EnglishLevel) Enum.Parse(typeof(EnglishLevel), x.EnglishLevel)));
+            CreateMap<EnglishTaskCreateDto, EnglishTask>();
             
-            CreateMap<EnglishTaskDto, EnglishTask>()
-                .ForMember(e => e.TaskType, 
-                    opt => opt.MapFrom(x => (TaskType) Enum.Parse(typeof(TaskType), x.TaskType)))
-                .ForMember(e => e.GrammarPart,
-                    opt => opt.MapFrom(x => (GrammarPart) Enum.Parse(typeof(GrammarPart), x.GrammarPart)))
-                .ForMember(e => e.EnglishLevel,
-                    opt => opt.MapFrom(x => (EnglishLevel) Enum.Parse(typeof(EnglishLevel), x.EnglishLevel)));
+            CreateMap<EnglishTaskDto, EnglishTask>();
+            CreateMap<EnglishTask, EnglishTaskDto>();
             
-            CreateMap<EnglishTask, EnglishTaskDto>()
-                .ForMember(e => e.TaskType, opt => opt.MapFrom(x => x.TaskType.ToString()))
-                .ForMember(e => e.GrammarPart, opt => opt.MapFrom(x => x.GrammarPart.ToString()))
-                .ForMember(e => e.EnglishLevel, opt => opt.MapFrom(x => x.EnglishLevel.ToString()));
-            
-            CreateMap<EnglishTask, EnglishTaskInfoDto>()
-                .ForMember(e => e.TaskType, opt => opt.MapFrom(x => x.TaskType.ToString()))
-                .ForMember(e => e.GrammarPart, opt => opt.MapFrom(x => x.GrammarPart.ToString()))
-                .ForMember(e => e.EnglishLevel, opt => opt.MapFrom(x => x.EnglishLevel.ToString()));
+            CreateMap<EnglishTaskInfo, EnglishTaskInfoDto>();
+
+            CreateMap<EnglishLevel, EnglishLevelDto>();
+            CreateMap<EnglishLevelDto, EnglishLevel>();
+            CreateMap<TaskType, TaskTypeDto>();
+            CreateMap<TaskTypeDto, TaskType>();
         }
     }
 }

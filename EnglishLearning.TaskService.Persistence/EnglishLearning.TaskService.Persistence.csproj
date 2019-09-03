@@ -3,6 +3,9 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="EnglishLearning.Utilities.Linq">
+      <Version>1.1.0-CI-20190903-092043</Version>
+    </PackageReference>
     <PackageReference Include="EnglishLearning.Utilities.Persistence.Mongo">
       <Version>1.1.0-CI-20190903-092043</Version>
     </PackageReference>

@@ -4,9 +4,9 @@
     {
         public string Id { get; set; }
         
-        public string TaskType { get; set; }
         public string GrammarPart { get; set; }
-        public string EnglishLevel { get; set; }
+        public TaskTypeDto TaskType { get; set; }
+        public EnglishLevelDto EnglishLevel { get; set; }
         
         public int Count { get; set; }
         public string Example { get; set; }
