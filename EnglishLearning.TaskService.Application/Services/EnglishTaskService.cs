@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
@@ -94,8 +93,10 @@ namespace EnglishLearning.TaskService.Application.Services
         public async Task<IReadOnlyList<EnglishTaskDto>> FindAllEnglishTaskAsync(string[] grammarParts = null, TaskTypeDto[] taskTypes = null, EnglishLevelDto[] englishLevels = null)
         {
             if (taskTypes.IsNullOrEmpty() && grammarParts.IsNullOrEmpty() && englishLevels.IsNullOrEmpty())
+            {
                 return Array.Empty<EnglishTaskDto>();
-            
+            }
+
             var taskTypesEntities = _mapper.Map<TaskType[]>(taskTypes);
             var englishLevelEntities = _mapper.Map<EnglishLevel[]>(englishLevels);
             
