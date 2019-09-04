@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using EnglishLearning.TaskService.Application.DTO;
 using EnglishLearning.TaskService.Application.Infrastructure;
 using EnglishLearning.TaskService.Application.Services;
+using EnglishLearning.TaskService.Common.Models;
 using EnglishLearning.TaskService.Persistence.Abstract;
 using EnglishLearning.TaskService.Persistence.Entities;
 using FluentAssertions;
@@ -192,133 +193,133 @@ namespace EnglishLearning.TaskService.Tests.Application
             englishTaskInfoDtos.Should().BeEquivalentTo(EnglishTaskInfoDtos);
         }
         
-        private IEnumerable<EnglishTask> EnglishTaskData = new List<EnglishTask>()
+        private IReadOnlyList<EnglishTask> EnglishTaskData = new List<EnglishTask>()
         {
             new EnglishTask
             {
                 TaskType = TaskType.CorrectAlternative,
-                GrammarPart = GrammarPart.PRContinuous,
+                GrammarPart = "PRContinuous",
                 EnglishLevel = EnglishLevel.Advanced,
                 Count = 10,
                 Example = "example",
                 Text = "text",
-                Answer = "answer"
+                Answer = "answer",
             },
             new EnglishTask
             {
                 TaskType = TaskType.SimpleBrackets,
-                GrammarPart = GrammarPart.PRSimple,
+                GrammarPart = "PRSimple",
                 EnglishLevel = EnglishLevel.PreIntermediate,
                 Count = 8,
                 Example = "example",
                 Text = "text",
-                Answer = "answer"
+                Answer = "answer",
             },
             new EnglishTask
             {
                 TaskType = TaskType.WordsFromBox,
-                GrammarPart = GrammarPart.PRContinuous,
+                GrammarPart = "PRContinuous",
                 EnglishLevel = EnglishLevel.Intermediate,
                 Count = 9,
                 Example = "example",
                 Text = "text",
-                Answer = "answer"
-            }
+                Answer = "answer",
+            },
         };
 
         private IEnumerable<EnglishTaskDto> EnglishTaskDtos = new List<EnglishTaskDto>()
         {
             new EnglishTaskDto
             {
-                TaskType = "CorrectAlternative",
+                TaskType = TaskType.CorrectAlternative,
                 GrammarPart = "PRContinuous",
-                EnglishLevel = "Advanced",
+                EnglishLevel = EnglishLevel.Advanced,
                 Count = 10,
                 Example = "example",
                 Text = "text",
-                Answer = "answer"
+                Answer = "answer",
             },
             new EnglishTaskDto
             {
-                TaskType = "SimpleBrackets",
+                TaskType = TaskType.SimpleBrackets,
                 GrammarPart = "PRSimple",
-                EnglishLevel = "PreIntermediate",
+                EnglishLevel = EnglishLevel.PreIntermediate,
                 Count = 8,
                 Example = "example",
                 Text = "text",
-                Answer = "answer"
+                Answer = "answer",
             },
             new EnglishTaskDto
             {
-                TaskType = "WordsFromBox",
+                TaskType = TaskType.WordsFromBox,
                 GrammarPart = "PRContinuous",
-                EnglishLevel = "Intermediate",
+                EnglishLevel = EnglishLevel.Intermediate,
                 Count = 9,
                 Example = "example",
                 Text = "text",
-                Answer = "answer"
-            }
+                Answer = "answer",
+            },
         };
         
         private IEnumerable<EnglishTaskInfoDto> EnglishTaskInfoDtos = new List<EnglishTaskInfoDto>()
         {
             new EnglishTaskInfoDto
             {
-                TaskType = "CorrectAlternative",
+                TaskType = TaskType.CorrectAlternative,
                 GrammarPart = "PRContinuous",
-                EnglishLevel = "Advanced"
+                EnglishLevel = EnglishLevel.Advanced,
             },
             new EnglishTaskInfoDto
             {
-                TaskType = "SimpleBrackets",
+                TaskType = TaskType.SimpleBrackets,
                 GrammarPart = "PRSimple",
-                EnglishLevel = "PreIntermediate"
+                EnglishLevel = EnglishLevel.Elementary,
             },
             new EnglishTaskInfoDto
             {
-                TaskType = "WordsFromBox",
+                TaskType = TaskType.WordsFromBox,
                 GrammarPart = "PRContinuous",
-                EnglishLevel = "Intermediate"
-            }
+                EnglishLevel = EnglishLevel.Intermediate,
+            },
         };
 
         private EnglishTask defaulEnglishTask = new EnglishTask
         {
             TaskType = TaskType.CorrectAlternative,
-            GrammarPart = GrammarPart.PRContinuous,
+            GrammarPart = "PRContinuous",
             EnglishLevel = EnglishLevel.Advanced,
             Count = 10,
             Example = "example",
             Text = "text",
-            Answer = "answer"
+            Answer = "answer",
         };
 
         private EnglishTaskDto defaultEnglishTaskDto = new EnglishTaskDto
         {
-            TaskType = "CorrectAlternative",
+            TaskType = TaskType.CorrectAlternative,
             GrammarPart = "PRContinuous",
-            EnglishLevel = "Advanced",
+            EnglishLevel = EnglishLevel.Advanced,
             Count = 10,
             Example = "example",
             Text = "text",
-            Answer = "answer"
+            Answer = "answer",
         };
         
         private EnglishTaskCreateDto defaultEnglishTaskCreateDto = new EnglishTaskCreateDto
         {
-            TaskType = "CorrectAlternative",
+            TaskType = TaskType.CorrectAlternative,
             GrammarPart = "PRContinuous",
-            EnglishLevel = "Advanced",
+            EnglishLevel = EnglishLevel.Advanced,
             Count = 9,
             Example = "example",
-            Answer = "answer"
+            Answer = "answer",
         };
 
         private EnglishTaskInfoDto defaultEnglishTaskInfoDto = new EnglishTaskInfoDto
         {
-            TaskType = "CorrectAlternative",
+            TaskType = TaskType.CorrectAlternative,
             GrammarPart = "PRContinuous",
-            EnglishLevel = "Advanced",
+            EnglishLevel = EnglishLevel.Advanced,
         };
     }
 }

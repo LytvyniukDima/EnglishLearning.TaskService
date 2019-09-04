@@ -1,6 +1,6 @@
-namespace EnglishLearning.TaskService.Application.DTO
+﻿namespace EnglishLearning.TaskService.Common.Models
 {
-    public enum EnglishLevelDto
+    public enum EnglishLevel
     {
         Elementary,
         PreIntermediate,

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
 using EnglishLearning.TaskService.Application.DTO;
+using EnglishLearning.TaskService.Common.Models;
 using EnglishLearning.TaskService.Web.Infrastructure;
 using EnglishLearning.TaskService.Web.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -45,15 +46,17 @@ namespace EnglishLearning.TaskService.Web.Controllers
         
         [HttpGet("filter")]
         public async Task<ActionResult> GetAllInfoByFilter(
-            [FromQuery] string[] tasktype, 
-            [FromQuery] string[] grammarPart, 
-            [FromQuery] string[] englishLevel)
+            [FromQuery] string[] grammarPart,
+            [FromQuery] TaskType[] taskType, 
+            [FromQuery] EnglishLevel[] englishLevel)
         {
-            IEnumerable<EnglishTaskInfoDto> englishTakDtos = await _englishTaskService.FindAllInfoEnglishTaskAsync(tasktype, grammarPart, englishLevel);
+            IEnumerable<EnglishTaskInfoDto> englishTakDtos = await _englishTaskService.FindAllInfoEnglishTaskAsync(grammarPart, taskType, englishLevel);
             if (!englishTakDtos.Any())
+            {
                 return NotFound();
+            }
 
-            var englishTaskModels = _mapper.Map<IEnumerable<EnglishTaskInfoModel>>(englishTakDtos);
+            var englishTaskModels = _mapper.Map<IReadOnlyList<EnglishTaskInfoModel>>(englishTakDtos);
             
             return Ok(englishTaskModels);
         }

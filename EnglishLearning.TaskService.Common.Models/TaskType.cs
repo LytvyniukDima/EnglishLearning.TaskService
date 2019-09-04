@@ -1,4 +1,4 @@
-﻿namespace EnglishLearning.TaskService.Persistence.Entities
+﻿namespace EnglishLearning.TaskService.Common.Models
 {
     public enum TaskType
     {
@@ -7,6 +7,6 @@
         CorrectAlternative,
         CorrectOrder,
         DivisionBySlash,
-        CorrectOption
+        CorrectOption,
     }
 }

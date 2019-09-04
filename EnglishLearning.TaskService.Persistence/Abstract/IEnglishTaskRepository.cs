@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EnglishLearning.TaskService.Common.Models;
 using EnglishLearning.TaskService.Persistence.Entities;
 using EnglishLearning.Utilities.Persistence.Interfaces;
 

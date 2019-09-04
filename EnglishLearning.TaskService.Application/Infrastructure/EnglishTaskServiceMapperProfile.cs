@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EnglishLearning.TaskService.Application.DTO;
+using EnglishLearning.TaskService.Common.Models;
 using EnglishLearning.TaskService.Persistence.Entities;
 
 namespace EnglishLearning.TaskService.Application.Infrastructure
@@ -14,11 +15,6 @@ namespace EnglishLearning.TaskService.Application.Infrastructure
             CreateMap<EnglishTask, EnglishTaskDto>();
             
             CreateMap<EnglishTaskInfo, EnglishTaskInfoDto>();
-
-            CreateMap<EnglishLevel, EnglishLevelDto>();
-            CreateMap<EnglishLevelDto, EnglishLevel>();
-            CreateMap<TaskType, TaskTypeDto>();
-            CreateMap<TaskTypeDto, TaskType>();
         }
     }
 }

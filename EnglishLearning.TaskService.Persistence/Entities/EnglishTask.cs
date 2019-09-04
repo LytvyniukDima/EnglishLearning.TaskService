@@ -1,4 +1,4 @@
-﻿using EnglishLearning.TaskService.Persistence.Abstract;
+﻿using EnglishLearning.TaskService.Common.Models;
 using EnglishLearning.Utilities.Persistence.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EnglishLearning.TaskService.Application.DTO;
+using EnglishLearning.TaskService.Common.Models;
 
 namespace EnglishLearning.TaskService.Application.Abstract
 {
@@ -16,7 +17,7 @@ namespace EnglishLearning.TaskService.Application.Abstract
         Task<EnglishTaskInfoDto> GetByIdEnglishTaskInfoAsync(string id);
         Task<IReadOnlyList<EnglishTaskInfoDto>> GetAllEnglishTaskInfoAsync();
         
-        Task<IReadOnlyList<EnglishTaskDto>> FindAllEnglishTaskAsync(string[] grammarParts = null, TaskTypeDto[] taskTypes = null, EnglishLevelDto[] englishLevels = null);
-        Task<IReadOnlyList<EnglishTaskInfoDto>> FindAllInfoEnglishTaskAsync(string[] grammarParts = null, TaskTypeDto[] taskTypes = null, EnglishLevelDto[] englishLevels = null);
+        Task<IReadOnlyList<EnglishTaskDto>> FindAllEnglishTaskAsync(string[] grammarParts = null, TaskType[] taskTypes = null, EnglishLevel[] englishLevels = null);
+        Task<IReadOnlyList<EnglishTaskInfoDto>> FindAllInfoEnglishTaskAsync(string[] grammarParts = null, TaskType[] taskTypes = null, EnglishLevel[] englishLevels = null);
     }
 }

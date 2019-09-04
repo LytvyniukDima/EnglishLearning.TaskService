@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using EnglishLearning.TaskService.Common.Models;
 using EnglishLearning.TaskService.Persistence.Entities;
 using EnglishLearning.TaskService.Persistence.Repositories;
 using EnglishLearning.Utilities.Configurations.MongoConfiguration;
@@ -40,12 +41,12 @@ namespace EnglishLearning.TaskService.Tests.Persistence
             var task = new EnglishTask
             {
                 TaskType = TaskType.CorrectAlternative,
-                GrammarPart = GrammarPart.PRContinuous,
+                GrammarPart = "PRContinuous",
                 EnglishLevel = EnglishLevel.Advanced,
                 Count = 10,
                 Example = "example",
                 Text = "text",
-                Answer = "answer"
+                Answer = "answer",
             };
             
             // Act
@@ -73,13 +74,15 @@ namespace EnglishLearning.TaskService.Tests.Persistence
             // Arrange
             var tasks = new List<EnglishTask>
             {
-                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" }
+                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
             };
 
             foreach (var task in tasks)
+            {
                 await _repository.AddAsync(task);
+            }
 
             // Act
             var tasksFromDb = await _repository.GetAllAsync();
@@ -94,13 +97,15 @@ namespace EnglishLearning.TaskService.Tests.Persistence
             // Arrange
             var tasks = new List<EnglishTask>
             {
-                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" }
+                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
             };
 
             foreach (var task in tasks)
+            {
                 await _repository.AddAsync(task);
+            }
 
             // Act
             EnglishTask taskFromDb = await _repository.FindAsync(x => x.Id.Equals(tasks[0].Id));
@@ -115,13 +120,15 @@ namespace EnglishLearning.TaskService.Tests.Persistence
             // Arrange
             var tasks = new List<EnglishTask>
             {
-                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" }
+                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
             };
 
             foreach (var task in tasks)
+            {
                 await _repository.AddAsync(task);
+            }
 
             // Act
             EnglishTask taskFromDb = await _repository.FindAsync(x => x.Id.Equals(new ObjectId().ToString()));
@@ -136,13 +143,15 @@ namespace EnglishLearning.TaskService.Tests.Persistence
             // Arrange
             var tasks = new List<EnglishTask>
             {
-                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" }
+                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
             };
 
             foreach (var task in tasks)
+            {
                 await _repository.AddAsync(task);
+            }
 
             // Act
             IEnumerable<EnglishTask> taskFromDb = await _repository.FindAllAsync(x => x.EnglishLevel == EnglishLevel.Advanced && x.TaskType == TaskType.SimpleBrackets);
@@ -157,16 +166,18 @@ namespace EnglishLearning.TaskService.Tests.Persistence
             // Arrange
             var tasks = new List<EnglishTask>
             {
-                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.CorrectOrder, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Intermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.DivisionBySlash, GrammarPart = GrammarPart.PRSimple, EnglishLevel = EnglishLevel.UpperIntermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" }
+                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.CorrectOrder, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Intermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.DivisionBySlash, GrammarPart = "PRSimple", EnglishLevel = EnglishLevel.UpperIntermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" },
             };
 
             foreach (var task in tasks)
+            {
                 await _repository.AddAsync(task);
+            }
 
             // Act
-            EnglishTask taskFromDb = await _repository.FindAsync(x => x.TaskType == TaskType.CorrectOrder && x.GrammarPart == GrammarPart.PRContinuous && x.EnglishLevel == EnglishLevel.Intermediate);
+            EnglishTask taskFromDb = await _repository.FindAsync(x => x.TaskType == TaskType.CorrectOrder && x.GrammarPart == "PRContinuous" && x.EnglishLevel == EnglishLevel.Intermediate);
             
             // Assert
             taskFromDb.Should().BeEquivalentTo(tasks[1]);
@@ -178,26 +189,27 @@ namespace EnglishLearning.TaskService.Tests.Persistence
             // Arrange
             var tasks = new List<EnglishTask>
             {
-                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.CorrectOrder, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Intermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.CorrectOrder, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Intermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.DivisionBySlash, GrammarPart = GrammarPart.PRSimple, EnglishLevel = EnglishLevel.UpperIntermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" }
+                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.CorrectOrder, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Intermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.CorrectOrder, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Intermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.DivisionBySlash, GrammarPart = "PRSimple", EnglishLevel = EnglishLevel.UpperIntermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" },
             };
 
             foreach (var task in tasks)
+            {
                 await _repository.AddAsync(task);
+            }
 
             // Act
             var tasksFromDb = new List<EnglishTask>(
-                await _repository.FindAllAsync(x => x.TaskType == TaskType.CorrectOrder && x.GrammarPart == GrammarPart.PRContinuous && x.EnglishLevel == EnglishLevel.Intermediate)
-            );
+                await _repository.FindAllAsync(x => x.TaskType == TaskType.CorrectOrder && x.GrammarPart == "PRContinuous" && x.EnglishLevel == EnglishLevel.Intermediate));
             
             // Assert
             tasksFromDb.Should().HaveCount(2);
             tasksFromDb.Should().BeEquivalentTo(new List<EnglishTask>
             {
                 tasks[1],
-                tasks[2]
+                tasks[2],
             });
         }
         
@@ -207,14 +219,16 @@ namespace EnglishLearning.TaskService.Tests.Persistence
             // Arrange
             var tasks = new List<EnglishTask>
             {
-                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.CorrectOrder, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Intermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.CorrectOrder, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Intermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.DivisionBySlash, GrammarPart = GrammarPart.PRSimple, EnglishLevel = EnglishLevel.UpperIntermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" }
+                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.CorrectOrder, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Intermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.CorrectOrder, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Intermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.DivisionBySlash, GrammarPart = "PRSimple", EnglishLevel = EnglishLevel.UpperIntermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" },
             };
 
             foreach (var task in tasks)
+            {
                 await _repository.AddAsync(task);
+            }
 
             // Act
             bool actionResult = await _repository.DeleteAsync(x => x.Id.Equals(tasks[0].Id));
@@ -228,7 +242,7 @@ namespace EnglishLearning.TaskService.Tests.Persistence
             {
                 tasks[1],
                 tasks[2],
-                tasks[3]
+                tasks[3],
             });
         }
         
@@ -238,17 +252,19 @@ namespace EnglishLearning.TaskService.Tests.Persistence
             // Arrange
             var tasks = new List<EnglishTask>
             {
-                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.CorrectOrder, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Intermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.CorrectOrder, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Intermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.DivisionBySlash, GrammarPart = GrammarPart.PRSimple, EnglishLevel = EnglishLevel.UpperIntermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" }
+                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.CorrectOrder, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Intermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.CorrectOrder, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Intermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.DivisionBySlash, GrammarPart = "PRSimple", EnglishLevel = EnglishLevel.UpperIntermediate, Count = 10, Example = "example", Text = "text", Answer = "answer" },
             };
 
             foreach (var task in tasks)
+            {
                 await _repository.AddAsync(task);
+            }
 
             // Act
-            bool actionResult = await _repository.DeleteAsync(x => x.TaskType == TaskType.CorrectOrder && x.GrammarPart == GrammarPart.PRContinuous && x.EnglishLevel == EnglishLevel.Intermediate);
+            bool actionResult = await _repository.DeleteAsync(x => x.TaskType == TaskType.CorrectOrder && x.GrammarPart == "PRContinuous" && x.EnglishLevel == EnglishLevel.Intermediate);
             
             // Assert
             var tasksFromDb = new List<EnglishTask>(await _repository.GetAllAsync());
@@ -258,7 +274,7 @@ namespace EnglishLearning.TaskService.Tests.Persistence
             tasksFromDb.Should().BeEquivalentTo(new List<EnglishTask>
             {
                 tasks[0],
-                tasks[3]
+                tasks[3],
             });
         }
         
@@ -268,13 +284,15 @@ namespace EnglishLearning.TaskService.Tests.Persistence
             // Arrange
             var tasks = new List<EnglishTask>
             {
-                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
-                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = GrammarPart.PRContinuous, EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" }
+                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
+                new EnglishTask { TaskType = TaskType.CorrectAlternative, GrammarPart = "PRContinuous", EnglishLevel = EnglishLevel.Advanced, Count = 10, Example = "example", Text = "text", Answer = "answer" },
             };
 
             foreach (var task in tasks)
+            {
                 await _repository.AddAsync(task);
+            }
 
             // Act
             var actionResult = await _repository.DeleteAsync(x => x.EnglishLevel == EnglishLevel.Advanced && x.TaskType == TaskType.SimpleBrackets);
@@ -294,18 +312,17 @@ namespace EnglishLearning.TaskService.Tests.Persistence
             var task = new EnglishTask
             {
                 TaskType = TaskType.CorrectAlternative,
-                GrammarPart = GrammarPart.PRContinuous,
+                GrammarPart = "PRContinuous",
                 EnglishLevel = EnglishLevel.Advanced,
                 Count = 10,
                 Example = "example",
                 Text = "text",
-                Answer = "answer"
+                Answer = "answer",
             };          
             await _repository.AddAsync(task);
-            
-            
+
             // Act
-            task.GrammarPart = GrammarPart.PRSimple;
+            task.GrammarPart = "PRSimple";
             task.EnglishLevel = EnglishLevel.Intermediate;
             bool actionResult = await _repository.UpdateAsync(task);
             
