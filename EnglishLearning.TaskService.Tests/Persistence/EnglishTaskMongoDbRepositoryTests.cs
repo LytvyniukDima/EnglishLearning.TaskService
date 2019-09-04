@@ -19,19 +19,19 @@ namespace EnglishLearning.TaskService.Tests.Persistence
         private readonly MongoConfiguration _configuration = new MongoConfiguration
         {
             ServerAddress = "mongodb://localhost:27017",
-            DatabaseName = "EnglishTasks_UnitTests"
+            DatabaseName = "EnglishTasks_UnitTests",
         };
 
         private readonly MongoCollectionNamesProvider _mongoCollectionNamesProvider = new MongoCollectionNamesProvider();
         
-        private readonly MongoContext _dbContext;
+        private readonly MongoContext _mongoContext;
         private readonly EnglishTaskMongoDbRepository _repository;
 
         public EnglishTaskMongoDbRepositoryTests()
         {
             _mongoCollectionNamesProvider.Add<EnglishTask>("EnglishTasks");
-            _dbContext = new MongoContext(Options.Create<MongoConfiguration>(_configuration), _mongoCollectionNamesProvider);
-            _repository = new EnglishTaskMongoDbRepository(_dbContext);
+            _mongoContext = new MongoContext(Options.Create<MongoConfiguration>(_configuration), _mongoCollectionNamesProvider);
+            _repository = new EnglishTaskMongoDbRepository(_mongoContext);
         }
 
         [Fact]
@@ -131,7 +131,7 @@ namespace EnglishLearning.TaskService.Tests.Persistence
             }
 
             // Act
-            EnglishTask taskFromDb = await _repository.FindAsync(x => x.Id.Equals(new ObjectId().ToString()));
+            EnglishTask taskFromDb = await _repository.FindAsync(x => x.Id.Equals(default(ObjectId).ToString()));
             
             // Assert
             taskFromDb.Should().BeNull();

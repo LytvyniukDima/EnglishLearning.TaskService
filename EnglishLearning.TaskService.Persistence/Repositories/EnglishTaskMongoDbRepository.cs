@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EnglishLearning.TaskService.Common.Models;
 using EnglishLearning.TaskService.Persistence.Abstract;
@@ -13,9 +12,9 @@ namespace EnglishLearning.TaskService.Persistence.Repositories
 {
     public class EnglishTaskMongoDbRepository : BaseMongoWithInfoModelRepository<EnglishTask, EnglishTaskInfo, string>, IEnglishTaskRepository
     {
-        public EnglishTaskMongoDbRepository(MongoContext dbContext) : base(dbContext)
+        public EnglishTaskMongoDbRepository(MongoContext mongoContext) 
+            : base(mongoContext)
         {
-            
         }
 
         protected override ProjectionDefinition<EnglishTask, EnglishTaskInfo> InfoModelProjectionDefinition
@@ -27,7 +26,7 @@ namespace EnglishLearning.TaskService.Persistence.Repositories
                     Id = x.Id,
                     EnglishLevel = x.EnglishLevel,
                     GrammarPart = x.GrammarPart,
-                    TaskType = x.TaskType
+                    TaskType = x.TaskType,
                 });
         }
         
@@ -37,12 +36,20 @@ namespace EnglishLearning.TaskService.Persistence.Repositories
             var filter = builder.Empty;
             
             if (!grammarParts.IsNullOrEmpty())
+            {
                 filter &= builder.In(x => x.GrammarPart, grammarParts);
+            }
+
             if (!taskTypes.IsNullOrEmpty())
+            {
                 filter &= builder.In(x => x.TaskType, taskTypes);
+            }
+
             if (!englishLevels.IsNullOrEmpty())
+            {
                 filter &= builder.In(x => x.EnglishLevel, englishLevels);
-                         
+            }
+
             return await _collection.Find(filter).ToListAsync(); 
         }
         
@@ -52,12 +59,20 @@ namespace EnglishLearning.TaskService.Persistence.Repositories
             var filter = builder.Empty;
             
             if (!grammarParts.IsNullOrEmpty())
+            {
                 filter &= builder.In(x => x.GrammarPart, grammarParts);
+            }
+
             if (!taskTypes.IsNullOrEmpty())
+            {
                 filter &= builder.In(x => x.TaskType, taskTypes);
+            }
+
             if (!englishLevels.IsNullOrEmpty())
+            {
                 filter &= builder.In(x => x.EnglishLevel, englishLevels);
-                         
+            }
+
             return await _collection
                 .Find(filter)
                 .Project(InfoModelProjectionDefinition)

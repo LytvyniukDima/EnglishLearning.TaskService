@@ -26,7 +26,8 @@ namespace EnglishLearning.TaskService.Host
         {
             services.AddCors(options =>
             {
-                options.AddPolicy("CorsPolicy",
+                options.AddPolicy(
+                    "CorsPolicy",
                     builder => builder.AllowAnyOrigin()
                         .AllowAnyMethod()
                         .AllowAnyHeader()
@@ -54,6 +55,7 @@ namespace EnglishLearning.TaskService.Host
             {
                 app.UseDeveloperExceptionPage();
             }
+            
             app.UseEnglishLearningExceptionMiddleware();
                 
             app.UseCors("CorsPolicy");

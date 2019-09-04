@@ -1,11 +1,11 @@
-using EnglishLearning.TaskService.Common.Models;
+﻿using EnglishLearning.TaskService.Common.Models;
 using EnglishLearning.Utilities.Persistence.Interfaces;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace EnglishLearning.TaskService.Persistence.Entities
 {
-    public class EnglishTaskInfo: IEntity<string>
+    public class EnglishTaskInfo : IEntity<string>
     {
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }

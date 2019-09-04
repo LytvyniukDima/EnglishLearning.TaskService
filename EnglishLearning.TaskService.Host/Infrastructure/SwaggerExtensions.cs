@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Swashbuckle.AspNetCore.Swagger;
@@ -15,7 +15,7 @@ namespace EnglishLearning.TaskService.Host.Infrastructure
                 {
                     Version = "v1",
                     Title = "EnglishLearning.TaskService service API",
-                    Contact = new Contact { Name = "Dima Lytvyniuk" }
+                    Contact = new Contact { Name = "Dima Lytvyniuk" },
                 });
  
                 s.AddSecurityDefinition("Bearer", new ApiKeyScheme
@@ -23,12 +23,12 @@ namespace EnglishLearning.TaskService.Host.Infrastructure
                     Description = "Please insert JWT with Bearer into field. Example: Bearer {token}",
                     Name = "Authorization",
                     In = "header",
-                    Type = "apiKey"
+                    Type = "apiKey",
                 });
 
                 s.AddSecurityRequirement(new Dictionary<string, IEnumerable<string>>
                 {
-                    { "Bearer", new string[]{}}
+                    { "Bearer", new string[] { } },
                 });
             });
 

@@ -6,6 +6,6 @@
         PreIntermediate,
         Intermediate,
         UpperIntermediate,
-        Advanced
+        Advanced,
     }
 }

@@ -14,21 +14,20 @@ namespace EnglishLearning.TaskService.Application.Services
 {
     public class EnglishTaskService : IEnglishTaskService
     {
-        private readonly IEnglishTaskRepository _dbRepository;
+        private readonly IEnglishTaskRepository _taskRepository;
         private readonly IMapper _mapper;
         
-        public EnglishTaskService(IEnglishTaskRepository dbRepository, EnglishTaskServiceMapper englishTaskServiceMappermapper)
+        public EnglishTaskService(IEnglishTaskRepository taskRepository, EnglishTaskServiceMapper englishTaskServiceMappermapper)
         {
-            _dbRepository = dbRepository;
+            _taskRepository = taskRepository;
             _mapper = englishTaskServiceMappermapper.Mapper;
         }
-
 
         public async Task CreateEnglishTaskAsync(EnglishTaskCreateDto englishTaskCreateDto)
         {
             var englishTask = _mapper.Map<EnglishTaskCreateDto, EnglishTask>(englishTaskCreateDto);
 
-            await _dbRepository.AddAsync(englishTask);
+            await _taskRepository.AddAsync(englishTask);
         }
 
         public async Task<bool> UpdateEnglishTaskAsync(string id, EnglishTaskCreateDto englishTaskDto)
@@ -36,7 +35,7 @@ namespace EnglishLearning.TaskService.Application.Services
             var englishTask = _mapper.Map<EnglishTaskCreateDto, EnglishTask>(englishTaskDto);
             englishTask.Id = id;
             
-            return await _dbRepository.UpdateAsync(englishTask);
+            return await _taskRepository.UpdateAsync(englishTask);
         }
 
         public async Task<EnglishTaskDto> GetByIdEnglishTaskAsync(string id)
@@ -45,8 +44,10 @@ namespace EnglishLearning.TaskService.Application.Services
             
             // TODO: Throw NotFoundException
             if (englishTask == null)
+            {
                 return null;
-            
+            }
+
             var englishTaskDto = _mapper.Map<EnglishTask, EnglishTaskDto>(englishTask);
 
             return englishTaskDto;
@@ -63,21 +64,24 @@ namespace EnglishLearning.TaskService.Application.Services
 
         public async Task<bool> DeleteByIdEnglishTaskAsync(string id)
         {
-            return await _dbRepository.DeleteAsync(x => x.Id == id);
+            return await _taskRepository.DeleteAsync(x => x.Id == id);
         }
 
         public async Task<bool> DeleteAllEnglishTaskAsync()
         {
-            return await _dbRepository.DeleteAllAsync();
+            return await _taskRepository.DeleteAllAsync();
         }
 
         public async Task<EnglishTaskInfoDto> GetByIdEnglishTaskInfoAsync(string id)
         {
             var englishTask = await GetEnglishTask(id);
+            
             // TODO: Throw NotFoundException
             if (englishTask == null)
+            {
                 return null;
-            
+            }
+
             var englishTaskDto = _mapper.Map<EnglishTask, EnglishTaskInfoDto>(englishTask);
 
             return englishTaskDto;
@@ -85,7 +89,7 @@ namespace EnglishLearning.TaskService.Application.Services
 
         public async Task<IReadOnlyList<EnglishTaskInfoDto>> GetAllEnglishTaskInfoAsync()
         {
-            var englishTasks = await _dbRepository.GetAllInfoAsync();
+            var englishTasks = await _taskRepository.GetAllInfoAsync();
             var englishTasksDto = _mapper.Map<IReadOnlyList<EnglishTaskInfoDto>>(englishTasks);
 
             return englishTasksDto;
@@ -101,7 +105,7 @@ namespace EnglishLearning.TaskService.Application.Services
             var taskTypesEntities = _mapper.Map<TaskType[]>(taskTypes);
             var englishLevelEntities = _mapper.Map<EnglishLevel[]>(englishLevels);
             
-            var englishTasks = await _dbRepository.FindAllByFilters(grammarParts, taskTypesEntities, englishLevelEntities);
+            var englishTasks = await _taskRepository.FindAllByFilters(grammarParts, taskTypesEntities, englishLevelEntities);
             var englishTaskDtos = _mapper.Map<IReadOnlyList<EnglishTaskDto>>(englishTasks);
             
             return englishTaskDtos;
@@ -110,12 +114,14 @@ namespace EnglishLearning.TaskService.Application.Services
         public async Task<IReadOnlyList<EnglishTaskInfoDto>> FindAllInfoEnglishTaskAsync(string[] grammarParts = null, TaskType[] taskTypes = null, EnglishLevel[] englishLevels = null)
         {
             if (taskTypes.IsNullOrEmpty() && grammarParts.IsNullOrEmpty() && englishLevels.IsNullOrEmpty())
+            {
                 return Array.Empty<EnglishTaskInfoDto>();
+            }
 
             var taskTypesEntities = _mapper.Map<TaskType[]>(taskTypes);
             var englishLevelEntities = _mapper.Map<EnglishLevel[]>(englishLevels);
             
-            var englishTasks = await _dbRepository.FindAllInfoByFilters(grammarParts, taskTypesEntities, englishLevelEntities);
+            var englishTasks = await _taskRepository.FindAllInfoByFilters(grammarParts, taskTypesEntities, englishLevelEntities);
             
             var englishTaskDtos = _mapper.Map<IReadOnlyList<EnglishTaskInfoDto>>(englishTasks);
             
@@ -124,12 +130,12 @@ namespace EnglishLearning.TaskService.Application.Services
 
         private async Task<EnglishTask> GetEnglishTask(string id)
         {
-            return await _dbRepository.FindAsync(x => x.Id == id);
+            return await _taskRepository.FindAsync(x => x.Id == id);
         }
 
         private async Task<IEnumerable<EnglishTask>> GetAllEnglishTasks()
         {
-            return await _dbRepository.GetAllAsync();
+            return await _taskRepository.GetAllAsync();
         }
     }
 }

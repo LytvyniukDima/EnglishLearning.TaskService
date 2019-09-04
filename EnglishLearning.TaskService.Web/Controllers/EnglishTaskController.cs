@@ -38,7 +38,9 @@ namespace EnglishLearning.TaskService.Web.Controllers
         {
             EnglishTaskDto englishTask = await _englishTaskService.GetByIdEnglishTaskAsync(id);
             if (englishTask == null)
+            {
                 return NotFound();
+            }
 
             var englishTaskModel = _mapper.Map<EnglishTaskDto, EnglishTaskModel>(englishTask);
             
@@ -65,8 +67,10 @@ namespace EnglishLearning.TaskService.Web.Controllers
             bool result = await _englishTaskService.UpdateEnglishTaskAsync(id, englishTaskCreateDto);
 
             if (result == false)
+            {
                 return BadRequest();
-            
+            }
+
             return Ok();
         }
         
@@ -77,8 +81,10 @@ namespace EnglishLearning.TaskService.Web.Controllers
             bool result = await _englishTaskService.DeleteByIdEnglishTaskAsync(id);
 
             if (result == false)
+            {
                 return BadRequest();
-            
+            }
+
             return Ok();
         }
         
@@ -89,8 +95,10 @@ namespace EnglishLearning.TaskService.Web.Controllers
             bool result = await _englishTaskService.DeleteAllEnglishTaskAsync();
 
             if (result == false)
+            {
                 return BadRequest();
-            
+            }
+
             return Ok();
         }
         

@@ -47,7 +47,7 @@ namespace EnglishLearning.TaskService.Tests.Application
             EnglishTaskCreateDto englishTaskDto = defaultEnglishTaskCreateDto;
             
             // Act
-            bool result = await englishTaskService.UpdateEnglishTaskAsync("myId",englishTaskDto);
+            bool result = await englishTaskService.UpdateEnglishTaskAsync("myId", englishTaskDto);
 
             // Assert
             result.Should().BeTrue();
