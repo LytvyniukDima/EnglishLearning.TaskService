@@ -18,9 +18,11 @@ namespace EnglishLearning.TaskService.Persistence.Configuration
                 .AddMongoCollectionNamesProvider(x =>
                 {
                     x.Add<EnglishTask>("EnglishTasks");
+                    x.Add<UserInformation>("UserInformation");
                 });
             
             services.AddTransient<IEnglishTaskRepository, EnglishTaskMongoDbRepository>();
+            services.AddTransient<IUserInformationRepository, UserInformationMongoRepository>();
             
             return services;
         }
