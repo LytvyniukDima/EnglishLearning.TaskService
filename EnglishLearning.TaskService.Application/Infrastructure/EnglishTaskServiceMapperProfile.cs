@@ -14,6 +14,9 @@ namespace EnglishLearning.TaskService.Application.Infrastructure
             CreateMap<EnglishTask, EnglishTaskDto>();
             
             CreateMap<EnglishTaskInfo, EnglishTaskInfoDto>();
+
+            CreateMap<UserInformation, UserInformationDto>();
+            CreateMap<UserInformationDto, UserInformation>();
         }
     }
 }

@@ -13,6 +13,7 @@ namespace EnglishLearning.TaskService.Application.Configuration
 
             services.AddTransient<IEnglishTaskService, EnglishTaskService>();
             services.AddTransient<IRandomEnglishTaskService, RandomEnglishTaskService>();
+            services.AddTransient<IUserInformationService, UserInformationService>();
             
             return services;
         }
