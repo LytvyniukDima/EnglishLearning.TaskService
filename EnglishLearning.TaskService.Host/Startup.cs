@@ -1,4 +1,5 @@
 ﻿using EnglishLearning.TaskService.Application.Configuration;
+using EnglishLearning.TaskService.EventHandlers.Configuration;
 using EnglishLearning.TaskService.Host.Infrastructure;
 using EnglishLearning.TaskService.Persistence.Configuration;
 using EnglishLearning.TaskService.Web.Configuration;
@@ -42,9 +43,11 @@ namespace EnglishLearning.TaskService.Host
 
             services.AddSwaggerDocumentation();
             
-            services.PersistenceConfiguration(Configuration)
+            services
+                .PersistenceConfiguration(Configuration)
                 .ApplicationConfiguration()
-                .WebConfiguration();
+                .WebConfiguration()
+                .AddMessageBroker(Configuration);
 
             services
                 .AddRedis(Configuration)

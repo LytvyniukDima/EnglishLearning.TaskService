@@ -8,7 +8,7 @@ namespace EnglishLearning.TaskService.EventHandlers.Infrastructure
         public EventHandlerMapper()
         {
             Mapper = new MapperConfiguration(x => x
-                    .AddProfile(new EnglishTaskServiceMapperProfile()))
+                    .AddProfile(new EventHandlerMapperProfile()))
                 .CreateMapper();
         }
 

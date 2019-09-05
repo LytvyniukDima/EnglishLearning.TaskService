@@ -30,6 +30,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EnglishLearning.TaskService.EventHandlers\EnglishLearning.TaskService.EventHandlers.csproj" />
     <ProjectReference Include="..\EnglishLearning.TaskService.Web\EnglishLearning.TaskService.Web.csproj" />
   </ItemGroup>
 

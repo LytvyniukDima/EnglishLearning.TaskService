@@ -8,7 +8,7 @@ namespace EnglishLearning.TaskService.EventHandlers.Configuration
 {
     public static class EventHandlerSettings
     {
-        public static IServiceCollection AddEventHandler(this IServiceCollection services)
+        public static IServiceCollection AddEventHandlerConfiguration(this IServiceCollection services)
         {
             services.AddTransient<IKafkaMessageHandler<UserCreatedEvent>, UserMessageHandler>();
             services.AddTransient<UserMessageHandler>();
