@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Converters;
 
 namespace EnglishLearning.TaskService.Host
 {
@@ -35,7 +36,9 @@ namespace EnglishLearning.TaskService.Host
                         .WithExposedHeaders("Authorization"));
             });
 
-            services.AddMvc(options => options.AddEnglishLearningIdentityFilters());
+            services
+                .AddMvc(options => options.AddEnglishLearningIdentityFilters())
+                .AddJsonOptions(options => options.SerializerSettings.Converters.Add(new StringEnumConverter()));
 
             services.AddSwaggerDocumentation();
             
