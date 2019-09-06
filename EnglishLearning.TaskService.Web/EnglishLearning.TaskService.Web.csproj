@@ -4,7 +4,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="EnglishLearning.Utilities.Identity.Abstractions">
-      <Version>1.1.0-CI-20190903-120708</Version>
+      <Version>1.1.0-CI-20190906-091842</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Mvc">
       <Version>2.2.0</Version>

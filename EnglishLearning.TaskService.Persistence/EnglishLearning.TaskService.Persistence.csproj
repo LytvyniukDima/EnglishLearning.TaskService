@@ -4,10 +4,10 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="EnglishLearning.Utilities.Linq">
-      <Version>1.1.0-CI-20190903-120708</Version>
+      <Version>1.1.0-CI-20190906-091842</Version>
     </PackageReference>
     <PackageReference Include="EnglishLearning.Utilities.Persistence.Mongo">
-      <Version>1.1.0-CI-20190903-120708</Version>
+      <Version>1.1.0-CI-20190906-091842</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration">
       <Version>2.2.0</Version>
