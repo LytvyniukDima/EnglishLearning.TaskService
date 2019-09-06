@@ -6,10 +6,10 @@
 
     <ItemGroup>
       <PackageReference Include="EnglishLearning.Utilities.MessageBrokers.Contracts">
-        <Version>1.1.0-CI-20190902-104551</Version>
+        <Version>1.1.0-CI-20190906-091842</Version>
       </PackageReference>
       <PackageReference Include="EnglishLearning.Utilities.MessageBrokers.Kafka">
-        <Version>1.1.0-CI-20190902-104551</Version>
+        <Version>1.1.0-CI-20190906-091842</Version>
       </PackageReference>
     </ItemGroup>
 

@@ -5,6 +5,7 @@ using EnglishLearning.Utilities.Configurations.MongoConfiguration;
 using EnglishLearning.Utilities.Persistence.Mongo.Configuration;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using MongoDB.Bson;
 
 namespace EnglishLearning.TaskService.Persistence.Configuration
 {
@@ -14,7 +15,13 @@ namespace EnglishLearning.TaskService.Persistence.Configuration
         {
             services
                 .AddMongoConfiguration(configuration)
-                .AddMongoContext(options => { })
+                .AddMongoContext(options =>
+                {
+                    options.CollectionSettings(settings =>
+                    { 
+                        settings.GuidRepresentation = GuidRepresentation.Standard;
+                    });
+                })
                 .AddMongoCollectionNamesProvider(x =>
                 {
                     x.Add<EnglishTask>("EnglishTasks");

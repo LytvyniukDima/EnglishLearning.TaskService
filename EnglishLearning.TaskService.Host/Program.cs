@@ -24,7 +24,7 @@ namespace EnglishLearning.TaskService.Host
 
             try
             {
-                Log.Information("Identity service starting ....");
+                Log.Information("Tasks service starting ....");
 
                 BuildWebHost(args).Run();
             }
