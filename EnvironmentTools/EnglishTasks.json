@@ -1,6 +1,6 @@
 {
 	"TaskType": "SimpleBrackets",
-	"GrammarPart": "PRSimple",
+	"GrammarPart": "Present Simple",
 	"EnglishLevel": "PreIntermediate",
 	"Count": 8,
 	"Example": "",
@@ -18,7 +18,7 @@
 }
 {
 	"TaskType": "DivisionBySlash",
-	"GrammarPart": "PrSimpleAndPrContinuous",
+	"GrammarPart": "Present Simple And Present Continuous",
 	"EnglishLevel": "Intermediate",
 	"Count": 8,
 	"Example": "",
@@ -27,7 +27,7 @@
 }
 {
     "TaskType": "CorrectOption",
-    "GrammarPart": "FuturePlans",
+    "GrammarPart": "Future Plans",
     "EnglishLevel": "Intermediate",
     "Count": 8,
     "Example": "",
@@ -36,7 +36,7 @@
 }
 {
     "TaskType": "DivisionBySlash",
-    "GrammarPart": "FuturePlans",
+    "GrammarPart": "Future Plans",
     "EnglishLevel": "Intermediate",
     "Count": 6,
     "Example": "",
@@ -45,7 +45,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "QuestionTags",
+    "GrammarPart": "Question Tags",
     "EnglishLevel": "Intermediate",
     "Count": 7,
     "Example": "",
@@ -54,7 +54,7 @@
 }
 {
     "TaskType": "DivisionBySlash",
-    "GrammarPart": "PossessiveAdjectives",
+    "GrammarPart": "Possessive Adjectives",
     "EnglishLevel": "PreIntermediate",
     "Count": 9,
     "Example": "",
@@ -73,7 +73,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "PreIntermediate",
     "Count": 8,
     "Example": "",
@@ -109,7 +109,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "UpperIntermediate",
     "Count": 9,
     "Example": "",
@@ -118,7 +118,7 @@
 }
 {
     "TaskType": "CorrectOption",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "PreIntermediate",
     "Count": 10,
     "Example": "",
@@ -127,7 +127,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRPerfect",
+    "GrammarPart": "Present Perfect",
     "EnglishLevel": "Intermediate",
     "Count": 6,
     "Example": "",
@@ -136,7 +136,7 @@
 }
 {
 	"TaskType": "SimpleBrackets",
-	"GrammarPart": "PRSimple",
+	"GrammarPart": "Present Simple",
 	"EnglishLevel": "PreIntermediate",
 	"Count": 8,
 	"Example": "",
@@ -154,7 +154,7 @@
 }
 {
 	"TaskType": "DivisionBySlash",
-	"GrammarPart": "PrSimpleAndPrContinuous",
+	"GrammarPart": "Present Simple And Present Continuous",
 	"EnglishLevel": "Intermediate",
 	"Count": 8,
 	"Example": "",
@@ -163,7 +163,7 @@
 }
 {
     "TaskType": "CorrectOption",
-    "GrammarPart": "FuturePlans",
+    "GrammarPart": "Future Plans",
     "EnglishLevel": "Intermediate",
     "Count": 8,
     "Example": "",
@@ -172,7 +172,7 @@
 }
 {
     "TaskType": "DivisionBySlash",
-    "GrammarPart": "FuturePlans",
+    "GrammarPart": "Future Plans",
     "EnglishLevel": "Intermediate",
     "Count": 6,
     "Example": "",
@@ -181,7 +181,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "QuestionTags",
+    "GrammarPart": "Question Tags",
     "EnglishLevel": "Intermediate",
     "Count": 7,
     "Example": "",
@@ -190,7 +190,7 @@
 }
 {
     "TaskType": "DivisionBySlash",
-    "GrammarPart": "PossessiveAdjectives",
+    "GrammarPart": "Possessive Adjectives",
     "EnglishLevel": "PreIntermediate",
     "Count": 9,
     "Example": "",
@@ -209,7 +209,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "PreIntermediate",
     "Count": 8,
     "Example": "",
@@ -245,7 +245,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "UpperIntermediate",
     "Count": 9,
     "Example": "",
@@ -254,7 +254,7 @@
 }
 {
     "TaskType": "CorrectOption",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "PreIntermediate",
     "Count": 10,
     "Example": "",
@@ -263,7 +263,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRPerfect",
+    "GrammarPart": "Present Perfect",
     "EnglishLevel": "Intermediate",
     "Count": 6,
     "Example": "",
@@ -272,7 +272,7 @@
 }
 {
 	"TaskType": "SimpleBrackets",
-	"GrammarPart": "PRSimple",
+	"GrammarPart": "Present Simple",
 	"EnglishLevel": "PreIntermediate",
 	"Count": 8,
 	"Example": "",
@@ -290,7 +290,7 @@
 }
 {
 	"TaskType": "DivisionBySlash",
-	"GrammarPart": "PrSimpleAndPrContinuous",
+	"GrammarPart": "Present Simple And Present Continuous",
 	"EnglishLevel": "Intermediate",
 	"Count": 8,
 	"Example": "",
@@ -299,7 +299,7 @@
 }
 {
     "TaskType": "CorrectOption",
-    "GrammarPart": "FuturePlans",
+    "GrammarPart": "Future Plans",
     "EnglishLevel": "Intermediate",
     "Count": 8,
     "Example": "",
@@ -308,7 +308,7 @@
 }
 {
     "TaskType": "DivisionBySlash",
-    "GrammarPart": "FuturePlans",
+    "GrammarPart": "Future Plans",
     "EnglishLevel": "Intermediate",
     "Count": 6,
     "Example": "",
@@ -317,7 +317,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "QuestionTags",
+    "GrammarPart": "Question Tags",
     "EnglishLevel": "Intermediate",
     "Count": 7,
     "Example": "",
@@ -326,7 +326,7 @@
 }
 {
     "TaskType": "DivisionBySlash",
-    "GrammarPart": "PossessiveAdjectives",
+    "GrammarPart": "Possessive Adjectives",
     "EnglishLevel": "PreIntermediate",
     "Count": 9,
     "Example": "",
@@ -345,7 +345,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "PreIntermediate",
     "Count": 8,
     "Example": "",
@@ -381,7 +381,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "UpperIntermediate",
     "Count": 9,
     "Example": "",
@@ -390,7 +390,7 @@
 }
 {
     "TaskType": "CorrectOption",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "PreIntermediate",
     "Count": 10,
     "Example": "",
@@ -399,7 +399,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRPerfect",
+    "GrammarPart": "Present Perfect",
     "EnglishLevel": "Intermediate",
     "Count": 6,
     "Example": "",
@@ -408,7 +408,7 @@
 }
 {
 	"TaskType": "SimpleBrackets",
-	"GrammarPart": "PRSimple",
+	"GrammarPart": "Present Simple",
 	"EnglishLevel": "PreIntermediate",
 	"Count": 8,
 	"Example": "",
@@ -426,7 +426,7 @@
 }
 {
 	"TaskType": "DivisionBySlash",
-	"GrammarPart": "PrSimpleAndPrContinuous",
+	"GrammarPart": "Present Simple And Present Continuous",
 	"EnglishLevel": "Intermediate",
 	"Count": 8,
 	"Example": "",
@@ -435,7 +435,7 @@
 }
 {
     "TaskType": "CorrectOption",
-    "GrammarPart": "FuturePlans",
+    "GrammarPart": "Future Plans",
     "EnglishLevel": "Intermediate",
     "Count": 8,
     "Example": "",
@@ -444,7 +444,7 @@
 }
 {
     "TaskType": "DivisionBySlash",
-    "GrammarPart": "FuturePlans",
+    "GrammarPart": "Future Plans",
     "EnglishLevel": "Intermediate",
     "Count": 6,
     "Example": "",
@@ -453,7 +453,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "QuestionTags",
+    "GrammarPart": "Question Tags",
     "EnglishLevel": "Intermediate",
     "Count": 7,
     "Example": "",
@@ -462,7 +462,7 @@
 }
 {
     "TaskType": "DivisionBySlash",
-    "GrammarPart": "PossessiveAdjectives",
+    "GrammarPart": "Possessive Adjectives",
     "EnglishLevel": "PreIntermediate",
     "Count": 9,
     "Example": "",
@@ -481,7 +481,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "PreIntermediate",
     "Count": 8,
     "Example": "",
@@ -517,7 +517,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "UpperIntermediate",
     "Count": 9,
     "Example": "",
@@ -526,7 +526,7 @@
 }
 {
     "TaskType": "CorrectOption",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "PreIntermediate",
     "Count": 10,
     "Example": "",
@@ -535,7 +535,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRPerfect",
+    "GrammarPart": "Present Perfect",
     "EnglishLevel": "Intermediate",
     "Count": 6,
     "Example": "",
@@ -544,7 +544,7 @@
 }
 {
 	"TaskType": "SimpleBrackets",
-	"GrammarPart": "PRSimple",
+	"GrammarPart": "Present Simple",
 	"EnglishLevel": "PreIntermediate",
 	"Count": 8,
 	"Example": "",
@@ -562,7 +562,7 @@
 }
 {
 	"TaskType": "DivisionBySlash",
-	"GrammarPart": "PrSimpleAndPrContinuous",
+	"GrammarPart": "Present Simple And Present Continuous",
 	"EnglishLevel": "Intermediate",
 	"Count": 8,
 	"Example": "",
@@ -571,7 +571,7 @@
 }
 {
     "TaskType": "CorrectOption",
-    "GrammarPart": "FuturePlans",
+    "GrammarPart": "Future Plans",
     "EnglishLevel": "Intermediate",
     "Count": 8,
     "Example": "",
@@ -580,7 +580,7 @@
 }
 {
     "TaskType": "DivisionBySlash",
-    "GrammarPart": "FuturePlans",
+    "GrammarPart": "Future Plans",
     "EnglishLevel": "Intermediate",
     "Count": 6,
     "Example": "",
@@ -589,7 +589,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "QuestionTags",
+    "GrammarPart": "Question Tags",
     "EnglishLevel": "Intermediate",
     "Count": 7,
     "Example": "",
@@ -598,7 +598,7 @@
 }
 {
     "TaskType": "DivisionBySlash",
-    "GrammarPart": "PossessiveAdjectives",
+    "GrammarPart": "Possessive Adjectives",
     "EnglishLevel": "PreIntermediate",
     "Count": 9,
     "Example": "",
@@ -617,7 +617,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "PreIntermediate",
     "Count": 8,
     "Example": "",
@@ -653,7 +653,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "UpperIntermediate",
     "Count": 9,
     "Example": "",
@@ -662,7 +662,7 @@
 }
 {
     "TaskType": "CorrectOption",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "PreIntermediate",
     "Count": 10,
     "Example": "",
@@ -671,7 +671,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRPerfect",
+    "GrammarPart": "Present Perfect",
     "EnglishLevel": "Intermediate",
     "Count": 6,
     "Example": "",
@@ -680,7 +680,7 @@
 }
 {
 	"TaskType": "SimpleBrackets",
-	"GrammarPart": "PRSimple",
+	"GrammarPart": "Present Simple",
 	"EnglishLevel": "PreIntermediate",
 	"Count": 8,
 	"Example": "",
@@ -698,7 +698,7 @@
 }
 {
 	"TaskType": "DivisionBySlash",
-	"GrammarPart": "PrSimpleAndPrContinuous",
+	"GrammarPart": "Present Simple And Present Continuous",
 	"EnglishLevel": "Intermediate",
 	"Count": 8,
 	"Example": "",
@@ -707,7 +707,7 @@
 }
 {
     "TaskType": "CorrectOption",
-    "GrammarPart": "FuturePlans",
+    "GrammarPart": "Future Plans",
     "EnglishLevel": "Intermediate",
     "Count": 8,
     "Example": "",
@@ -716,7 +716,7 @@
 }
 {
     "TaskType": "DivisionBySlash",
-    "GrammarPart": "FuturePlans",
+    "GrammarPart": "Future Plans",
     "EnglishLevel": "Intermediate",
     "Count": 6,
     "Example": "",
@@ -725,7 +725,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "QuestionTags",
+    "GrammarPart": "Question Tags",
     "EnglishLevel": "Intermediate",
     "Count": 7,
     "Example": "",
@@ -734,7 +734,7 @@
 }
 {
     "TaskType": "DivisionBySlash",
-    "GrammarPart": "PossessiveAdjectives",
+    "GrammarPart": "Possessive Adjectives",
     "EnglishLevel": "PreIntermediate",
     "Count": 9,
     "Example": "",
@@ -753,7 +753,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "PreIntermediate",
     "Count": 8,
     "Example": "",
@@ -789,7 +789,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "UpperIntermediate",
     "Count": 9,
     "Example": "",
@@ -798,7 +798,7 @@
 }
 {
     "TaskType": "CorrectOption",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "PreIntermediate",
     "Count": 10,
     "Example": "",
@@ -807,7 +807,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRPerfect",
+    "GrammarPart": "Present Perfect",
     "EnglishLevel": "Intermediate",
     "Count": 6,
     "Example": "",
@@ -816,7 +816,7 @@
 }
 {
 	"TaskType": "SimpleBrackets",
-	"GrammarPart": "PRSimple",
+	"GrammarPart": "Present Simple",
 	"EnglishLevel": "PreIntermediate",
 	"Count": 8,
 	"Example": "",
@@ -834,7 +834,7 @@
 }
 {
 	"TaskType": "DivisionBySlash",
-	"GrammarPart": "PrSimpleAndPrContinuous",
+	"GrammarPart": "Present Simple And Present Continuous",
 	"EnglishLevel": "Intermediate",
 	"Count": 8,
 	"Example": "",
@@ -843,7 +843,7 @@
 }
 {
     "TaskType": "CorrectOption",
-    "GrammarPart": "FuturePlans",
+    "GrammarPart": "Future Plans",
     "EnglishLevel": "Intermediate",
     "Count": 8,
     "Example": "",
@@ -852,7 +852,7 @@
 }
 {
     "TaskType": "DivisionBySlash",
-    "GrammarPart": "FuturePlans",
+    "GrammarPart": "Future Plans",
     "EnglishLevel": "Intermediate",
     "Count": 6,
     "Example": "",
@@ -861,7 +861,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "QuestionTags",
+    "GrammarPart": "Question Tags",
     "EnglishLevel": "Intermediate",
     "Count": 7,
     "Example": "",
@@ -870,7 +870,7 @@
 }
 {
     "TaskType": "DivisionBySlash",
-    "GrammarPart": "PossessiveAdjectives",
+    "GrammarPart": "Possessive Adjectives",
     "EnglishLevel": "PreIntermediate",
     "Count": 9,
     "Example": "",
@@ -889,7 +889,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "PreIntermediate",
     "Count": 8,
     "Example": "",
@@ -925,7 +925,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "UpperIntermediate",
     "Count": 9,
     "Example": "",
@@ -934,7 +934,7 @@
 }
 {
     "TaskType": "CorrectOption",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "PreIntermediate",
     "Count": 10,
     "Example": "",
@@ -943,7 +943,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRPerfect",
+    "GrammarPart": "Present Perfect",
     "EnglishLevel": "Intermediate",
     "Count": 6,
     "Example": "",
@@ -952,7 +952,7 @@
 }
 {
 	"TaskType": "SimpleBrackets",
-	"GrammarPart": "PRSimple",
+	"GrammarPart": "Present Simple",
 	"EnglishLevel": "PreIntermediate",
 	"Count": 8,
 	"Example": "",
@@ -970,7 +970,7 @@
 }
 {
 	"TaskType": "DivisionBySlash",
-	"GrammarPart": "PrSimpleAndPrContinuous",
+	"GrammarPart": "Present Simple And Present Continuous",
 	"EnglishLevel": "Intermediate",
 	"Count": 8,
 	"Example": "",
@@ -979,7 +979,7 @@
 }
 {
     "TaskType": "CorrectOption",
-    "GrammarPart": "FuturePlans",
+    "GrammarPart": "Future Plans",
     "EnglishLevel": "Intermediate",
     "Count": 8,
     "Example": "",
@@ -988,7 +988,7 @@
 }
 {
     "TaskType": "DivisionBySlash",
-    "GrammarPart": "FuturePlans",
+    "GrammarPart": "Future Plans",
     "EnglishLevel": "Intermediate",
     "Count": 6,
     "Example": "",
@@ -997,7 +997,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "QuestionTags",
+    "GrammarPart": "Question Tags",
     "EnglishLevel": "Intermediate",
     "Count": 7,
     "Example": "",
@@ -1006,7 +1006,7 @@
 }
 {
     "TaskType": "DivisionBySlash",
-    "GrammarPart": "PossessiveAdjectives",
+    "GrammarPart": "Possessive Adjectives",
     "EnglishLevel": "PreIntermediate",
     "Count": 9,
     "Example": "",
@@ -1025,7 +1025,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "PreIntermediate",
     "Count": 8,
     "Example": "",
@@ -1061,7 +1061,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "UpperIntermediate",
     "Count": 9,
     "Example": "",
@@ -1070,7 +1070,7 @@
 }
 {
     "TaskType": "CorrectOption",
-    "GrammarPart": "PRSimple",
+    "GrammarPart": "Present Simple",
     "EnglishLevel": "PreIntermediate",
     "Count": 10,
     "Example": "",
@@ -1079,7 +1079,7 @@
 }
 {
     "TaskType": "SimpleBrackets",
-    "GrammarPart": "PRPerfect",
+    "GrammarPart": "Present Perfect",
     "EnglishLevel": "Intermediate",
     "Count": 6,
     "Example": "",

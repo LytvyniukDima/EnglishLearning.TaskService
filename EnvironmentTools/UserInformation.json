@@ -1,0 +1,24 @@
+{
+    "_id": {
+            "$binary": "OgRkodL3Tw+mv6/ucEGZoQ==",
+            "$type": "04"
+    },
+    "EnglishLevel": "Advanced",
+    "FavouriteGrammarParts": ["Present Simple", "Present Continuous", "First Conditional"]
+}
+{
+    "_id": {
+            "$binary": "dBsHzVzrSQGc1PiygErQNw==",
+            "$type": "04"
+    },
+    "EnglishLevel": "PreIntermediate",
+    "FavouriteGrammarParts": ["Present Simple", "Present Continuous", "First Conditional", "Past Perfect"]
+}
+{
+    "_id": {
+            "$binary": "uG1CYCZ5T/WF/VeaByUp8w==",
+            "$type": "04"
+    },
+    "EnglishLevel": "Intermediate",
+    "FavouriteGrammarParts": ["Present Simple", "Present Continuous", "First Conditional", "Present Perfect"]
+}
