@@ -7,13 +7,15 @@ namespace EnglishLearning.TaskService.Application.Abstract
 {
     public interface IRandomEnglishTaskService
     {
-        Task<EnglishTaskDto> FindRandomEnglishTaskAsync(string[] grammarParts = null, TaskType[] taskTypes = null, EnglishLevel[] englishLevels = null);
-        Task<EnglishTaskInfoDto> FindRandomInfoEnglishTaskAsync(string[] grammarParts = null, TaskType[] taskTypes = null, EnglishLevel[] englishLevels = null);
+        Task<EnglishTaskDto> FindRandomEnglishTaskAsync(IReadOnlyList<string> grammarParts = null, IReadOnlyList<TaskType> taskTypes = null, IReadOnlyList<EnglishLevel> englishLevels = null);
+        Task<EnglishTaskInfoDto> FindRandomInfoEnglishTaskAsync(IReadOnlyList<string> grammarParts = null, IReadOnlyList<TaskType> taskTypes = null, IReadOnlyList<EnglishLevel> englishLevels = null);
         
         Task<IReadOnlyList<EnglishTaskDto>> GetRandomFromAllEnglishTask(int count);
-        Task<IReadOnlyList<EnglishTaskDto>> FindRandomCountEnglishTask(int count, string[] grammarParts = null, TaskType[] taskTypes = null, EnglishLevel[] englishLevels = null);
+        Task<IReadOnlyList<EnglishTaskDto>> GetRandomWithUserPreferencesEnglishTask(int count);
+        Task<IReadOnlyList<EnglishTaskDto>> FindRandomCountEnglishTask(int count, IReadOnlyList<string> grammarParts = null, IReadOnlyList<TaskType> taskTypes = null, IReadOnlyList<EnglishLevel> englishLevels = null);
         
         Task<IReadOnlyList<EnglishTaskInfoDto>> GetRandomInfoFromAllEnglishTask(int count);
-        Task<IReadOnlyList<EnglishTaskInfoDto>> FindRandomInfoCountEnglishTask(int count, string[] grammarParts = null, TaskType[] taskTypes = null, EnglishLevel[] englishLevels = null);
+        Task<IReadOnlyList<EnglishTaskInfoDto>> GetRandomInfoWithUserPreferencesEnglishTask(int count);
+        Task<IReadOnlyList<EnglishTaskInfoDto>> FindRandomInfoCountEnglishTask(int count, IReadOnlyList<string> grammarParts = null, IReadOnlyList<TaskType> taskTypes = null, IReadOnlyList<EnglishLevel> englishLevels = null);
     }
 }

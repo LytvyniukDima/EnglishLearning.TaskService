@@ -16,8 +16,9 @@ namespace EnglishLearning.TaskService.Application.Abstract
         
         Task<EnglishTaskInfoDto> GetByIdEnglishTaskInfoAsync(string id);
         Task<IReadOnlyList<EnglishTaskInfoDto>> GetAllEnglishTaskInfoAsync();
+        Task<IReadOnlyList<EnglishTaskInfoDto>> GetAllEnglishTaskInfoWithUserPreferencesAsync();
         
-        Task<IReadOnlyList<EnglishTaskDto>> FindAllEnglishTaskAsync(string[] grammarParts = null, TaskType[] taskTypes = null, EnglishLevel[] englishLevels = null);
-        Task<IReadOnlyList<EnglishTaskInfoDto>> FindAllInfoEnglishTaskAsync(string[] grammarParts = null, TaskType[] taskTypes = null, EnglishLevel[] englishLevels = null);
+        Task<IReadOnlyList<EnglishTaskDto>> FindAllEnglishTaskAsync(IReadOnlyList<string> grammarParts = null, IReadOnlyList<TaskType> taskTypes = null, IReadOnlyList<EnglishLevel> englishLevels = null);
+        Task<IReadOnlyList<EnglishTaskInfoDto>> FindAllInfoEnglishTaskAsync(IReadOnlyList<string> grammarParts = null, IReadOnlyList<TaskType> taskTypes = null, IReadOnlyList<EnglishLevel> englishLevels = null);
     }
 }

@@ -17,16 +17,22 @@ namespace EnglishLearning.TaskService.Application.Services
     {
         private readonly IEnglishTaskRepository _taskRepository;
         private readonly IMapper _mapper;
-
+        private readonly IUserInformationService _userInformationService;
+        
         public RandomEnglishTaskService(
             IEnglishTaskRepository taskRepository,
-            EnglishTaskServiceMapper englishTaskServiceMapper)
+            EnglishTaskServiceMapper englishTaskServiceMapper,
+            IUserInformationService userInformationService)
         {
             _taskRepository = taskRepository;
             _mapper = englishTaskServiceMapper.Mapper;
+            _userInformationService = userInformationService;
         }
 
-        public async Task<EnglishTaskDto> FindRandomEnglishTaskAsync(string[] grammarParts = null, TaskType[] taskTypes = null, EnglishLevel[] englishLevels = null)
+        public async Task<EnglishTaskDto> FindRandomEnglishTaskAsync(
+            IReadOnlyList<string> grammarParts = null, 
+            IReadOnlyList<TaskType> taskTypes = null, 
+            IReadOnlyList<EnglishLevel> englishLevels = null)
         {
             if (taskTypes.IsNullOrEmpty() && grammarParts.IsNullOrEmpty() && englishLevels.IsNullOrEmpty())
             {
@@ -46,7 +52,10 @@ namespace EnglishLearning.TaskService.Application.Services
             return englishTaskDto;
         }
 
-        public async Task<EnglishTaskInfoDto> FindRandomInfoEnglishTaskAsync(string[] grammarParts = null, TaskType[] taskTypes = null, EnglishLevel[] englishLevels = null)
+        public async Task<EnglishTaskInfoDto> FindRandomInfoEnglishTaskAsync(
+            IReadOnlyList<string> grammarParts = null, 
+            IReadOnlyList<TaskType> taskTypes = null, 
+            IReadOnlyList<EnglishLevel> englishLevels = null)
         {
             if (taskTypes.IsNullOrEmpty() && grammarParts.IsNullOrEmpty() && englishLevels.IsNullOrEmpty())
             {
@@ -81,7 +90,23 @@ namespace EnglishLearning.TaskService.Application.Services
             return englishTaskDtos;
         }
 
-        public async Task<IReadOnlyList<EnglishTaskDto>> FindRandomCountEnglishTask(int count, string[] grammarParts = null, TaskType[] taskTypes = null, EnglishLevel[] englishLevels = null)
+        public async Task<IReadOnlyList<EnglishTaskDto>> GetRandomWithUserPreferencesEnglishTask(int count)
+        {
+            var userInformation = await _userInformationService.GetUserInformationForCurrentUser();
+            if (userInformation == null)
+            {
+                return await GetRandomFromAllEnglishTask(count);
+            }
+
+            var englishLevels = new[] { userInformation.EnglishLevel };
+            return await FindRandomCountEnglishTask(count, grammarParts: userInformation.FavouriteGrammarParts, englishLevels: englishLevels);
+        }
+
+        public async Task<IReadOnlyList<EnglishTaskDto>> FindRandomCountEnglishTask(
+            int count, 
+            IReadOnlyList<string> grammarParts = null, 
+            IReadOnlyList<TaskType> taskTypes = null, 
+            IReadOnlyList<EnglishLevel> englishLevels = null)
         {
             if (taskTypes.IsNullOrEmpty() && grammarParts.IsNullOrEmpty() && englishLevels.IsNullOrEmpty())
             {
@@ -116,7 +141,23 @@ namespace EnglishLearning.TaskService.Application.Services
             return englishTaskDtos;
         }
 
-        public async Task<IReadOnlyList<EnglishTaskInfoDto>> FindRandomInfoCountEnglishTask(int count, string[] grammarParts = null, TaskType[] taskTypes = null, EnglishLevel[] englishLevels = null)
+        public async Task<IReadOnlyList<EnglishTaskInfoDto>> GetRandomInfoWithUserPreferencesEnglishTask(int count)
+        {
+            var userInformation = await _userInformationService.GetUserInformationForCurrentUser();
+            if (userInformation == null)
+            {
+                return await GetRandomInfoFromAllEnglishTask(count);
+            }
+
+            var englishLevels = new[] { userInformation.EnglishLevel };
+            return await FindRandomInfoCountEnglishTask(count, grammarParts: userInformation.FavouriteGrammarParts, englishLevels: englishLevels);
+        }
+
+        public async Task<IReadOnlyList<EnglishTaskInfoDto>> FindRandomInfoCountEnglishTask(
+            int count, 
+            IReadOnlyList<string> grammarParts = null, 
+            IReadOnlyList<TaskType> taskTypes = null, 
+            IReadOnlyList<EnglishLevel> englishLevels = null)
         {
             if (taskTypes.IsNullOrEmpty() && grammarParts.IsNullOrEmpty() && englishLevels.IsNullOrEmpty())
             {

@@ -30,7 +30,10 @@ namespace EnglishLearning.TaskService.Persistence.Repositories
                 });
         }
         
-        public async Task<IReadOnlyList<EnglishTask>> FindAllByFilters(string[] grammarParts, TaskType[] taskTypes, EnglishLevel[] englishLevels)
+        public async Task<IReadOnlyList<EnglishTask>> FindAllByFilters(
+            IReadOnlyList<string> grammarParts, 
+            IReadOnlyList<TaskType> taskTypes, 
+            IReadOnlyList<EnglishLevel> englishLevels)
         {
             var builder = Builders<EnglishTask>.Filter;
             var filter = builder.Empty;
@@ -53,7 +56,10 @@ namespace EnglishLearning.TaskService.Persistence.Repositories
             return await _collection.Find(filter).ToListAsync(); 
         }
         
-        public async Task<IReadOnlyList<EnglishTaskInfo>> FindAllInfoByFilters(string[] grammarParts, TaskType[] taskTypes, EnglishLevel[] englishLevels)
+        public async Task<IReadOnlyList<EnglishTaskInfo>> FindAllInfoByFilters(
+            IReadOnlyList<string> grammarParts, 
+            IReadOnlyList<TaskType> taskTypes, 
+            IReadOnlyList<EnglishLevel> englishLevels)
         {
             var builder = Builders<EnglishTask>.Filter;
             var filter = builder.Empty;

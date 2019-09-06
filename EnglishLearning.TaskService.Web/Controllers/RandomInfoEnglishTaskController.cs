@@ -43,7 +43,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
         }
         
         [HttpGet("{count}")]
-        public async Task<ActionResult> GetRandomInfoFromAll(int count)
+        public async Task<ActionResult> GetRandomInfoFromAll(int count, [FromQuery] bool withUserPreferences)
         {
             IReadOnlyList<EnglishTaskInfoDto> englishTakDtos = await _randomEnglishTaskService.GetRandomInfoFromAllEnglishTask(count);
             if (!englishTakDtos.Any())

@@ -25,7 +25,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
         }
         
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromQuery] bool withUserPreferences)
         {
             IEnumerable<EnglishTaskDto> englishTaskDtos = await _englishTaskService.GetAllEnglishTaskAsync();
             var englishTaskModels = _mapper.Map<IEnumerable<EnglishTaskDto>, IEnumerable<EnglishTaskModel>>(englishTaskDtos);

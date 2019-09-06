@@ -8,5 +8,6 @@ namespace EnglishLearning.TaskService.Application.Abstract
     {
         Task AddUserInfo(UserInformationDto userInformation);
         Task<UserInformationDto> GetUserInformation(Guid id);
+        Task<UserInformationDto> GetUserInformationForCurrentUser();
     }
 }

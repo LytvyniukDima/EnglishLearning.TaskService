@@ -7,13 +7,16 @@
       <Version>7.0.1</Version>
     </PackageReference>
     <PackageReference Include="EnglishLearning.Utilities.Enums">
-      <Version>1.1.0-CI-20190906-091842</Version>
+      <Version>1.1.0-CI-20190906-104947</Version>
     </PackageReference>
     <PackageReference Include="EnglishLearning.Utilities.Expressions">
-      <Version>1.1.0-CI-20190906-091842</Version>
+      <Version>1.1.0-CI-20190906-104947</Version>
+    </PackageReference>
+    <PackageReference Include="EnglishLearning.Utilities.Identity.Abstractions">
+      <Version>1.1.0-CI-20190906-104947</Version>
     </PackageReference>
     <PackageReference Include="EnglishLearning.Utilities.Linq">
-      <Version>1.1.0-CI-20190906-091842</Version>
+      <Version>1.1.0-CI-20190906-104947</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Mvc">
       <Version>2.2.0</Version>

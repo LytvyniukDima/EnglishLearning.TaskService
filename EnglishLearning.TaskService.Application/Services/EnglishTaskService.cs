@@ -16,11 +16,16 @@ namespace EnglishLearning.TaskService.Application.Services
     {
         private readonly IEnglishTaskRepository _taskRepository;
         private readonly IMapper _mapper;
+        private readonly IUserInformationService _userInformationService;
         
-        public EnglishTaskService(IEnglishTaskRepository taskRepository, EnglishTaskServiceMapper englishTaskServiceMappermapper)
+        public EnglishTaskService(
+            IEnglishTaskRepository taskRepository, 
+            EnglishTaskServiceMapper englishTaskServiceMappermapper,
+            IUserInformationService userInformationService)
         {
             _taskRepository = taskRepository;
             _mapper = englishTaskServiceMappermapper.Mapper;
+            _userInformationService = userInformationService;
         }
 
         public async Task CreateEnglishTaskAsync(EnglishTaskCreateDto englishTaskCreateDto)
@@ -55,11 +60,10 @@ namespace EnglishLearning.TaskService.Application.Services
 
         public async Task<IReadOnlyList<EnglishTaskDto>> GetAllEnglishTaskAsync()
         {
-            var englishTasks = await GetAllEnglishTasks();
-
-            var englishTasksDto = _mapper.Map<IReadOnlyList<EnglishTaskDto>>(englishTasks);
-
-            return englishTasksDto;
+            var englishTasks = await _taskRepository.GetAllAsync();
+            var englishTaskDtos = _mapper.Map<IReadOnlyList<EnglishTaskDto>>(englishTasks);
+            
+            return englishTaskDtos;
         }
 
         public async Task<bool> DeleteByIdEnglishTaskAsync(string id)
@@ -95,7 +99,19 @@ namespace EnglishLearning.TaskService.Application.Services
             return englishTasksDto;
         }
 
-        public async Task<IReadOnlyList<EnglishTaskDto>> FindAllEnglishTaskAsync(string[] grammarParts = null, TaskType[] taskTypes = null, EnglishLevel[] englishLevels = null)
+        public async Task<IReadOnlyList<EnglishTaskInfoDto>> GetAllEnglishTaskInfoWithUserPreferencesAsync()
+        {
+            var userInformation = await _userInformationService.GetUserInformationForCurrentUser();
+            if (userInformation == null)
+            {
+                return await GetAllEnglishTaskInfoAsync();
+            }
+
+            var englishLevels = new[] { userInformation.EnglishLevel };
+            return await FindAllInfoEnglishTaskAsync(grammarParts: userInformation.FavouriteGrammarParts, englishLevels: englishLevels);
+        }
+
+        public async Task<IReadOnlyList<EnglishTaskDto>> FindAllEnglishTaskAsync(IReadOnlyList<string> grammarParts = null, IReadOnlyList<TaskType> taskTypes = null, IReadOnlyList<EnglishLevel> englishLevels = null)
         {
             if (taskTypes.IsNullOrEmpty() && grammarParts.IsNullOrEmpty() && englishLevels.IsNullOrEmpty())
             {
@@ -111,7 +127,10 @@ namespace EnglishLearning.TaskService.Application.Services
             return englishTaskDtos;
         }
 
-        public async Task<IReadOnlyList<EnglishTaskInfoDto>> FindAllInfoEnglishTaskAsync(string[] grammarParts = null, TaskType[] taskTypes = null, EnglishLevel[] englishLevels = null)
+        public async Task<IReadOnlyList<EnglishTaskInfoDto>> FindAllInfoEnglishTaskAsync(
+            IReadOnlyList<string> grammarParts = null, 
+            IReadOnlyList<TaskType> taskTypes = null, 
+            IReadOnlyList<EnglishLevel> englishLevels = null)
         {
             if (taskTypes.IsNullOrEmpty() && grammarParts.IsNullOrEmpty() && englishLevels.IsNullOrEmpty())
             {
@@ -131,11 +150,6 @@ namespace EnglishLearning.TaskService.Application.Services
         private async Task<EnglishTask> GetEnglishTask(string id)
         {
             return await _taskRepository.FindAsync(x => x.Id == id);
-        }
-
-        private async Task<IEnumerable<EnglishTask>> GetAllEnglishTasks()
-        {
-            return await _taskRepository.GetAllAsync();
         }
     }
 }
