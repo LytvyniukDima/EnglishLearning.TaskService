@@ -26,7 +26,16 @@ namespace EnglishLearning.TaskService.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllInfo([FromQuery] bool withUserPreferences)
         {
-            IEnumerable<EnglishTaskInfoDto> englishTaskDtos = await _englishTaskService.GetAllEnglishTaskInfoAsync();
+            IReadOnlyList<EnglishTaskInfoDto> englishTaskDtos;
+            if (withUserPreferences)
+            {
+                englishTaskDtos = await _englishTaskService.GetAllEnglishTaskInfoWithUserPreferencesAsync();
+            }
+            else
+            {
+                englishTaskDtos = await _englishTaskService.GetAllEnglishTaskInfoAsync();
+            }
+            
             var englishTaskModels = _mapper.Map<IEnumerable<EnglishTaskInfoDto>, IEnumerable<EnglishTaskInfoModel>>(englishTaskDtos);
 
             return Ok(englishTaskModels);

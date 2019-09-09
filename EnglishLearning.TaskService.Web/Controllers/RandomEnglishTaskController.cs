@@ -43,13 +43,22 @@ namespace EnglishLearning.TaskService.Web.Controllers
         [HttpGet("{count}")]
         public async Task<ActionResult> GetRandomFromAll(int count, [FromQuery] bool withUserPreferences)
         {
-            IEnumerable<EnglishTaskDto> englishTakDtos = await _randomEnglishTaskService.GetRandomFromAllEnglishTask(count);
-            if (!englishTakDtos.Any())
+            IReadOnlyList<EnglishTaskDto> englishTaskDtos;
+            if (withUserPreferences)
+            {
+                englishTaskDtos = await _randomEnglishTaskService.GetRandomWithUserPreferencesEnglishTask(count);
+            }
+            else
+            {
+                englishTaskDtos = await _randomEnglishTaskService.GetRandomFromAllEnglishTask(count);
+            }
+            
+            if (!englishTaskDtos.Any())
             {
                 return NotFound();
             }
 
-            var englishTaskModel = _mapper.Map<IEnumerable<EnglishTaskModel>>(englishTakDtos);
+            var englishTaskModel = _mapper.Map<IEnumerable<EnglishTaskModel>>(englishTaskDtos);
             
             return Ok(englishTaskModel);
         }
