@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EnglishLearning.TaskService.Application.DTO;
 using EnglishLearning.TaskService.Web.Models;
+using EnglishLearning.TaskService.Web.Models.Parameters;
 
 namespace EnglishLearning.TaskService.Web.Infrastructure
 {
@@ -12,6 +13,8 @@ namespace EnglishLearning.TaskService.Web.Infrastructure
 
             CreateMap<EnglishTaskInfoDto, EnglishTaskInfoModel>();
             CreateMap<EnglishTaskDto, EnglishTaskModel>();
+
+            CreateMap<BaseFilterParameters, BaseFilterModel>();
         }
     }
 }

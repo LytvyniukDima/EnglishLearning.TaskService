@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using EnglishLearning.TaskService.Application.Infrastructure;
 
 namespace EnglishLearning.TaskService.EventHandlers.Infrastructure
 {

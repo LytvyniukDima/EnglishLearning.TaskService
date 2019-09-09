@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
 using EnglishLearning.TaskService.Application.DTO;
-using EnglishLearning.TaskService.Common.Models;
 using EnglishLearning.TaskService.Web.Infrastructure;
 using EnglishLearning.TaskService.Web.Models;
+using EnglishLearning.TaskService.Web.Models.Parameters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EnglishLearning.TaskService.Web.Controllers
@@ -26,12 +26,10 @@ namespace EnglishLearning.TaskService.Web.Controllers
         }
         
         [HttpGet("filter")]
-        public async Task<ActionResult> FindRandomInfoTaskByFilter(
-            [FromQuery] string[] grammarPart,
-            [FromQuery] TaskType[] taskType,
-            [FromQuery] EnglishLevel[] englishLevel)
+        public async Task<ActionResult> FindRandomInfoTaskByFilter([FromQuery] BaseFilterParameters parameters)
         {
-            EnglishTaskInfoDto englishTakDto = await _randomEnglishTaskService.FindRandomInfoEnglishTaskAsync(grammarPart, taskType, englishLevel);
+            var filterModel = _mapper.Map<BaseFilterModel>(parameters);
+            EnglishTaskInfoDto englishTakDto = await _randomEnglishTaskService.FindRandomInfoEnglishTaskAsync(filterModel);
             if (englishTakDto == null)
             {
                 return NotFound();
@@ -59,11 +57,10 @@ namespace EnglishLearning.TaskService.Web.Controllers
         [HttpGet("{count}/filter")]
         public async Task<ActionResult> FindRandomInfoTaskByFilter(
             int count,
-            [FromQuery] string[] grammarPart,
-            [FromQuery] TaskType[] taskType,
-            [FromQuery] EnglishLevel[] englishLevel)
+            [FromQuery] BaseFilterParameters parameters)
         {
-            IReadOnlyList<EnglishTaskInfoDto> englishTakDtos = await _randomEnglishTaskService.FindRandomInfoCountEnglishTask(count, grammarPart, taskType, englishLevel);
+            var filterModel = _mapper.Map<BaseFilterModel>(parameters);
+            IReadOnlyList<EnglishTaskInfoDto> englishTakDtos = await _randomEnglishTaskService.FindRandomInfoCountEnglishTask(count, filterModel);
             if (!englishTakDtos.Any())
             {
                 return NotFound();

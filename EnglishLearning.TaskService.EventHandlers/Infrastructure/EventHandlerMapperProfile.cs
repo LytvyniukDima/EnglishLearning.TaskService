@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using EnglishLearning.TaskService.Application.DTO;
-using EnglishLearning.TaskService.Persistence.Entities;
 using EnglishLearning.Utilities.MessageBrokers.Contracts.Users;
 
 namespace EnglishLearning.TaskService.EventHandlers.Infrastructure

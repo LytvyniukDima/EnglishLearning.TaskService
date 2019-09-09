@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
 using EnglishLearning.TaskService.Application.DTO;
-using EnglishLearning.TaskService.Common.Models;
 using EnglishLearning.TaskService.Web.Infrastructure;
 using EnglishLearning.TaskService.Web.Models;
+using EnglishLearning.TaskService.Web.Models.Parameters;
 using EnglishLearning.Utilities.Identity.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 
@@ -103,12 +103,10 @@ namespace EnglishLearning.TaskService.Web.Controllers
         }
         
         [HttpGet("filter")]
-        public async Task<ActionResult> GetAllByFilter(
-            [FromQuery] string[] grammarPart,
-            [FromQuery] TaskType[] taskType, 
-            [FromQuery] EnglishLevel[] englishLevel)
+        public async Task<ActionResult> GetAllByFilter([FromQuery] BaseFilterParameters parameters)
         {
-            IReadOnlyList<EnglishTaskDto> englishTakDtos = await _englishTaskService.FindAllEnglishTaskAsync(grammarPart, taskType, englishLevel);
+            var filterModel = _mapper.Map<BaseFilterModel>(parameters);
+            IReadOnlyList<EnglishTaskDto> englishTakDtos = await _englishTaskService.FindAllEnglishTaskAsync(filterModel);
             if (!englishTakDtos.Any())
             {
                 return NotFound();

@@ -17,6 +17,8 @@ namespace EnglishLearning.TaskService.Application.Infrastructure
 
             CreateMap<UserInformation, UserInformationDto>();
             CreateMap<UserInformationDto, UserInformation>();
+
+            CreateMap<BaseFilterModel, BaseFilter>();
         }
     }
 }

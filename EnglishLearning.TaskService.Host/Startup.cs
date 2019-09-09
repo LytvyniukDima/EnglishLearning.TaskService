@@ -1,5 +1,4 @@
 ﻿using EnglishLearning.TaskService.Application.Configuration;
-using EnglishLearning.TaskService.EventHandlers.Configuration;
 using EnglishLearning.TaskService.Host.Infrastructure;
 using EnglishLearning.TaskService.Persistence.Configuration;
 using EnglishLearning.TaskService.Web.Configuration;
