@@ -24,7 +24,7 @@ namespace EnglishLearning.TaskService.Application.DTO
         
         public bool IsEmpty()
         {
-            return GrammarPart.IsNullOrEmpty() || TaskType.IsNullOrEmpty() || EnglishLevel.IsNullOrEmpty();
+            return GrammarPart.IsNullOrEmpty() && TaskType.IsNullOrEmpty() && EnglishLevel.IsNullOrEmpty();
         }
     }
 }
