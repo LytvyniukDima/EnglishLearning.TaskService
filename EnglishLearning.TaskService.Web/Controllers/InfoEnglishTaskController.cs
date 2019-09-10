@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
-using EnglishLearning.TaskService.Application.DTO;
+using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.TaskService.Web.Infrastructure;
 using EnglishLearning.TaskService.Web.ViewModels;
 using EnglishLearning.TaskService.Web.ViewModels.Parameters;
@@ -26,31 +26,31 @@ namespace EnglishLearning.TaskService.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllInfo([FromQuery] bool withUserPreferences)
         {
-            IReadOnlyList<EnglishTaskInfoDto> englishTaskDtos;
+            IReadOnlyList<EnglishTaskInfoModel> englishTaskModels;
             if (withUserPreferences)
             {
-                englishTaskDtos = await _englishTaskService.GetAllEnglishTaskInfoWithUserPreferencesAsync();
+                englishTaskModels = await _englishTaskService.GetAllEnglishTaskInfoWithUserPreferencesAsync();
             }
             else
             {
-                englishTaskDtos = await _englishTaskService.GetAllEnglishTaskInfoAsync();
+                englishTaskModels = await _englishTaskService.GetAllEnglishTaskInfoAsync();
             }
             
-            var englishTaskModels = _mapper.Map<IEnumerable<EnglishTaskInfoDto>, IEnumerable<EnglishTaskInfoViewModel>>(englishTaskDtos);
+            var englishTaskViewModels = _mapper.Map<IEnumerable<EnglishTaskInfoModel>, IEnumerable<EnglishTaskInfoViewModel>>(englishTaskModels);
 
-            return Ok(englishTaskModels);
+            return Ok(englishTaskViewModels);
         }
         
         [HttpGet("{id}")]
         public async Task<IActionResult> GetInfoById(string id)
         {
-            EnglishTaskDto englishTask = await _englishTaskService.GetByIdEnglishTaskAsync(id);
+            EnglishTaskModel englishTask = await _englishTaskService.GetByIdEnglishTaskAsync(id);
             if (englishTask == null)
             {
                 return NotFound();
             }
 
-            var englishTaskModel = _mapper.Map<EnglishTaskDto, EnglishTaskInfoViewModel>(englishTask);
+            var englishTaskModel = _mapper.Map<EnglishTaskModel, EnglishTaskInfoViewModel>(englishTask);
             
             return Ok(englishTaskModel);
         }
@@ -59,13 +59,13 @@ namespace EnglishLearning.TaskService.Web.Controllers
         public async Task<ActionResult> GetAllInfoByFilter([FromQuery] BaseFilterParameters parameters)
         {
             var filterModel = _mapper.Map<BaseFilterModel>(parameters);
-            IEnumerable<EnglishTaskInfoDto> englishTakDtos = await _englishTaskService.FindAllInfoEnglishTaskAsync(filterModel);
-            if (!englishTakDtos.Any())
+            IEnumerable<EnglishTaskInfoModel> englishTakModels = await _englishTaskService.FindAllInfoEnglishTaskAsync(filterModel);
+            if (!englishTakModels.Any())
             {
                 return NotFound();
             }
 
-            var englishTaskModels = _mapper.Map<IReadOnlyList<EnglishTaskInfoViewModel>>(englishTakDtos);
+            var englishTaskModels = _mapper.Map<IReadOnlyList<EnglishTaskInfoViewModel>>(englishTakModels);
             
             return Ok(englishTaskModels);
         }

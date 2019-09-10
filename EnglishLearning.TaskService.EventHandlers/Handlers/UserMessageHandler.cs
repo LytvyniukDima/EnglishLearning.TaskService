@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
-using EnglishLearning.TaskService.Application.DTO;
+using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.TaskService.EventHandlers.Infrastructure;
 using EnglishLearning.Utilities.MessageBrokers.Contracts.Users;
 using EnglishLearning.Utilities.MessageBrokers.Kafka.Abstraction;
@@ -21,7 +21,7 @@ namespace EnglishLearning.TaskService.EventHandlers.Handlers
         
         public async Task OnMessageAsync(UserCreatedEvent message)
         {
-            var applicationModel = _mapper.Map<UserInformationDto>(message);
+            var applicationModel = _mapper.Map<UserInformationModel>(message);
             await _userInformationService.AddUserInfo(applicationModel);
         }
     }

@@ -1,20 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using EnglishLearning.TaskService.Application.DTO;
+using EnglishLearning.TaskService.Application.Models;
 
 namespace EnglishLearning.TaskService.Application.Abstract
 {
     public interface IRandomEnglishTaskService
     {
-        Task<EnglishTaskDto> FindRandomEnglishTaskAsync(BaseFilterModel baseFilterModel);
-        Task<EnglishTaskInfoDto> FindRandomInfoEnglishTaskAsync(BaseFilterModel baseFilterModel);
+        Task<EnglishTaskModel> FindRandomEnglishTaskAsync(BaseFilterModel baseFilterModel);
+        Task<EnglishTaskInfoModel> FindRandomInfoEnglishTaskAsync(BaseFilterModel baseFilterModel);
         
-        Task<IReadOnlyList<EnglishTaskDto>> GetRandomFromAllEnglishTask(int count);
-        Task<IReadOnlyList<EnglishTaskDto>> GetRandomWithUserPreferencesEnglishTask(int count);
-        Task<IReadOnlyList<EnglishTaskDto>> FindRandomCountEnglishTask(int count, BaseFilterModel baseFilterModel);
+        Task<IReadOnlyList<EnglishTaskModel>> GetRandomFromAllEnglishTask(int count);
+        Task<IReadOnlyList<EnglishTaskModel>> GetRandomWithUserPreferencesEnglishTask(int count);
+        Task<IReadOnlyList<EnglishTaskModel>> FindRandomCountEnglishTask(int count, BaseFilterModel baseFilterModel);
         
-        Task<IReadOnlyList<EnglishTaskInfoDto>> GetRandomInfoFromAllEnglishTask(int count);
-        Task<IReadOnlyList<EnglishTaskInfoDto>> GetRandomInfoWithUserPreferencesEnglishTask(int count);
-        Task<IReadOnlyList<EnglishTaskInfoDto>> FindRandomInfoCountEnglishTask(int count, BaseFilterModel baseFilterModel);
+        Task<IReadOnlyList<EnglishTaskInfoModel>> GetRandomInfoFromAllEnglishTask(int count);
+        Task<IReadOnlyList<EnglishTaskInfoModel>> GetRandomInfoWithUserPreferencesEnglishTask(int count);
+        Task<IReadOnlyList<EnglishTaskInfoModel>> FindRandomInfoCountEnglishTask(int count, BaseFilterModel baseFilterModel);
     }
 }

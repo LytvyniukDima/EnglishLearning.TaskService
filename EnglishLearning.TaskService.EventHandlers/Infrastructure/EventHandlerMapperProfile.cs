@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using EnglishLearning.TaskService.Application.DTO;
+using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.Utilities.MessageBrokers.Contracts.Users;
 
 namespace EnglishLearning.TaskService.EventHandlers.Infrastructure
@@ -8,7 +8,7 @@ namespace EnglishLearning.TaskService.EventHandlers.Infrastructure
     {
         public EventHandlerMapperProfile()
         {
-            CreateMap<UserCreatedEvent, UserInformationDto>()
+            CreateMap<UserCreatedEvent, UserInformationModel>()
                 .ForMember(
                     x => x.FavouriteGrammarParts,
                     m => m.MapFrom(s => s.UserEnglishTaskPreferences.GrammarParts));

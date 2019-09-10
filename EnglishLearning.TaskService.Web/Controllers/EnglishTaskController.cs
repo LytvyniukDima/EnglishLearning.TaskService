@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
-using EnglishLearning.TaskService.Application.DTO;
+using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.TaskService.Web.Infrastructure;
 using EnglishLearning.TaskService.Web.ViewModels;
 using EnglishLearning.TaskService.Web.ViewModels.Parameters;
@@ -25,46 +25,46 @@ namespace EnglishLearning.TaskService.Web.Controllers
         }
         
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<ActionResult<IEnumerable<EnglishTaskViewModel>>> Get()
         {
-            IEnumerable<EnglishTaskDto> englishTaskDtos = await _englishTaskService.GetAllEnglishTaskAsync();
-            var englishTaskModels = _mapper.Map<IEnumerable<EnglishTaskDto>, IEnumerable<EnglishTaskViewModel>>(englishTaskDtos);
+            IEnumerable<EnglishTaskModel> englishTaskModels = await _englishTaskService.GetAllEnglishTaskAsync();
+            var englishTaskViewModels = _mapper.Map<IEnumerable<EnglishTaskModel>, IEnumerable<EnglishTaskViewModel>>(englishTaskModels);
 
-            return Ok(englishTaskModels);
+            return Ok(englishTaskViewModels);
         }
         
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(string id)
         {
-            EnglishTaskDto englishTask = await _englishTaskService.GetByIdEnglishTaskAsync(id);
+            EnglishTaskModel englishTask = await _englishTaskService.GetByIdEnglishTaskAsync(id);
             if (englishTask == null)
             {
                 return NotFound();
             }
 
-            var englishTaskModel = _mapper.Map<EnglishTaskDto, EnglishTaskViewModel>(englishTask);
+            var englishTaskModel = _mapper.Map<EnglishTaskModel, EnglishTaskViewModel>(englishTask);
             
             return Ok(englishTaskModel);
         }
         
         [EnglishLearningAuthorize(AuthorizeRole.Admin)]
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] EnglishTaskCreateViewModel englishTaskCreateModel)
+        public async Task<IActionResult> Post([FromBody] EnglishTaskCreateViewModel englishTaskCreateViewModel)
         {
-            var englishTaskCreateDto = _mapper.Map<EnglishTaskCreateViewModel, EnglishTaskCreateDto>(englishTaskCreateModel);
+            var englishTaskCreateModel = _mapper.Map<EnglishTaskCreateModel>(englishTaskCreateViewModel);
             
-            await _englishTaskService.CreateEnglishTaskAsync(englishTaskCreateDto);
+            await _englishTaskService.CreateEnglishTaskAsync(englishTaskCreateModel);
 
             return Ok();
         }
         
         [EnglishLearningAuthorize(AuthorizeRole.Admin)]
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(string id, [FromBody] EnglishTaskCreateViewModel englishTaskCreateModel)
+        public async Task<IActionResult> Put(string id, [FromBody] EnglishTaskCreateViewModel englishTaskCreateViewModel)
         {
-            var englishTaskCreateDto = _mapper.Map<EnglishTaskCreateViewModel, EnglishTaskCreateDto>(englishTaskCreateModel);
+            var englishTaskCreateModel = _mapper.Map<EnglishTaskCreateModel>(englishTaskCreateViewModel);
 
-            bool result = await _englishTaskService.UpdateEnglishTaskAsync(id, englishTaskCreateDto);
+            bool result = await _englishTaskService.UpdateEnglishTaskAsync(id, englishTaskCreateModel);
 
             if (result == false)
             {
@@ -106,13 +106,13 @@ namespace EnglishLearning.TaskService.Web.Controllers
         public async Task<ActionResult> GetAllByFilter([FromQuery] BaseFilterParameters parameters)
         {
             var filterModel = _mapper.Map<BaseFilterModel>(parameters);
-            IReadOnlyList<EnglishTaskDto> englishTakDtos = await _englishTaskService.FindAllEnglishTaskAsync(filterModel);
-            if (!englishTakDtos.Any())
+            IReadOnlyList<EnglishTaskModel> englishTakModels = await _englishTaskService.FindAllEnglishTaskAsync(filterModel);
+            if (!englishTakModels.Any())
             {
                 return NotFound();
             }
 
-            var englishTaskModels = _mapper.Map<IReadOnlyList<EnglishTaskViewModel>>(englishTakDtos);
+            var englishTaskModels = _mapper.Map<IReadOnlyList<EnglishTaskViewModel>>(englishTakModels);
             
             return Ok(englishTaskModels);
         }

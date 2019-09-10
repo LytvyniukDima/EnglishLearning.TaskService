@@ -1,23 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using EnglishLearning.TaskService.Application.DTO;
+using EnglishLearning.TaskService.Application.Models;
 
 namespace EnglishLearning.TaskService.Application.Abstract
 {
     public interface IEnglishTaskService
     {
-        Task CreateEnglishTaskAsync(EnglishTaskCreateDto englishTaskCreateDto);
-        Task<bool> UpdateEnglishTaskAsync(string id, EnglishTaskCreateDto englishTaskDto);
-        Task<EnglishTaskDto> GetByIdEnglishTaskAsync(string id);
-        Task<IReadOnlyList<EnglishTaskDto>> GetAllEnglishTaskAsync();
+        Task CreateEnglishTaskAsync(EnglishTaskCreateModel englishTaskCreateModel);
+        Task<bool> UpdateEnglishTaskAsync(string id, EnglishTaskCreateModel englishTaskModel);
+        Task<EnglishTaskModel> GetByIdEnglishTaskAsync(string id);
+        Task<IReadOnlyList<EnglishTaskModel>> GetAllEnglishTaskAsync();
         Task<bool> DeleteByIdEnglishTaskAsync(string id);
         Task<bool> DeleteAllEnglishTaskAsync();
         
-        Task<EnglishTaskInfoDto> GetByIdEnglishTaskInfoAsync(string id);
-        Task<IReadOnlyList<EnglishTaskInfoDto>> GetAllEnglishTaskInfoAsync();
-        Task<IReadOnlyList<EnglishTaskInfoDto>> GetAllEnglishTaskInfoWithUserPreferencesAsync();
+        Task<EnglishTaskInfoModel> GetByIdEnglishTaskInfoAsync(string id);
+        Task<IReadOnlyList<EnglishTaskInfoModel>> GetAllEnglishTaskInfoAsync();
+        Task<IReadOnlyList<EnglishTaskInfoModel>> GetAllEnglishTaskInfoWithUserPreferencesAsync();
         
-        Task<IReadOnlyList<EnglishTaskDto>> FindAllEnglishTaskAsync(BaseFilterModel baseFilterModel);
-        Task<IReadOnlyList<EnglishTaskInfoDto>> FindAllInfoEnglishTaskAsync(BaseFilterModel baseFilterModel);
+        Task<IReadOnlyList<EnglishTaskModel>> FindAllEnglishTaskAsync(BaseFilterModel baseFilterModel);
+        Task<IReadOnlyList<EnglishTaskInfoModel>> FindAllInfoEnglishTaskAsync(BaseFilterModel baseFilterModel);
     }
 }

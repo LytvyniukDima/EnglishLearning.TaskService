@@ -1,4 +1,4 @@
-﻿namespace EnglishLearning.TaskService.Application.DTO
+﻿namespace EnglishLearning.TaskService.Application.Models
 {
     public class StoredTasksInformationModel
     {

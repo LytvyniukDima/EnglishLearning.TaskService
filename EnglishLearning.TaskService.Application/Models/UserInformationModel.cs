@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using EnglishLearning.TaskService.Common.Models;
 
-namespace EnglishLearning.TaskService.Application.DTO
+namespace EnglishLearning.TaskService.Application.Models
 {
-    public class UserInformationDto
+    public class UserInformationModel
     {
         public Guid UserId { get; set; }
         public EnglishLevel EnglishLevel { get; set; }

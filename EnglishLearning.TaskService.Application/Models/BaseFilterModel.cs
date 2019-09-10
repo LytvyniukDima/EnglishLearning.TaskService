@@ -2,7 +2,7 @@
 using EnglishLearning.TaskService.Common.Models;
 using EnglishLearning.Utilities.Linq.Extensions;
 
-namespace EnglishLearning.TaskService.Application.DTO
+namespace EnglishLearning.TaskService.Application.Models
 {
     public class BaseFilterModel
     {
@@ -10,7 +10,7 @@ namespace EnglishLearning.TaskService.Application.DTO
         public IReadOnlyList<TaskType> TaskType { get; set; }
         public IReadOnlyList<EnglishLevel> EnglishLevel { get; set; }
 
-        public static BaseFilterModel CreateFromUserInformation(UserInformationDto userInformation)
+        public static BaseFilterModel CreateFromUserInformation(UserInformationModel userInformation)
         {
             var englishLevels = new[] { userInformation.EnglishLevel };
             var filterModel = new BaseFilterModel()

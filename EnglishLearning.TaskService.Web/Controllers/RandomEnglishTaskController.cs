@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
-using EnglishLearning.TaskService.Application.DTO;
+using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.TaskService.Web.Infrastructure;
 using EnglishLearning.TaskService.Web.ViewModels;
 using EnglishLearning.TaskService.Web.ViewModels.Parameters;
@@ -29,13 +29,13 @@ namespace EnglishLearning.TaskService.Web.Controllers
         public async Task<ActionResult> FindRandomTaskByFilter([FromQuery] BaseFilterParameters parameters)
         {
             var filterModel = _mapper.Map<BaseFilterModel>(parameters);
-            EnglishTaskDto englishTakDto = await _randomEnglishTaskService.FindRandomEnglishTaskAsync(filterModel);
-            if (englishTakDto == null)
+            EnglishTaskModel englishTakModel = await _randomEnglishTaskService.FindRandomEnglishTaskAsync(filterModel);
+            if (englishTakModel == null)
             {
                 return NotFound();
             }
 
-            var englishTaskModel = _mapper.Map<EnglishTaskViewModel>(englishTakDto);
+            var englishTaskModel = _mapper.Map<EnglishTaskViewModel>(englishTakModel);
             
             return Ok(englishTaskModel);
         }
@@ -43,22 +43,22 @@ namespace EnglishLearning.TaskService.Web.Controllers
         [HttpGet("{count}")]
         public async Task<ActionResult> GetRandomFromAll(int count, [FromQuery] bool withUserPreferences)
         {
-            IReadOnlyList<EnglishTaskDto> englishTaskDtos;
+            IReadOnlyList<EnglishTaskModel> englishTaskModels;
             if (withUserPreferences)
             {
-                englishTaskDtos = await _randomEnglishTaskService.GetRandomWithUserPreferencesEnglishTask(count);
+                englishTaskModels = await _randomEnglishTaskService.GetRandomWithUserPreferencesEnglishTask(count);
             }
             else
             {
-                englishTaskDtos = await _randomEnglishTaskService.GetRandomFromAllEnglishTask(count);
+                englishTaskModels = await _randomEnglishTaskService.GetRandomFromAllEnglishTask(count);
             }
             
-            if (!englishTaskDtos.Any())
+            if (!englishTaskModels.Any())
             {
                 return NotFound();
             }
 
-            var englishTaskModel = _mapper.Map<IEnumerable<EnglishTaskViewModel>>(englishTaskDtos);
+            var englishTaskModel = _mapper.Map<IEnumerable<EnglishTaskViewModel>>(englishTaskModels);
             
             return Ok(englishTaskModel);
         }
@@ -69,13 +69,13 @@ namespace EnglishLearning.TaskService.Web.Controllers
             [FromQuery] BaseFilterParameters parameters)
         {
             var filterModel = _mapper.Map<BaseFilterModel>(parameters);
-            IEnumerable<EnglishTaskDto> englishTakDtos = await _randomEnglishTaskService.FindRandomCountEnglishTask(count, filterModel);
-            if (!englishTakDtos.Any())
+            IEnumerable<EnglishTaskModel> englishTakModels = await _randomEnglishTaskService.FindRandomCountEnglishTask(count, filterModel);
+            if (!englishTakModels.Any())
             {
                 return NotFound();
             }
 
-            var englishTaskModels = _mapper.Map<IReadOnlyList<EnglishTaskViewModel>>(englishTakDtos);
+            var englishTaskModels = _mapper.Map<IReadOnlyList<EnglishTaskViewModel>>(englishTakModels);
             
             return Ok(englishTaskModels);
         }

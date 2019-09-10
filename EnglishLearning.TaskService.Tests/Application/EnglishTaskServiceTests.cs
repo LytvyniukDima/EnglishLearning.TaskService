@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using EnglishLearning.TaskService.Application.Abstract;
-using EnglishLearning.TaskService.Application.DTO;
 using EnglishLearning.TaskService.Application.Infrastructure;
+using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.TaskService.Application.Services;
 using EnglishLearning.TaskService.Common.Models;
 using EnglishLearning.TaskService.Persistence.Abstract;
@@ -31,7 +31,7 @@ namespace EnglishLearning.TaskService.Tests.Application
             // Act
             Func<Task> act = async () =>
             {
-                await englishTaskService.CreateEnglishTaskAsync(defaultEnglishTaskCreateDto);
+                await englishTaskService.CreateEnglishTaskAsync(defaultEnglishTaskCreateModel);
             };
             
             // Assert
@@ -46,17 +46,17 @@ namespace EnglishLearning.TaskService.Tests.Application
                 .UpdateAsync(Arg.Any<EnglishTask>())
                 .Returns(Task.FromResult(true));
             var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userInformationService);
-            EnglishTaskCreateDto englishTaskDto = defaultEnglishTaskCreateDto;
+            EnglishTaskCreateModel englishTaskModel = defaultEnglishTaskCreateModel;
             
             // Act
-            bool result = await englishTaskService.UpdateEnglishTaskAsync("myId", englishTaskDto);
+            bool result = await englishTaskService.UpdateEnglishTaskAsync("myId", englishTaskModel);
 
             // Assert
             result.Should().BeTrue();
         }
 
         [Fact]
-        public async Task GetByIdEnglishTaskAsync_CorrectId_ReturnsCorrectEnglishTaskDto()
+        public async Task GetByIdEnglishTaskAsync_CorrectId_ReturnsCorrectEnglishTaskModel()
         {
             // Arrange
             _dbRepository
@@ -65,10 +65,10 @@ namespace EnglishLearning.TaskService.Tests.Application
             var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userInformationService);       
            
             // Act
-            EnglishTaskDto englishTaskDto = await englishTaskService.GetByIdEnglishTaskAsync("Id");
+            EnglishTaskModel englishTaskModel = await englishTaskService.GetByIdEnglishTaskAsync("Id");
             
             // Arrange
-            englishTaskDto.Should().BeEquivalentTo(defaultEnglishTaskDto);
+            englishTaskModel.Should().BeEquivalentTo(defaultEnglishTaskModel);
         }
         
         [Fact]
@@ -81,24 +81,24 @@ namespace EnglishLearning.TaskService.Tests.Application
             var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userInformationService);       
            
             // Act
-            EnglishTaskDto englishTaskDto = await englishTaskService.GetByIdEnglishTaskAsync("Id");
+            EnglishTaskModel englishTaskModel = await englishTaskService.GetByIdEnglishTaskAsync("Id");
             
             // Arrange
-            englishTaskDto.Should().BeNull();
+            englishTaskModel.Should().BeNull();
         }
         
         [Fact]
-        public async Task GetAllEnglishTaskAsync_ReturnsCorrectEnglishTaskDtoSequence()
+        public async Task GetAllEnglishTaskAsync_ReturnsCorrectEnglishTaskModelSequence()
         {
             // Arrange
             _dbRepository.GetAllAsync().Returns(Task.FromResult(EnglishTaskData));
             var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userInformationService);
             
             // Act
-            IEnumerable<EnglishTaskDto> englishTaskDtos = await englishTaskService.GetAllEnglishTaskAsync();
+            IEnumerable<EnglishTaskModel> englishTaskModels = await englishTaskService.GetAllEnglishTaskAsync();
             
             // Assert
-            englishTaskDtos.Should().BeEquivalentTo(EnglishTaskDtos);
+            englishTaskModels.Should().BeEquivalentTo(EnglishTaskModels);
         }
 
         [Fact]
@@ -150,7 +150,7 @@ namespace EnglishLearning.TaskService.Tests.Application
         }
         
         [Fact]
-        public async Task GetByIdEnglishTaskInfoAsync_CorrectId_ReturnsCorrectEnglishTaskInfoDto()
+        public async Task GetByIdEnglishTaskInfoAsync_CorrectId_ReturnsCorrectEnglishTaskInfoModel()
         {
             // Arrange
             _dbRepository
@@ -159,10 +159,10 @@ namespace EnglishLearning.TaskService.Tests.Application
             var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userInformationService);       
            
             // Act
-            EnglishTaskInfoDto englishTaskDto = await englishTaskService.GetByIdEnglishTaskInfoAsync("Id");
+            EnglishTaskInfoModel englishTaskModel = await englishTaskService.GetByIdEnglishTaskInfoAsync("Id");
             
             // Arrange
-            englishTaskDto.Should().BeEquivalentTo(defaultEnglishTaskInfoDto);
+            englishTaskModel.Should().BeEquivalentTo(defaultEnglishTaskInfoModel);
         }
         
         [Fact]
@@ -175,24 +175,24 @@ namespace EnglishLearning.TaskService.Tests.Application
             var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userInformationService);       
            
             // Act
-            EnglishTaskInfoDto englishTaskDto = await englishTaskService.GetByIdEnglishTaskInfoAsync("Id");
+            EnglishTaskInfoModel englishTaskModel = await englishTaskService.GetByIdEnglishTaskInfoAsync("Id");
             
             // Arrange
-            englishTaskDto.Should().BeNull();
+            englishTaskModel.Should().BeNull();
         }
         
         [Fact]
-        public async Task GetAllEnglishTaskInfoAsync_ReturnsCorrectEnglishTaskDtoInfoSequence()
+        public async Task GetAllEnglishTaskInfoAsync_ReturnsCorrectEnglishTaskModelInfoSequence()
         {
             // Arrange
             _dbRepository.GetAllAsync().Returns(Task.FromResult(EnglishTaskData));
             var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userInformationService);
             
             // Act
-            IEnumerable<EnglishTaskInfoDto> englishTaskInfoDtos = await englishTaskService.GetAllEnglishTaskInfoAsync();
+            IEnumerable<EnglishTaskInfoModel> englishTaskInfoModels = await englishTaskService.GetAllEnglishTaskInfoAsync();
             
             // Assert
-            englishTaskInfoDtos.Should().BeEquivalentTo(EnglishTaskInfoDtos);
+            englishTaskInfoModels.Should().BeEquivalentTo(EnglishTaskInfoModels);
         }
         
         private IReadOnlyList<EnglishTask> EnglishTaskData = new List<EnglishTask>()
@@ -229,9 +229,9 @@ namespace EnglishLearning.TaskService.Tests.Application
             },
         };
 
-        private IEnumerable<EnglishTaskDto> EnglishTaskDtos = new List<EnglishTaskDto>()
+        private IEnumerable<EnglishTaskModel> EnglishTaskModels = new List<EnglishTaskModel>()
         {
-            new EnglishTaskDto
+            new EnglishTaskModel
             {
                 TaskType = TaskType.CorrectAlternative,
                 GrammarPart = "PRContinuous",
@@ -241,7 +241,7 @@ namespace EnglishLearning.TaskService.Tests.Application
                 Text = "text",
                 Answer = "answer",
             },
-            new EnglishTaskDto
+            new EnglishTaskModel
             {
                 TaskType = TaskType.SimpleBrackets,
                 GrammarPart = "PRSimple",
@@ -251,7 +251,7 @@ namespace EnglishLearning.TaskService.Tests.Application
                 Text = "text",
                 Answer = "answer",
             },
-            new EnglishTaskDto
+            new EnglishTaskModel
             {
                 TaskType = TaskType.WordsFromBox,
                 GrammarPart = "PRContinuous",
@@ -263,21 +263,21 @@ namespace EnglishLearning.TaskService.Tests.Application
             },
         };
         
-        private IEnumerable<EnglishTaskInfoDto> EnglishTaskInfoDtos = new List<EnglishTaskInfoDto>()
+        private IEnumerable<EnglishTaskInfoModel> EnglishTaskInfoModels = new List<EnglishTaskInfoModel>()
         {
-            new EnglishTaskInfoDto
+            new EnglishTaskInfoModel
             {
                 TaskType = TaskType.CorrectAlternative,
                 GrammarPart = "PRContinuous",
                 EnglishLevel = EnglishLevel.Advanced,
             },
-            new EnglishTaskInfoDto
+            new EnglishTaskInfoModel
             {
                 TaskType = TaskType.SimpleBrackets,
                 GrammarPart = "PRSimple",
                 EnglishLevel = EnglishLevel.Elementary,
             },
-            new EnglishTaskInfoDto
+            new EnglishTaskInfoModel
             {
                 TaskType = TaskType.WordsFromBox,
                 GrammarPart = "PRContinuous",
@@ -296,7 +296,7 @@ namespace EnglishLearning.TaskService.Tests.Application
             Answer = "answer",
         };
 
-        private EnglishTaskDto defaultEnglishTaskDto = new EnglishTaskDto
+        private EnglishTaskModel defaultEnglishTaskModel = new EnglishTaskModel
         {
             TaskType = TaskType.CorrectAlternative,
             GrammarPart = "PRContinuous",
@@ -307,7 +307,7 @@ namespace EnglishLearning.TaskService.Tests.Application
             Answer = "answer",
         };
         
-        private EnglishTaskCreateDto defaultEnglishTaskCreateDto = new EnglishTaskCreateDto
+        private EnglishTaskCreateModel defaultEnglishTaskCreateModel = new EnglishTaskCreateModel
         {
             TaskType = TaskType.CorrectAlternative,
             GrammarPart = "PRContinuous",
@@ -317,7 +317,7 @@ namespace EnglishLearning.TaskService.Tests.Application
             Answer = "answer",
         };
 
-        private EnglishTaskInfoDto defaultEnglishTaskInfoDto = new EnglishTaskInfoDto
+        private EnglishTaskInfoModel defaultEnglishTaskInfoModel = new EnglishTaskInfoModel
         {
             TaskType = TaskType.CorrectAlternative,
             GrammarPart = "PRContinuous",

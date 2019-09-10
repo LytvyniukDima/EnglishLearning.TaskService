@@ -4,8 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
-using EnglishLearning.TaskService.Application.DTO;
 using EnglishLearning.TaskService.Application.Infrastructure;
+using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.TaskService.Persistence.Abstract;
 using EnglishLearning.TaskService.Persistence.Entities;
 using EnglishLearning.Utilities.Linq.Extensions;
@@ -28,7 +28,7 @@ namespace EnglishLearning.TaskService.Application.Services
             _userInformationService = userInformationService;
         }
 
-        public async Task<EnglishTaskDto> FindRandomEnglishTaskAsync(BaseFilterModel filterModel)
+        public async Task<EnglishTaskModel> FindRandomEnglishTaskAsync(BaseFilterModel filterModel)
         {
             if (filterModel == null || filterModel.IsEmpty())
             {
@@ -44,12 +44,12 @@ namespace EnglishLearning.TaskService.Application.Services
             }
 
             var englishTask = englishTasks.GetRandomElement();
-            var englishTaskDto = _mapper.Map<EnglishTaskDto>(englishTask);
+            var englishTaskModel = _mapper.Map<EnglishTaskModel>(englishTask);
             
-            return englishTaskDto;
+            return englishTaskModel;
         }
 
-        public async Task<EnglishTaskInfoDto> FindRandomInfoEnglishTaskAsync(BaseFilterModel filterModel)
+        public async Task<EnglishTaskInfoModel> FindRandomInfoEnglishTaskAsync(BaseFilterModel filterModel)
         {
             if (filterModel == null || filterModel.IsEmpty())
             {
@@ -65,27 +65,27 @@ namespace EnglishLearning.TaskService.Application.Services
             }
 
             var englishTask = englishTasks.GetRandomElement();
-            var englishTaskDto = _mapper.Map<EnglishTaskInfoDto>(englishTask);
+            var englishTaskModel = _mapper.Map<EnglishTaskInfoModel>(englishTask);
             
-            return englishTaskDto;
+            return englishTaskModel;
         }
 
-        public async Task<IReadOnlyList<EnglishTaskDto>> GetRandomFromAllEnglishTask(int count)
+        public async Task<IReadOnlyList<EnglishTaskModel>> GetRandomFromAllEnglishTask(int count)
         {   
             IEnumerable<EnglishTask> englishTasks = await _taskRepository.GetAllAsync();
 
             if (!englishTasks.Any())
             {
-                return Array.Empty<EnglishTaskDto>();
+                return Array.Empty<EnglishTaskModel>();
             }
 
             IEnumerable<EnglishTask> randomedEnglishTasks = englishTasks.GetRandomCountOfElements(count);
-            var englishTaskDtos = _mapper.Map<IReadOnlyList<EnglishTaskDto>>(randomedEnglishTasks);
+            var englishTaskModels = _mapper.Map<IReadOnlyList<EnglishTaskModel>>(randomedEnglishTasks);
             
-            return englishTaskDtos;
+            return englishTaskModels;
         }
 
-        public async Task<IReadOnlyList<EnglishTaskDto>> GetRandomWithUserPreferencesEnglishTask(int count)
+        public async Task<IReadOnlyList<EnglishTaskModel>> GetRandomWithUserPreferencesEnglishTask(int count)
         {
             var userInformation = await _userInformationService.GetUserInformationForCurrentUser();
             if (userInformation == null)
@@ -97,7 +97,7 @@ namespace EnglishLearning.TaskService.Application.Services
             return await FindRandomCountEnglishTask(count, filterModel);
         }
 
-        public async Task<IReadOnlyList<EnglishTaskDto>> FindRandomCountEnglishTask(
+        public async Task<IReadOnlyList<EnglishTaskModel>> FindRandomCountEnglishTask(
             int count, 
             BaseFilterModel filterModel)
         {
@@ -111,31 +111,31 @@ namespace EnglishLearning.TaskService.Application.Services
             
             if (!englishTasks.Any())
             {
-                return Array.Empty<EnglishTaskDto>();
+                return Array.Empty<EnglishTaskModel>();
             }
 
             IEnumerable<EnglishTask> randomedEnglishTasks = englishTasks.GetRandomCountOfElements(count);
-            var englishTaskDtos = _mapper.Map<IReadOnlyList<EnglishTaskDto>>(randomedEnglishTasks);
+            var englishTaskModels = _mapper.Map<IReadOnlyList<EnglishTaskModel>>(randomedEnglishTasks);
             
-            return englishTaskDtos;
+            return englishTaskModels;
         }
 
-        public async Task<IReadOnlyList<EnglishTaskInfoDto>> GetRandomInfoFromAllEnglishTask(int count)
+        public async Task<IReadOnlyList<EnglishTaskInfoModel>> GetRandomInfoFromAllEnglishTask(int count)
         {
             IEnumerable<EnglishTask> englishTasks = await _taskRepository.GetAllAsync();
             
             if (!englishTasks.Any())
             {
-                return Array.Empty<EnglishTaskInfoDto>();
+                return Array.Empty<EnglishTaskInfoModel>();
             }
 
             IEnumerable<EnglishTask> randomedEnglishTasks = englishTasks.GetRandomCountOfElements(count);
-            var englishTaskDtos = _mapper.Map<IReadOnlyList<EnglishTaskInfoDto>>(randomedEnglishTasks);
+            var englishTaskModels = _mapper.Map<IReadOnlyList<EnglishTaskInfoModel>>(randomedEnglishTasks);
             
-            return englishTaskDtos;
+            return englishTaskModels;
         }
 
-        public async Task<IReadOnlyList<EnglishTaskInfoDto>> GetRandomInfoWithUserPreferencesEnglishTask(int count)
+        public async Task<IReadOnlyList<EnglishTaskInfoModel>> GetRandomInfoWithUserPreferencesEnglishTask(int count)
         {
             var userInformation = await _userInformationService.GetUserInformationForCurrentUser();
             if (userInformation == null)
@@ -147,7 +147,7 @@ namespace EnglishLearning.TaskService.Application.Services
             return await FindRandomInfoCountEnglishTask(count, filterModel);
         }
 
-        public async Task<IReadOnlyList<EnglishTaskInfoDto>> FindRandomInfoCountEnglishTask(
+        public async Task<IReadOnlyList<EnglishTaskInfoModel>> FindRandomInfoCountEnglishTask(
             int count, 
             BaseFilterModel filterModel)
         {
@@ -161,13 +161,13 @@ namespace EnglishLearning.TaskService.Application.Services
             
             if (!englishTasks.Any())
             {
-                return Array.Empty<EnglishTaskInfoDto>();
+                return Array.Empty<EnglishTaskInfoModel>();
             }
 
             IEnumerable<EnglishTaskInfo> randomedEnglishTasks = englishTasks.GetRandomCountOfElements(count);
-            var englishTaskDtos = _mapper.Map<IReadOnlyList<EnglishTaskInfoDto>>(randomedEnglishTasks);
+            var englishTaskModels = _mapper.Map<IReadOnlyList<EnglishTaskInfoModel>>(randomedEnglishTasks);
             
-            return englishTaskDtos;
+            return englishTaskModels;
         }
     }
 }

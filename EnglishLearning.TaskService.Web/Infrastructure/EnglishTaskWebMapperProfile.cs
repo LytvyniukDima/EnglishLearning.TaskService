@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using EnglishLearning.TaskService.Application.DTO;
+using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.TaskService.Web.ViewModels;
 using EnglishLearning.TaskService.Web.ViewModels.Parameters;
 
@@ -9,10 +9,10 @@ namespace EnglishLearning.TaskService.Web.Infrastructure
     {
         public EnglishTaskWebMapperProfile()
         {
-            CreateMap<EnglishTaskCreateViewModel, EnglishTaskCreateDto>();
+            CreateMap<EnglishTaskCreateViewModel, EnglishTaskCreateModel>();
 
-            CreateMap<EnglishTaskInfoDto, EnglishTaskInfoViewModel>();
-            CreateMap<EnglishTaskDto, EnglishTaskViewModel>();
+            CreateMap<EnglishTaskInfoModel, EnglishTaskInfoViewModel>();
+            CreateMap<EnglishTaskModel, EnglishTaskViewModel>();
 
             CreateMap<BaseFilterParameters, BaseFilterModel>();
         }

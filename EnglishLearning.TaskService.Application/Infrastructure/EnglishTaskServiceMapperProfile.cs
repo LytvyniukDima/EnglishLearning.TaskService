@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using EnglishLearning.TaskService.Application.DTO;
+using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.TaskService.Persistence.Entities;
 
 namespace EnglishLearning.TaskService.Application.Infrastructure
@@ -8,15 +8,15 @@ namespace EnglishLearning.TaskService.Application.Infrastructure
     {
         public EnglishTaskServiceMapperProfile()
         {
-            CreateMap<EnglishTaskCreateDto, EnglishTask>();
+            CreateMap<EnglishTaskCreateModel, EnglishTask>();
             
-            CreateMap<EnglishTaskDto, EnglishTask>();
-            CreateMap<EnglishTask, EnglishTaskDto>();
+            CreateMap<EnglishTaskModel, EnglishTask>();
+            CreateMap<EnglishTask, EnglishTaskModel>();
             
-            CreateMap<EnglishTaskInfo, EnglishTaskInfoDto>();
+            CreateMap<EnglishTaskInfo, EnglishTaskInfoModel>();
 
-            CreateMap<UserInformation, UserInformationDto>();
-            CreateMap<UserInformationDto, UserInformation>();
+            CreateMap<UserInformation, UserInformationModel>();
+            CreateMap<UserInformationModel, UserInformation>();
 
             CreateMap<BaseFilterModel, BaseFilter>();
         }

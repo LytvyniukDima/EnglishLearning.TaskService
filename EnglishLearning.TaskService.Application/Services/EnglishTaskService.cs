@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
-using EnglishLearning.TaskService.Application.DTO;
 using EnglishLearning.TaskService.Application.Infrastructure;
+using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.TaskService.Persistence.Abstract;
 using EnglishLearning.TaskService.Persistence.Entities;
 
@@ -26,22 +26,22 @@ namespace EnglishLearning.TaskService.Application.Services
             _userInformationService = userInformationService;
         }
 
-        public async Task CreateEnglishTaskAsync(EnglishTaskCreateDto englishTaskCreateDto)
+        public async Task CreateEnglishTaskAsync(EnglishTaskCreateModel englishTaskCreateModel)
         {
-            var englishTask = _mapper.Map<EnglishTaskCreateDto, EnglishTask>(englishTaskCreateDto);
+            var englishTask = _mapper.Map<EnglishTaskCreateModel, EnglishTask>(englishTaskCreateModel);
 
             await _taskRepository.AddAsync(englishTask);
         }
 
-        public async Task<bool> UpdateEnglishTaskAsync(string id, EnglishTaskCreateDto englishTaskDto)
+        public async Task<bool> UpdateEnglishTaskAsync(string id, EnglishTaskCreateModel englishTaskModel)
         {
-            var englishTask = _mapper.Map<EnglishTaskCreateDto, EnglishTask>(englishTaskDto);
+            var englishTask = _mapper.Map<EnglishTaskCreateModel, EnglishTask>(englishTaskModel);
             englishTask.Id = id;
             
             return await _taskRepository.UpdateAsync(englishTask);
         }
 
-        public async Task<EnglishTaskDto> GetByIdEnglishTaskAsync(string id)
+        public async Task<EnglishTaskModel> GetByIdEnglishTaskAsync(string id)
         {
             var englishTask = await GetEnglishTask(id);
             
@@ -51,17 +51,17 @@ namespace EnglishLearning.TaskService.Application.Services
                 return null;
             }
 
-            var englishTaskDto = _mapper.Map<EnglishTask, EnglishTaskDto>(englishTask);
+            var englishTaskModel = _mapper.Map<EnglishTask, EnglishTaskModel>(englishTask);
 
-            return englishTaskDto;
+            return englishTaskModel;
         }
 
-        public async Task<IReadOnlyList<EnglishTaskDto>> GetAllEnglishTaskAsync()
+        public async Task<IReadOnlyList<EnglishTaskModel>> GetAllEnglishTaskAsync()
         {
             var englishTasks = await _taskRepository.GetAllAsync();
-            var englishTaskDtos = _mapper.Map<IReadOnlyList<EnglishTaskDto>>(englishTasks);
+            var englishTaskModels = _mapper.Map<IReadOnlyList<EnglishTaskModel>>(englishTasks);
             
-            return englishTaskDtos;
+            return englishTaskModels;
         }
 
         public async Task<bool> DeleteByIdEnglishTaskAsync(string id)
@@ -74,7 +74,7 @@ namespace EnglishLearning.TaskService.Application.Services
             return await _taskRepository.DeleteAllAsync();
         }
 
-        public async Task<EnglishTaskInfoDto> GetByIdEnglishTaskInfoAsync(string id)
+        public async Task<EnglishTaskInfoModel> GetByIdEnglishTaskInfoAsync(string id)
         {
             var englishTask = await GetEnglishTask(id);
             
@@ -84,20 +84,20 @@ namespace EnglishLearning.TaskService.Application.Services
                 return null;
             }
 
-            var englishTaskDto = _mapper.Map<EnglishTask, EnglishTaskInfoDto>(englishTask);
+            var englishTaskModel = _mapper.Map<EnglishTask, EnglishTaskInfoModel>(englishTask);
 
-            return englishTaskDto;
+            return englishTaskModel;
         }
 
-        public async Task<IReadOnlyList<EnglishTaskInfoDto>> GetAllEnglishTaskInfoAsync()
+        public async Task<IReadOnlyList<EnglishTaskInfoModel>> GetAllEnglishTaskInfoAsync()
         {
             var englishTasks = await _taskRepository.GetAllInfoAsync();
-            var englishTasksDto = _mapper.Map<IReadOnlyList<EnglishTaskInfoDto>>(englishTasks);
+            var englishTasksModel = _mapper.Map<IReadOnlyList<EnglishTaskInfoModel>>(englishTasks);
 
-            return englishTasksDto;
+            return englishTasksModel;
         }
 
-        public async Task<IReadOnlyList<EnglishTaskInfoDto>> GetAllEnglishTaskInfoWithUserPreferencesAsync()
+        public async Task<IReadOnlyList<EnglishTaskInfoModel>> GetAllEnglishTaskInfoWithUserPreferencesAsync()
         {
             var userInformation = await _userInformationService.GetUserInformationForCurrentUser();
             if (userInformation == null)
@@ -109,33 +109,33 @@ namespace EnglishLearning.TaskService.Application.Services
             return await FindAllInfoEnglishTaskAsync(filterModel);
         }
 
-        public async Task<IReadOnlyList<EnglishTaskDto>> FindAllEnglishTaskAsync(BaseFilterModel filterModel)
+        public async Task<IReadOnlyList<EnglishTaskModel>> FindAllEnglishTaskAsync(BaseFilterModel filterModel)
         {
             if (filterModel == null || filterModel.IsEmpty())
             {
-                return Array.Empty<EnglishTaskDto>();
+                return Array.Empty<EnglishTaskModel>();
             }
 
             var persistenceFilter = _mapper.Map<BaseFilter>(filterModel);
             var englishTasks = await _taskRepository.FindAllByFilters(persistenceFilter);
-            var englishTaskDtos = _mapper.Map<IReadOnlyList<EnglishTaskDto>>(englishTasks);
+            var englishTaskModels = _mapper.Map<IReadOnlyList<EnglishTaskModel>>(englishTasks);
             
-            return englishTaskDtos;
+            return englishTaskModels;
         }
 
-        public async Task<IReadOnlyList<EnglishTaskInfoDto>> FindAllInfoEnglishTaskAsync(BaseFilterModel filterModel)
+        public async Task<IReadOnlyList<EnglishTaskInfoModel>> FindAllInfoEnglishTaskAsync(BaseFilterModel filterModel)
         {
             if (filterModel == null || filterModel.IsEmpty())
             {
-                return Array.Empty<EnglishTaskInfoDto>();
+                return Array.Empty<EnglishTaskInfoModel>();
             }
 
             var persistenceFilter = _mapper.Map<BaseFilter>(filterModel);
             var englishTasks = await _taskRepository.FindAllInfoByFilters(persistenceFilter);
             
-            var englishTaskDtos = _mapper.Map<IReadOnlyList<EnglishTaskInfoDto>>(englishTasks);
+            var englishTaskModels = _mapper.Map<IReadOnlyList<EnglishTaskInfoModel>>(englishTasks);
             
-            return englishTaskDtos;
+            return englishTaskModels;
         }
 
         private async Task<EnglishTask> GetEnglishTask(string id)

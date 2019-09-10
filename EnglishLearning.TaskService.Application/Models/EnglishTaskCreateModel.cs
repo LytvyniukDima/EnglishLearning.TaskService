@@ -1,8 +1,8 @@
 ﻿using EnglishLearning.TaskService.Common.Models;
 
-namespace EnglishLearning.TaskService.Application.DTO
+namespace EnglishLearning.TaskService.Application.Models
 {
-    public class EnglishTaskCreateDto
+    public class EnglishTaskCreateModel
     {   
         public string GrammarPart { get; set; }
         public TaskType TaskType { get; set; }
