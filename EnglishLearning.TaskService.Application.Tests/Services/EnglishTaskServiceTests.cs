@@ -13,7 +13,7 @@ using FluentAssertions;
 using NSubstitute;
 using Xunit;
 
-namespace EnglishLearning.TaskService.Tests.Application
+namespace EnglishLearning.TaskService.Application.Tests.Services
 {
     public class EnglishTaskServiceTests
     {
@@ -185,7 +185,7 @@ namespace EnglishLearning.TaskService.Tests.Application
         public async Task GetAllEnglishTaskInfoAsync_ReturnsCorrectEnglishTaskModelInfoSequence()
         {
             // Arrange
-            _dbRepository.GetAllAsync().Returns(Task.FromResult(EnglishTaskData));
+            _dbRepository.GetAllInfoAsync().Returns(Task.FromResult(EnglishTaskInfoData));
             var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userInformationService);
             
             // Act
@@ -229,6 +229,28 @@ namespace EnglishLearning.TaskService.Tests.Application
             },
         };
 
+        private IReadOnlyList<EnglishTaskInfo> EnglishTaskInfoData = new List<EnglishTaskInfo>()
+        {
+            new EnglishTaskInfo
+            {
+                TaskType = TaskType.CorrectAlternative,
+                GrammarPart = "PRContinuous",
+                EnglishLevel = EnglishLevel.Advanced,
+            },
+            new EnglishTaskInfo
+            {
+                TaskType = TaskType.SimpleBrackets,
+                GrammarPart = "PRSimple",
+                EnglishLevel = EnglishLevel.Elementary,
+            },
+            new EnglishTaskInfo
+            {
+                TaskType = TaskType.WordsFromBox,
+                GrammarPart = "PRContinuous",
+                EnglishLevel = EnglishLevel.Intermediate,
+            },
+        };
+        
         private IEnumerable<EnglishTaskModel> EnglishTaskModels = new List<EnglishTaskModel>()
         {
             new EnglishTaskModel

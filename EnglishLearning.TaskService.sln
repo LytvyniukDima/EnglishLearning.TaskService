@@ -11,10 +11,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.TaskService
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.TaskService.Persistence", "EnglishLearning.TaskService.Persistence\EnglishLearning.TaskService.Persistence.csproj", "{155D3FDA-76C1-4738-B695-CB5D8062DD31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.TaskService.Tests", "EnglishLearning.TaskService.Tests\EnglishLearning.TaskService.Tests.csproj", "{0E62BB34-A4C6-477B-AE99-DA17DBF7900F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.TaskService.Application.Tests", "EnglishLearning.TaskService.Application.Tests\EnglishLearning.TaskService.Application.Tests.csproj", "{0E62BB34-A4C6-477B-AE99-DA17DBF7900F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.TaskService.Common.Models", "EnglishLearning.TaskService.Common.Models\EnglishLearning.TaskService.Common.Models.csproj", "{C8C4F64D-00D7-4E7D-A946-1BC0856DE177}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.TaskService.EventHandlers", "EnglishLearning.TaskService.EventHandlers\EnglishLearning.TaskService.EventHandlers.csproj", "{7B1B1FB8-7565-448F-943D-7B4035013169}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F9559C6E-9B70-4552-B400-96B192D25BF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -113,5 +116,8 @@ Global
 		{7B1B1FB8-7565-448F-943D-7B4035013169}.Release|x64.Build.0 = Release|Any CPU
 		{7B1B1FB8-7565-448F-943D-7B4035013169}.Release|x86.ActiveCfg = Release|Any CPU
 		{7B1B1FB8-7565-448F-943D-7B4035013169}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0E62BB34-A4C6-477B-AE99-DA17DBF7900F} = {F9559C6E-9B70-4552-B400-96B192D25BF6}
 	EndGlobalSection
 EndGlobal
