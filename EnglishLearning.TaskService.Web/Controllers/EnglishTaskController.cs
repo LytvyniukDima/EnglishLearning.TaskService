@@ -5,8 +5,8 @@ using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
 using EnglishLearning.TaskService.Application.DTO;
 using EnglishLearning.TaskService.Web.Infrastructure;
-using EnglishLearning.TaskService.Web.Models;
-using EnglishLearning.TaskService.Web.Models.Parameters;
+using EnglishLearning.TaskService.Web.ViewModels;
+using EnglishLearning.TaskService.Web.ViewModels.Parameters;
 using EnglishLearning.Utilities.Identity.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,7 +28,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
         public async Task<IActionResult> Get()
         {
             IEnumerable<EnglishTaskDto> englishTaskDtos = await _englishTaskService.GetAllEnglishTaskAsync();
-            var englishTaskModels = _mapper.Map<IEnumerable<EnglishTaskDto>, IEnumerable<EnglishTaskModel>>(englishTaskDtos);
+            var englishTaskModels = _mapper.Map<IEnumerable<EnglishTaskDto>, IEnumerable<EnglishTaskViewModel>>(englishTaskDtos);
 
             return Ok(englishTaskModels);
         }
@@ -42,16 +42,16 @@ namespace EnglishLearning.TaskService.Web.Controllers
                 return NotFound();
             }
 
-            var englishTaskModel = _mapper.Map<EnglishTaskDto, EnglishTaskModel>(englishTask);
+            var englishTaskModel = _mapper.Map<EnglishTaskDto, EnglishTaskViewModel>(englishTask);
             
             return Ok(englishTaskModel);
         }
         
         [EnglishLearningAuthorize(AuthorizeRole.Admin)]
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] EnglishTaskCreateModel englishTaskCreateModel)
+        public async Task<IActionResult> Post([FromBody] EnglishTaskCreateViewModel englishTaskCreateModel)
         {
-            var englishTaskCreateDto = _mapper.Map<EnglishTaskCreateModel, EnglishTaskCreateDto>(englishTaskCreateModel);
+            var englishTaskCreateDto = _mapper.Map<EnglishTaskCreateViewModel, EnglishTaskCreateDto>(englishTaskCreateModel);
             
             await _englishTaskService.CreateEnglishTaskAsync(englishTaskCreateDto);
 
@@ -60,9 +60,9 @@ namespace EnglishLearning.TaskService.Web.Controllers
         
         [EnglishLearningAuthorize(AuthorizeRole.Admin)]
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(string id, [FromBody] EnglishTaskCreateModel englishTaskCreateModel)
+        public async Task<IActionResult> Put(string id, [FromBody] EnglishTaskCreateViewModel englishTaskCreateModel)
         {
-            var englishTaskCreateDto = _mapper.Map<EnglishTaskCreateModel, EnglishTaskCreateDto>(englishTaskCreateModel);
+            var englishTaskCreateDto = _mapper.Map<EnglishTaskCreateViewModel, EnglishTaskCreateDto>(englishTaskCreateModel);
 
             bool result = await _englishTaskService.UpdateEnglishTaskAsync(id, englishTaskCreateDto);
 
@@ -112,7 +112,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
                 return NotFound();
             }
 
-            var englishTaskModels = _mapper.Map<IReadOnlyList<EnglishTaskModel>>(englishTakDtos);
+            var englishTaskModels = _mapper.Map<IReadOnlyList<EnglishTaskViewModel>>(englishTakDtos);
             
             return Ok(englishTaskModels);
         }

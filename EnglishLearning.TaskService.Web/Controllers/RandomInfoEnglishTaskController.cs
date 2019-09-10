@@ -5,8 +5,8 @@ using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
 using EnglishLearning.TaskService.Application.DTO;
 using EnglishLearning.TaskService.Web.Infrastructure;
-using EnglishLearning.TaskService.Web.Models;
-using EnglishLearning.TaskService.Web.Models.Parameters;
+using EnglishLearning.TaskService.Web.ViewModels;
+using EnglishLearning.TaskService.Web.ViewModels.Parameters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EnglishLearning.TaskService.Web.Controllers
@@ -35,7 +35,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
                 return NotFound();
             }
 
-            var englishTaskModel = _mapper.Map<EnglishTaskInfoModel>(englishTakDto);
+            var englishTaskModel = _mapper.Map<EnglishTaskInfoViewModel>(englishTakDto);
             
             return Ok(englishTaskModel);
         }
@@ -58,7 +58,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
                 return NotFound();
             }
 
-            var englishTaskModel = _mapper.Map<IReadOnlyList<EnglishTaskInfoModel>>(englishTaskDtos);
+            var englishTaskModel = _mapper.Map<IReadOnlyList<EnglishTaskInfoViewModel>>(englishTaskDtos);
             
             return Ok(englishTaskModel);
         }
@@ -75,7 +75,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
                 return NotFound();
             }
 
-            var englishTaskModels = _mapper.Map<IReadOnlyList<EnglishTaskInfoModel>>(englishTakDtos);
+            var englishTaskModels = _mapper.Map<IReadOnlyList<EnglishTaskInfoViewModel>>(englishTakDtos);
             
             return Ok(englishTaskModels);
         }

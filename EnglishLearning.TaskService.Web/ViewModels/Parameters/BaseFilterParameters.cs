@@ -1,6 +1,6 @@
 ﻿using EnglishLearning.TaskService.Common.Models;
 
-namespace EnglishLearning.TaskService.Web.Models.Parameters
+namespace EnglishLearning.TaskService.Web.ViewModels.Parameters
 {
     public class BaseFilterParameters
     {
