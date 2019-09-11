@@ -11,5 +11,6 @@ namespace EnglishLearning.TaskService.Persistence.Abstract
         Task<Dictionary<EnglishLevel, int>> GetEnglishLevelFilterOptions();
         Task<Dictionary<TaskType, int>> GetTaskTypeFilterOptions();
         Task<EnglishTaskFullFilter> GetFullFilter();
+        Task<IReadOnlyList<PerEnglishLevelTaskInformation>> GetPerEnglishLevelTaskInformation();
     }
 }

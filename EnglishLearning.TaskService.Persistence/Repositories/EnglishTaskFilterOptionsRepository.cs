@@ -75,5 +75,27 @@ namespace EnglishLearning.TaskService.Persistence.Repositories
                 TaskTypeFilterOptions = await GetTaskTypeFilterOptions(),
             };
         }
+
+        public async Task<IReadOnlyList<PerEnglishLevelTaskInformation>> GetPerEnglishLevelTaskInformation()
+        {
+            var aggregateResult = await _collection
+                .Aggregate()
+                .Group(x => x.EnglishLevel, group => new
+                {
+                    Key = group.Key,
+                    Value = group.GroupBy(g => g.GrammarPart),
+                })
+                .ToListAsync();
+
+            var taskInformations = aggregateResult
+                .Select(x => new PerEnglishLevelTaskInformation()
+                {
+                    EnglishLevel = x.Key,
+                    GrammarPartCount = x.Value.ToDictionary(g => g.Key, g => g.Count()),
+                })
+                .ToList();
+
+            return taskInformations;
+        }
     }
 }
