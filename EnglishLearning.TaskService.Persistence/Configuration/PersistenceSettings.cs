@@ -30,6 +30,7 @@ namespace EnglishLearning.TaskService.Persistence.Configuration
             
             services.AddTransient<IEnglishTaskRepository, EnglishTaskMongoDbRepository>();
             services.AddTransient<IUserInformationRepository, UserInformationMongoRepository>();
+            services.AddTransient<IEnglishTaskFilterOptionsRepository, EnglishTaskFilterOptionsRepository>();
             
             return services;
         }
