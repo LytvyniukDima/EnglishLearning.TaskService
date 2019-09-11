@@ -2,19 +2,19 @@
 using System.Linq;
 using EnglishLearning.TaskService.Common.Models;
 
-namespace EnglishLearning.TaskService.Application.Models
+namespace EnglishLearning.TaskService.Application.Models.Filtering
 {
     public class StoredTasksInformationAggregate
     {
         public StoredTasksInformationAggregate(
-            Dictionary<EnglishLevel, PerEnglishLevelGrammarPartInfoModel> tasksInformationModels,
+            Dictionary<EnglishLevel, PerEnglishLevelTaskInformationModel> tasksInformationModels,
             IReadOnlyList<string> existedGrammarParts)
         {
             TasksInformationModels = tasksInformationModels;
             ExistedGrammarParts = existedGrammarParts;
         }
         
-        public IReadOnlyDictionary<EnglishLevel, PerEnglishLevelGrammarPartInfoModel> TasksInformationModels { get; }
+        public IReadOnlyDictionary<EnglishLevel, PerEnglishLevelTaskInformationModel> TasksInformationModels { get; }
         public IReadOnlyList<string> ExistedGrammarParts { get; }
         
         public BaseFilterModel GetFilterModelForUser(int neededCount, UserInformationModel userInformation)
@@ -51,7 +51,7 @@ namespace EnglishLearning.TaskService.Application.Models
         private BaseFilterModel GetFilterForUserEnglishLevel(
             int neededCount,
             UserInformationModel userInformation,
-            PerEnglishLevelGrammarPartInfoModel userLevelInfo)
+            PerEnglishLevelTaskInformationModel userLevelInfo)
         {
             var totalCountOfUserLevelTasks = userLevelInfo.GrammarPartCount.Values.Sum();
             if (totalCountOfUserLevelTasks < neededCount)
