@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using EnglishLearning.TaskService.Application.Models;
+using EnglishLearning.TaskService.Application.Models.Filtering;
 using EnglishLearning.TaskService.Persistence.Entities;
 
 namespace EnglishLearning.TaskService.Application.Infrastructure
@@ -19,6 +20,8 @@ namespace EnglishLearning.TaskService.Application.Infrastructure
             CreateMap<UserInformationModel, UserInformation>();
 
             CreateMap<BaseFilterModel, BaseFilter>();
+
+            CreateMap<EnglishTaskFullFilter, EnglishTaskFullFilterModel>();
         }
     }
 }
