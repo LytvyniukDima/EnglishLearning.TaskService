@@ -2,12 +2,12 @@
 
 namespace EnglishLearning.TaskService.Application.Infrastructure
 {
-    public class EnglishTaskServiceMapper
+    public class ApplicationMapper
     {
-        public EnglishTaskServiceMapper()
+        public ApplicationMapper()
         {
             Mapper = new MapperConfiguration(x => x
-                .AddProfile(new EnglishTaskServiceMapperProfile()))
+                .AddProfile(new ApplicationMapperProfile()))
              .CreateMapper();
         }
 

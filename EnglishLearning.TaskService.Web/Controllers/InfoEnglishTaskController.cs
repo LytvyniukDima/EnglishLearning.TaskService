@@ -17,7 +17,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
         private readonly IEnglishTaskService _englishTaskService;
         private readonly IMapper _mapper;
 
-        public InfoEnglishTaskController(IEnglishTaskService englishTaskService, EnglishTaskWebMapper englishTaskWebMapper)
+        public InfoEnglishTaskController(IEnglishTaskService englishTaskService, WebMapper englishTaskWebMapper)
         {
             _englishTaskService = englishTaskService;
             _mapper = englishTaskWebMapper.Mapper;

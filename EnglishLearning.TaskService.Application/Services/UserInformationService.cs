@@ -18,7 +18,7 @@ namespace EnglishLearning.TaskService.Application.Services
         
         public UserInformationService(
             IUserInformationRepository repository, 
-            EnglishTaskServiceMapper serviceMapper,
+            ApplicationMapper serviceMapper,
             IJwtInfoProvider jwtInfoProvider)
         {
             _repository = repository;

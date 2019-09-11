@@ -5,9 +5,9 @@ using EnglishLearning.TaskService.Web.ViewModels.Parameters;
 
 namespace EnglishLearning.TaskService.Web.Infrastructure
 {
-    public class EnglishTaskWebMapperProfile : Profile
+    public class WebMapperProfile : Profile
     {
-        public EnglishTaskWebMapperProfile()
+        public WebMapperProfile()
         {
             CreateMap<EnglishTaskCreateViewModel, EnglishTaskCreateModel>();
 

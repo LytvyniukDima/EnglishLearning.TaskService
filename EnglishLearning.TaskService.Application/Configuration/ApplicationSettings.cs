@@ -9,11 +9,12 @@ namespace EnglishLearning.TaskService.Application.Configuration
     {
         public static IServiceCollection ApplicationConfiguration(this IServiceCollection services)
         {
-            services.AddSingleton(new EnglishTaskServiceMapper());
+            services.AddSingleton(new ApplicationMapper());
 
             services.AddTransient<IEnglishTaskService, EnglishTaskService>();
             services.AddTransient<IRandomEnglishTaskService, RandomEnglishTaskService>();
             services.AddTransient<IUserInformationService, UserInformationService>();
+            services.AddTransient<IEnglishTaskFilterOptionsService, EnglishTaskFilterOptionsService>();
             
             return services;
         }

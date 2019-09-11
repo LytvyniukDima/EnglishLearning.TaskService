@@ -18,11 +18,11 @@ namespace EnglishLearning.TaskService.Application.Services
         
         public EnglishTaskService(
             IEnglishTaskRepository taskRepository, 
-            EnglishTaskServiceMapper englishTaskServiceMappermapper,
+            ApplicationMapper applicationMapper,
             IUserInformationService userInformationService)
         {
             _taskRepository = taskRepository;
-            _mapper = englishTaskServiceMappermapper.Mapper;
+            _mapper = applicationMapper.Mapper;
             _userInformationService = userInformationService;
         }
 

@@ -2,12 +2,12 @@
 
 namespace EnglishLearning.TaskService.Web.Infrastructure
 {
-    public class EnglishTaskWebMapper
+    public class WebMapper
     {
-        public EnglishTaskWebMapper()
+        public WebMapper()
         {
             Mapper = new MapperConfiguration(x => 
-                x.AddProfile(new EnglishTaskWebMapperProfile()))
+                x.AddProfile(new WebMapperProfile()))
             .CreateMapper();
         }
         

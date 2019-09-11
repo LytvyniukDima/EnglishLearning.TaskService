@@ -5,9 +5,9 @@ using EnglishLearning.TaskService.Persistence.Entities;
 
 namespace EnglishLearning.TaskService.Application.Infrastructure
 {
-    public class EnglishTaskServiceMapperProfile : Profile
+    public class ApplicationMapperProfile : Profile
     {
-        public EnglishTaskServiceMapperProfile()
+        public ApplicationMapperProfile()
         {
             CreateMap<EnglishTaskCreateModel, EnglishTask>();
             

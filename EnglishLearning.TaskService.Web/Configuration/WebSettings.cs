@@ -7,7 +7,7 @@ namespace EnglishLearning.TaskService.Web.Configuration
     {
         public static IServiceCollection WebConfiguration(this IServiceCollection services)
         {
-            services.AddSingleton(new EnglishTaskWebMapper());
+            services.AddSingleton(new WebMapper());
             
             return services;
         }

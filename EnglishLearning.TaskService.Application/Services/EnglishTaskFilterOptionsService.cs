@@ -15,7 +15,7 @@ namespace EnglishLearning.TaskService.Application.Services
         private readonly IEnglishTaskFilterOptionsRepository _repository;
         private readonly IMapper _mapper;
         
-        public EnglishTaskFilterOptionsService(IEnglishTaskFilterOptionsRepository repository, EnglishTaskServiceMapper serviceMapper)
+        public EnglishTaskFilterOptionsService(IEnglishTaskFilterOptionsRepository repository, ApplicationMapper serviceMapper)
         {
             _repository = repository;
             _mapper = serviceMapper.Mapper;

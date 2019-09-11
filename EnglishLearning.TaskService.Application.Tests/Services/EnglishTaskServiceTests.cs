@@ -20,7 +20,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
         private readonly IEnglishTaskRepository _dbRepository = Substitute.For<IEnglishTaskRepository>();
         private readonly IUserInformationService _userInformationService = Substitute.For<IUserInformationService>();
         
-        private readonly EnglishTaskServiceMapper _mapper = new EnglishTaskServiceMapper();
+        private readonly ApplicationMapper _mapper = new ApplicationMapper();
         
         [Fact]
         public void CreateEnglishTaskAsync_SuccessResult()

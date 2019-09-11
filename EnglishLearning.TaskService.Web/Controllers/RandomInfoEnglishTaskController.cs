@@ -19,7 +19,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
 
         public RandomInfoEnglishTaskController(
             IRandomEnglishTaskService randomEnglishTaskService,
-            EnglishTaskWebMapper englishTaskWebMapper)
+            WebMapper englishTaskWebMapper)
         {
             _randomEnglishTaskService = randomEnglishTaskService;
             _mapper = englishTaskWebMapper.Mapper;

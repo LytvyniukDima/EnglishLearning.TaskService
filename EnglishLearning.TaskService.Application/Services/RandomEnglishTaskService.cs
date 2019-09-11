@@ -20,11 +20,11 @@ namespace EnglishLearning.TaskService.Application.Services
         
         public RandomEnglishTaskService(
             IEnglishTaskRepository taskRepository,
-            EnglishTaskServiceMapper englishTaskServiceMapper,
+            ApplicationMapper applicationMapper,
             IUserInformationService userInformationService)
         {
             _taskRepository = taskRepository;
-            _mapper = englishTaskServiceMapper.Mapper;
+            _mapper = applicationMapper.Mapper;
             _userInformationService = userInformationService;
         }
 
