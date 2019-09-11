@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using EnglishLearning.TaskService.Common.Models;
 using EnglishLearning.TaskService.Persistence.Entities;
 
@@ -6,9 +7,9 @@ namespace EnglishLearning.TaskService.Persistence.Abstract
 {
     public interface IEnglishTaskFilterOptionsRepository
     {
-        Dictionary<string, int> GetGrammarPartFilterOptions();
-        Dictionary<EnglishLevel, int> GetEnglishLevelFilterOptions();
-        Dictionary<TaskType, int> GetTaskTypeFilterOptions();
-        EnglishTaskFullFilter GetFullFilter();
+        Task<Dictionary<string, int>> GetGrammarPartFilterOptions();
+        Task<Dictionary<EnglishLevel, int>> GetEnglishLevelFilterOptions();
+        Task<Dictionary<TaskType, int>> GetTaskTypeFilterOptions();
+        Task<EnglishTaskFullFilter> GetFullFilter();
     }
 }
