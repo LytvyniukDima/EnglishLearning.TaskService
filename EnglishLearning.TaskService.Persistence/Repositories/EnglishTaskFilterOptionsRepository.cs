@@ -83,7 +83,7 @@ namespace EnglishLearning.TaskService.Persistence.Repositories
                 .Group(x => x.EnglishLevel, group => new
                 {
                     Key = group.Key,
-                    Value = group.GroupBy(g => g.GrammarPart),
+                    Value = group.Select(e => e.GrammarPart),
                 })
                 .ToListAsync();
 
@@ -91,7 +91,7 @@ namespace EnglishLearning.TaskService.Persistence.Repositories
                 .Select(x => new PerEnglishLevelTaskInformation()
                 {
                     EnglishLevel = x.Key,
-                    GrammarPartCount = x.Value.ToDictionary(g => g.Key, g => g.Count()),
+                    GrammarPartCount = x.Value.GroupBy(y => y).ToDictionary(g => g.Key, g => g.Count()),
                 })
                 .ToList();
 

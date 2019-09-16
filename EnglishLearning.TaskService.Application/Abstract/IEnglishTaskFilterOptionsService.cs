@@ -11,5 +11,9 @@ namespace EnglishLearning.TaskService.Application.Abstract
         Task<Dictionary<EnglishLevel, int>> GetEnglishLevelFilterOptions();
         Task<Dictionary<TaskType, int>> GetTaskTypeFilterOptions();
         Task<EnglishTaskFullFilterModel> GetFullFilter();
+        
+        Task<IReadOnlyList<PerEnglishLevelTaskInformationModel>> GetTaskInformationModels();
+
+        Task FillFiltersCache();
     }
 }
