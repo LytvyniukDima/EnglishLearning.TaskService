@@ -1,0 +1,46 @@
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
+
+trigger:
+- master
+
+stages:
+  - stage: Build
+    jobs:
+      - job: BuildAndAnalyze
+        displayName: Build And Analyze
+        pool:
+          vmImage: 'windows-latest'
+        variables:
+          buildConfiguration: 'Release'
+        steps:
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'restore'
+              feedsToUse: 'select'
+              vstsFeed: '57390d4c-b427-4705-a39a-925bdee8f9bf'
+          - task: SonarQubePrepare@4
+            inputs:
+              SonarQube: 'sonarqube'
+              scannerMode: 'MSBuild'
+              projectKey: 'EnglishLearning.TaskService'
+              projectName: 'EnglishLearning.TaskService'
+              extraProperties: |
+                sonar.sources="$(System.DefaultWorkingDirectory)/_LytvyniukDima_EnglishLearning.TaskService/."
+                sonar.projectbasedir="$(System.DefaultWorkingDirectory)/_LytvyniukDima_EnglishLearning.TaskService/."
+                sonar.cs.opencover.reportsPaths="**/coverage.opencover.xml"
+          - task: MSBuild@1
+            inputs:
+              solution: '**/*.sln'
+          - task: DotNetCoreCLI@2
+            inputs:
+              command: 'test'
+              projects: '**/*Tests/*.csproj'
+              arguments: '/p:CollectCoverage=true /p:CoverletOutputFormat=opencover'
+
+          - task: SonarQubeAnalyze@4
+          - task: SonarQubePublish@4
+            inputs:
+              pollingTimeoutSec: '300'
