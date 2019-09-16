@@ -2,7 +2,7 @@
 using EnglishLearning.TaskService.Common.Models;
 using EnglishLearning.Utilities.Linq.Extensions;
 
-namespace EnglishLearning.TaskService.Application.Models
+namespace EnglishLearning.TaskService.Application.Models.Filtering
 {
     public class BaseFilterModel
     {

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EnglishLearning.TaskService.Application.Models;
+using EnglishLearning.TaskService.Application.Models.Filtering;
 
 namespace EnglishLearning.TaskService.Application.Abstract
 {

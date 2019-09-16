@@ -15,6 +15,8 @@ namespace EnglishLearning.TaskService.Application.Configuration
             services.AddTransient<IRandomEnglishTaskService, RandomEnglishTaskService>();
             services.AddTransient<IUserInformationService, UserInformationService>();
             services.AddTransient<IEnglishTaskFilterOptionsService, EnglishTaskFilterOptionsService>();
+            services.AddTransient<IStoredTaskInformationAggregateService, StoredTaskInformationAggregateService>();
+            services.AddTransient<IUserFilterService, UserFilterService>();
             
             return services;
         }

@@ -18,7 +18,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
     public class EnglishTaskServiceTests
     {
         private readonly IEnglishTaskRepository _dbRepository = Substitute.For<IEnglishTaskRepository>();
-        private readonly IUserInformationService _userInformationService = Substitute.For<IUserInformationService>();
+        private readonly IUserFilterService _userFilterService = Substitute.For<IUserFilterService>();
         
         private readonly ApplicationMapper _mapper = new ApplicationMapper();
         
@@ -26,7 +26,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
         public void CreateEnglishTaskAsync_SuccessResult()
         {
             // Arrange
-            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userInformationService);
+            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userFilterService);
 
             // Act
             Func<Task> act = async () =>
@@ -45,7 +45,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
             _dbRepository
                 .UpdateAsync(Arg.Any<EnglishTask>())
                 .Returns(Task.FromResult(true));
-            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userInformationService);
+            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userFilterService);
             EnglishTaskCreateModel englishTaskModel = defaultEnglishTaskCreateModel;
             
             // Act
@@ -62,7 +62,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
             _dbRepository
                 .FindAsync(Arg.Any<Expression<Func<EnglishTask, bool>>>())
                 .Returns(Task.FromResult(defaulEnglishTask));
-            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userInformationService);       
+            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userFilterService);       
            
             // Act
             EnglishTaskModel englishTaskModel = await englishTaskService.GetByIdEnglishTaskAsync("Id");
@@ -78,7 +78,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
             _dbRepository
                 .FindAsync(Arg.Any<Expression<Func<EnglishTask, bool>>>())
                 .Returns(Task.FromResult(default(EnglishTask)));
-            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userInformationService);       
+            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userFilterService);       
            
             // Act
             EnglishTaskModel englishTaskModel = await englishTaskService.GetByIdEnglishTaskAsync("Id");
@@ -92,7 +92,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
         {
             // Arrange
             _dbRepository.GetAllAsync().Returns(Task.FromResult(EnglishTaskData));
-            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userInformationService);
+            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userFilterService);
             
             // Act
             IEnumerable<EnglishTaskModel> englishTaskModels = await englishTaskService.GetAllEnglishTaskAsync();
@@ -108,7 +108,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
             _dbRepository
                 .DeleteAsync(Arg.Any<Expression<Func<EnglishTask, bool>>>())
                 .Returns(Task.FromResult(true));
-            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userInformationService);
+            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userFilterService);
             
             // Act
             bool result = await englishTaskService.DeleteByIdEnglishTaskAsync("myId");
@@ -124,7 +124,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
             _dbRepository
                 .DeleteAsync(Arg.Any<Expression<Func<EnglishTask, bool>>>())
                 .Returns(Task.FromResult(false));
-            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userInformationService);
+            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userFilterService);
             
             // Act
             bool result = await englishTaskService.DeleteByIdEnglishTaskAsync("myId");
@@ -140,7 +140,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
             _dbRepository
                 .DeleteAllAsync()
                 .Returns(Task.FromResult(true));
-            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userInformationService);
+            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userFilterService);
             
             // Act
             bool result = await englishTaskService.DeleteAllEnglishTaskAsync();
@@ -156,7 +156,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
             _dbRepository
                 .FindAsync(Arg.Any<Expression<Func<EnglishTask, bool>>>())
                 .Returns(Task.FromResult(defaulEnglishTask));
-            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userInformationService);       
+            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userFilterService);       
            
             // Act
             EnglishTaskInfoModel englishTaskModel = await englishTaskService.GetByIdEnglishTaskInfoAsync("Id");
@@ -172,7 +172,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
             _dbRepository
                 .FindAsync(Arg.Any<Expression<Func<EnglishTask, bool>>>())
                 .Returns(Task.FromResult(default(EnglishTask)));
-            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userInformationService);       
+            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userFilterService);       
            
             // Act
             EnglishTaskInfoModel englishTaskModel = await englishTaskService.GetByIdEnglishTaskInfoAsync("Id");
@@ -186,7 +186,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
         {
             // Arrange
             _dbRepository.GetAllInfoAsync().Returns(Task.FromResult(EnglishTaskInfoData));
-            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userInformationService);
+            var englishTaskService = new EnglishTaskService(_dbRepository, _mapper, _userFilterService);
             
             // Act
             IEnumerable<EnglishTaskInfoModel> englishTaskInfoModels = await englishTaskService.GetAllEnglishTaskInfoAsync();

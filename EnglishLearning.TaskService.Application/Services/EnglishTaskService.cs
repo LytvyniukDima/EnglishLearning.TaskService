@@ -5,6 +5,7 @@ using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
 using EnglishLearning.TaskService.Application.Infrastructure;
 using EnglishLearning.TaskService.Application.Models;
+using EnglishLearning.TaskService.Application.Models.Filtering;
 using EnglishLearning.TaskService.Persistence.Abstract;
 using EnglishLearning.TaskService.Persistence.Entities;
 
@@ -14,16 +15,15 @@ namespace EnglishLearning.TaskService.Application.Services
     {
         private readonly IEnglishTaskRepository _taskRepository;
         private readonly IMapper _mapper;
-        private readonly IUserInformationService _userInformationService;
-        
+        private readonly IUserFilterService _userFilterService;
         public EnglishTaskService(
             IEnglishTaskRepository taskRepository, 
             ApplicationMapper applicationMapper,
-            IUserInformationService userInformationService)
+            IUserFilterService userFilterService)
         {
             _taskRepository = taskRepository;
             _mapper = applicationMapper.Mapper;
-            _userInformationService = userInformationService;
+            _userFilterService = userFilterService;
         }
 
         public async Task CreateEnglishTaskAsync(EnglishTaskCreateModel englishTaskCreateModel)
@@ -99,13 +99,8 @@ namespace EnglishLearning.TaskService.Application.Services
 
         public async Task<IReadOnlyList<EnglishTaskInfoModel>> GetAllEnglishTaskInfoWithUserPreferencesAsync()
         {
-            var userInformation = await _userInformationService.GetUserInformationForCurrentUser();
-            if (userInformation == null)
-            {
-                return await GetAllEnglishTaskInfoAsync();
-            }
-
-            var filterModel = BaseFilterModel.CreateFromUserInformation(userInformation);
+            var filterModel = await _userFilterService.GetFilterModelForCurrentUser(CommonConstants.DefaultTaskOnPageCount);
+            
             return await FindAllInfoEnglishTaskAsync(filterModel);
         }
 
