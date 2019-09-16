@@ -62,9 +62,9 @@ namespace EnglishLearning.TaskService.Application.Models.Filtering
             var countWithUsersGrammarParts = 0;
             foreach (var grammarPart in userInformation.FavouriteGrammarParts)
             {
-                if (userLevelInfo.GrammarPartCount.TryGetValue(grammarPart, out neededCount))
+                if (userLevelInfo.GrammarPartCount.TryGetValue(grammarPart, out int grammarPartCount))
                 {
-                    countWithUsersGrammarParts += neededCount;
+                    countWithUsersGrammarParts += grammarPartCount;
                 }
             }
 
