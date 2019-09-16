@@ -29,14 +29,14 @@ namespace EnglishLearning.TaskService.Application.Services
             _userFilterService = userFilterService;
         }
 
-        public async Task<EnglishTaskModel> FindRandomEnglishTaskAsync(BaseFilterModel filterModel)
+        public async Task<EnglishTaskModel> FindRandomEnglishTaskAsync(BaseFilterModel baseFilterModel)
         {
-            if (filterModel == null || filterModel.IsEmpty())
+            if (baseFilterModel == null || baseFilterModel.IsEmpty())
             {
                 return null;
             }
 
-            var persistenceFilter = _mapper.Map<BaseFilter>(filterModel);
+            var persistenceFilter = _mapper.Map<BaseFilter>(baseFilterModel);
             IReadOnlyList<EnglishTask> englishTasks = await _taskRepository.FindAllByFilters(persistenceFilter);
 
             if (!englishTasks.Any())
@@ -50,14 +50,14 @@ namespace EnglishLearning.TaskService.Application.Services
             return englishTaskModel;
         }
 
-        public async Task<EnglishTaskInfoModel> FindRandomInfoEnglishTaskAsync(BaseFilterModel filterModel)
+        public async Task<EnglishTaskInfoModel> FindRandomInfoEnglishTaskAsync(BaseFilterModel baseFilterModel)
         {
-            if (filterModel == null || filterModel.IsEmpty())
+            if (baseFilterModel == null || baseFilterModel.IsEmpty())
             {
                 return null;
             }
 
-            var persistenceFilter = _mapper.Map<BaseFilter>(filterModel);
+            var persistenceFilter = _mapper.Map<BaseFilter>(baseFilterModel);
             IReadOnlyList<EnglishTaskInfo> englishTasks = await _taskRepository.FindAllInfoByFilters(persistenceFilter);
             
             if (!englishTasks.Any())
@@ -93,16 +93,14 @@ namespace EnglishLearning.TaskService.Application.Services
             return await FindRandomCountEnglishTask(count, filterModel);
         }
 
-        public async Task<IReadOnlyList<EnglishTaskModel>> FindRandomCountEnglishTask(
-            int count, 
-            BaseFilterModel filterModel)
+        public async Task<IReadOnlyList<EnglishTaskModel>> FindRandomCountEnglishTask(int count, BaseFilterModel baseFilterModel)
         {
-            if (filterModel == null || filterModel.IsEmpty())
+            if (baseFilterModel == null || baseFilterModel.IsEmpty())
             {
                 return null;
             }
 
-            var persistenceFilter = _mapper.Map<BaseFilter>(filterModel);
+            var persistenceFilter = _mapper.Map<BaseFilter>(baseFilterModel);
             IReadOnlyList<EnglishTask> englishTasks = await _taskRepository.FindAllByFilters(persistenceFilter);
             
             if (!englishTasks.Any())
@@ -138,16 +136,14 @@ namespace EnglishLearning.TaskService.Application.Services
             return await FindRandomInfoCountEnglishTask(count, filterModel);
         }
 
-        public async Task<IReadOnlyList<EnglishTaskInfoModel>> FindRandomInfoCountEnglishTask(
-            int count, 
-            BaseFilterModel filterModel)
+        public async Task<IReadOnlyList<EnglishTaskInfoModel>> FindRandomInfoCountEnglishTask(int count, BaseFilterModel baseFilterModel)
         {
-            if (filterModel == null || filterModel.IsEmpty())
+            if (baseFilterModel == null || baseFilterModel.IsEmpty())
             {
                 return null;
             }
 
-            var persistenceFilter = _mapper.Map<BaseFilter>(filterModel);
+            var persistenceFilter = _mapper.Map<BaseFilter>(baseFilterModel);
             IReadOnlyList<EnglishTaskInfo> englishTasks = await _taskRepository.FindAllInfoByFilters(persistenceFilter);
             
             if (!englishTasks.Any())

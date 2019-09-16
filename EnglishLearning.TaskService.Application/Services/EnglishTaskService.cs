@@ -44,8 +44,6 @@ namespace EnglishLearning.TaskService.Application.Services
         public async Task<EnglishTaskModel> GetByIdEnglishTaskAsync(string id)
         {
             var englishTask = await GetEnglishTask(id);
-            
-            // TODO: Throw NotFoundException
             if (englishTask == null)
             {
                 return null;
@@ -77,8 +75,6 @@ namespace EnglishLearning.TaskService.Application.Services
         public async Task<EnglishTaskInfoModel> GetByIdEnglishTaskInfoAsync(string id)
         {
             var englishTask = await GetEnglishTask(id);
-            
-            // TODO: Throw NotFoundException
             if (englishTask == null)
             {
                 return null;
@@ -104,28 +100,28 @@ namespace EnglishLearning.TaskService.Application.Services
             return await FindAllInfoEnglishTaskAsync(filterModel);
         }
 
-        public async Task<IReadOnlyList<EnglishTaskModel>> FindAllEnglishTaskAsync(BaseFilterModel filterModel)
+        public async Task<IReadOnlyList<EnglishTaskModel>> FindAllEnglishTaskAsync(BaseFilterModel baseFilterModel)
         {
-            if (filterModel == null || filterModel.IsEmpty())
+            if (baseFilterModel == null || baseFilterModel.IsEmpty())
             {
                 return Array.Empty<EnglishTaskModel>();
             }
 
-            var persistenceFilter = _mapper.Map<BaseFilter>(filterModel);
+            var persistenceFilter = _mapper.Map<BaseFilter>(baseFilterModel);
             var englishTasks = await _taskRepository.FindAllByFilters(persistenceFilter);
             var englishTaskModels = _mapper.Map<IReadOnlyList<EnglishTaskModel>>(englishTasks);
             
             return englishTaskModels;
         }
 
-        public async Task<IReadOnlyList<EnglishTaskInfoModel>> FindAllInfoEnglishTaskAsync(BaseFilterModel filterModel)
+        public async Task<IReadOnlyList<EnglishTaskInfoModel>> FindAllInfoEnglishTaskAsync(BaseFilterModel baseFilterModel)
         {
-            if (filterModel == null || filterModel.IsEmpty())
+            if (baseFilterModel == null || baseFilterModel.IsEmpty())
             {
                 return Array.Empty<EnglishTaskInfoModel>();
             }
 
-            var persistenceFilter = _mapper.Map<BaseFilter>(filterModel);
+            var persistenceFilter = _mapper.Map<BaseFilter>(baseFilterModel);
             var englishTasks = await _taskRepository.FindAllInfoByFilters(persistenceFilter);
             
             var englishTaskModels = _mapper.Map<IReadOnlyList<EnglishTaskInfoModel>>(englishTasks);

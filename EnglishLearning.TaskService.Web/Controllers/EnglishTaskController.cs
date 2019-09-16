@@ -66,8 +66,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
             var englishTaskCreateModel = _mapper.Map<EnglishTaskCreateModel>(englishTaskCreateViewModel);
 
             bool result = await _englishTaskService.UpdateEnglishTaskAsync(id, englishTaskCreateModel);
-
-            if (result == false)
+            if (!result)
             {
                 return BadRequest();
             }
@@ -80,8 +79,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
         public async Task<IActionResult> Delete(string id)
         {
             bool result = await _englishTaskService.DeleteByIdEnglishTaskAsync(id);
-
-            if (result == false)
+            if (!result)
             {
                 return BadRequest();
             }
@@ -94,8 +92,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
         public async Task<IActionResult> Delete()
         {
             bool result = await _englishTaskService.DeleteAllEnglishTaskAsync();
-
-            if (result == false)
+            if (!result)
             {
                 return BadRequest();
             }
