@@ -1,11 +1,11 @@
 ﻿using System;
 using EnglishLearning.TaskService.Application.Configuration;
+using EnglishLearning.TaskService.BackgroundJobs.Jobs;
 using Hangfire;
 using Hangfire.SqlServer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Serilog;
 
 namespace EnglishLearning.TaskService.BackgroundJobs.Configuration
 {
@@ -16,8 +16,12 @@ namespace EnglishLearning.TaskService.BackgroundJobs.Configuration
             var hangfireSettings = new HangfireSettings()
             {
                 ConnectionString = configuration.GetValue<string>("Hangfire:ConnectionString"),
+                Interval = configuration.GetValue<string>("Hangfire:Interval"),
             };
             services.AddSingleton(hangfireSettings);
+
+            services.AddScoped<IBackgroundJob, FillFilterCacheBackgroundJob>();
+            services.AddScoped<FillFilterCacheBackgroundJob>();
             
             services.AddHangfire(conf => conf
                 .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
@@ -39,10 +43,23 @@ namespace EnglishLearning.TaskService.BackgroundJobs.Configuration
             return services;
         }
 
-        public static void UseBackgroundJobsServices(this IApplicationBuilder app, IBackgroundJobClient backgroundJobs)
+        public static void UseBackgroundJobsServices(this IApplicationBuilder app, IServiceProvider serviceProvider)
         {
             app.UseHangfireDashboard("/api/tasks/hangfire");
-            backgroundJobs.Enqueue(() => Log.Error("In hangfire"));
+
+            var hangfireSettings = serviceProvider.GetRequiredService<HangfireSettings>();
+            AddRecurringJobs(hangfireSettings);
+        }
+
+        private static void AddRecurringJobs(HangfireSettings hangfireSettings)
+        {
+            RecurringJob.RemoveIfExists(nameof(FillFilterCacheBackgroundJob));
+            RecurringJob.AddOrUpdate<FillFilterCacheBackgroundJob>(
+                nameof(FillFilterCacheBackgroundJob), 
+                job => job.Execute(), 
+                hangfireSettings.Interval);
+            
+            RecurringJob.Trigger(nameof(FillFilterCacheBackgroundJob));
         }
     }
 }
