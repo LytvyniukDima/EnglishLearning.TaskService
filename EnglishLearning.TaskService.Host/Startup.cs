@@ -1,10 +1,12 @@
 ﻿using EnglishLearning.TaskService.Application.Configuration;
+using EnglishLearning.TaskService.BackgroundJobs.Configuration;
 using EnglishLearning.TaskService.Host.Infrastructure;
 using EnglishLearning.TaskService.Persistence.Configuration;
 using EnglishLearning.TaskService.Web.Configuration;
 using EnglishLearning.Utilities.General.Extensions;
 using EnglishLearning.Utilities.Identity.Configuration;
 using EnglishLearning.Utilities.Persistence.Redis.Configuration;
+using Hangfire;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -45,6 +47,7 @@ namespace EnglishLearning.TaskService.Host
             services
                 .PersistenceConfiguration(Configuration)
                 .ApplicationConfiguration()
+                .BackgroundJobsConfiguration(Configuration)
                 .WebConfiguration()
                 .AddMessageBroker(Configuration);
 
@@ -54,7 +57,7 @@ namespace EnglishLearning.TaskService.Host
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IBackgroundJobClient backgroundJobs, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -67,6 +70,8 @@ namespace EnglishLearning.TaskService.Host
             app.UseHttpsRedirection();
 
             app.UseSwaggerDocumentation();
+
+            app.UseBackgroundJobsServices(backgroundJobs);
             
             app.UseMvc();
         }

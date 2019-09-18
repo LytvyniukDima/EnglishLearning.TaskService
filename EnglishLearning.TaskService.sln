@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.TaskService
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F9559C6E-9B70-4552-B400-96B192D25BF6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.TaskService.BackgroundJobs", "EnglishLearning.TaskService.BackgroundJobs\EnglishLearning.TaskService.BackgroundJobs.csproj", "{C1FFBC33-EC29-4B4F-9FCF-8E265FC416D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -116,6 +118,18 @@ Global
 		{7B1B1FB8-7565-448F-943D-7B4035013169}.Release|x64.Build.0 = Release|Any CPU
 		{7B1B1FB8-7565-448F-943D-7B4035013169}.Release|x86.ActiveCfg = Release|Any CPU
 		{7B1B1FB8-7565-448F-943D-7B4035013169}.Release|x86.Build.0 = Release|Any CPU
+		{C1FFBC33-EC29-4B4F-9FCF-8E265FC416D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1FFBC33-EC29-4B4F-9FCF-8E265FC416D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1FFBC33-EC29-4B4F-9FCF-8E265FC416D5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C1FFBC33-EC29-4B4F-9FCF-8E265FC416D5}.Debug|x64.Build.0 = Debug|Any CPU
+		{C1FFBC33-EC29-4B4F-9FCF-8E265FC416D5}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C1FFBC33-EC29-4B4F-9FCF-8E265FC416D5}.Debug|x86.Build.0 = Debug|Any CPU
+		{C1FFBC33-EC29-4B4F-9FCF-8E265FC416D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1FFBC33-EC29-4B4F-9FCF-8E265FC416D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1FFBC33-EC29-4B4F-9FCF-8E265FC416D5}.Release|x64.ActiveCfg = Release|Any CPU
+		{C1FFBC33-EC29-4B4F-9FCF-8E265FC416D5}.Release|x64.Build.0 = Release|Any CPU
+		{C1FFBC33-EC29-4B4F-9FCF-8E265FC416D5}.Release|x86.ActiveCfg = Release|Any CPU
+		{C1FFBC33-EC29-4B4F-9FCF-8E265FC416D5}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0E62BB34-A4C6-477B-AE99-DA17DBF7900F} = {F9559C6E-9B70-4552-B400-96B192D25BF6}
