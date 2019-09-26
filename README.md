@@ -1,2 +1,2 @@
 # EnglishLearning.TaskService
-![](https://github.com/LytvyniukDima/EnglishLearning.TaskService/workflows/.github/workflows/dockerimage.yml/badge.svg)
+![](https://github.com/LytvyniukDima/EnglishLearning.TaskService/workflows/Docker%20Image%20CI/badge.svg)
