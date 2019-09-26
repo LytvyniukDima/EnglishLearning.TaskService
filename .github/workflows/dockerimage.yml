@@ -17,7 +17,7 @@ jobs:
       run: |
         docker login docker.pkg.github.com --username LytvyniukDima --password $REGISTRY_TOKEN
         docker build . --file Dockerfile -t englishlearning-tasks:1.$BUILD_ID
-        docker tag englishlearning-tasks:1.$BUILD_ID docker.pkg.github.com/LytvyniukDima/EnglishLearning.TaskService/englishlearning-tasks:latest
-        docker tag englishlearning-tasks:1.$BUILD_ID docker.pkg.github.com/LytvyniukDima/EnglishLearning.TaskService/englishlearning-tasks:1.$BUILD_ID
-        docker push docker.pkg.github.com/LytvyniukDima/EnglishLearning.TaskService/englishlearning-tasks:latest
-        docker push docker.pkg.github.com/LytvyniukDima/EnglishLearning.TaskService/englishlearning-tasks:1.$BUILD_ID
+        docker tag englishlearning-tasks:1.$BUILD_ID docker.pkg.github.com/lytvyniukdima/englishLearning.taskService/englishlearning-tasks:latest
+        docker tag englishlearning-tasks:1.$BUILD_ID docker.pkg.github.com/lytvyniukdima/englishLearning.taskService/englishlearning-tasks:1.$BUILD_ID
+        docker push docker.pkg.github.com/lytvyniukdima/englishLearning.taskService/englishlearning-tasks:latest
+        docker push docker.pkg.github.com/lytvyniukdima/englishLearning.taskService/englishlearning-tasks:1.$BUILD_ID
