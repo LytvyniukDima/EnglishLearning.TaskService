@@ -10,5 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag englishlearning-tasks:$(date +%s)
+    - name: Build and Publish the Docker image
+      env: 
+        BUILD_ID: $(date +%s)
+      run: |
+        docker login docker.pkg.github.com --username LytvyniukDima
+        docker build . --file Dockerfile -t docker.pkg.github.com/LytvyniukDima/EnglishLearning.TaskService/englishlearning-tasks:latest -t docker.pkg.github.com/LytvyniukDima/EnglishLearning.TaskService/englishlearning-tasks:1.$BUILD_ID
+        docker push docker.pkg.github.com/LytvyniukDima/EnglishLearning.TaskService/englishlearning-tasks:latest
+        docker push docker.pkg.github.com/LytvyniukDima/EnglishLearning.TaskService/englishlearning-tasks:1.$BUILD_ID
+        
