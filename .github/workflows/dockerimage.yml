@@ -13,6 +13,7 @@ jobs:
     - name: Build and Publish the Docker image
       env: 
         BUILD_ID: $(date +%s)
+        REGISTRY_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
       run: |
         docker login docker.pkg.github.com --username LytvyniukDima --password $REGISTRY_TOKEN
         docker build . --file Dockerfile -t docker.pkg.github.com/LytvyniukDima/EnglishLearning.TaskService/englishlearning-tasks:latest -t docker.pkg.github.com/LytvyniukDima/EnglishLearning.TaskService/englishlearning-tasks:1.$BUILD_ID
