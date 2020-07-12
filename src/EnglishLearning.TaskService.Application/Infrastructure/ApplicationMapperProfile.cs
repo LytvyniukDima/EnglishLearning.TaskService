@@ -22,6 +22,9 @@ namespace EnglishLearning.TaskService.Application.Infrastructure
             CreateMap<BaseFilterModel, BaseFilter>();
 
             CreateMap<EnglishTaskFullFilter, EnglishTaskFullFilterModel>();
+
+            CreateMap<PerEnglishLevelTaskInformation, PerEnglishLevelTaskInformationModel>();
+            CreateMap<PerEnglishLevelTaskInformationModel, PerEnglishLevelTaskInformation>();
         }
     }
 }
