@@ -15,7 +15,7 @@ namespace EnglishLearning.TaskService.BackgroundJobs.Jobs
         
         public async Task Execute()
         {
-            Log.Error("Filling filter cache");
+            Log.Information("Filling filter cache");
             await _filterOptionsService.FillFiltersCache();
         }
     }

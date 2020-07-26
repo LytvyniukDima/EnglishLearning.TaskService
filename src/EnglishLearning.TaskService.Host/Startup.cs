@@ -46,12 +46,12 @@ namespace EnglishLearning.TaskService.Host
                 });
 
             services.AddSwaggerDocumentation();
-            
+
             services
                 .PersistenceConfiguration(Configuration)
                 .ApplicationConfiguration()
-                .BackgroundJobsConfiguration(Configuration)
                 .WebConfiguration()
+                .BackgroundJobsConfiguration(Configuration)
                 .AddMessageBroker(Configuration);
 
             services
