@@ -7,22 +7,21 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
     - name: Build and Publish the Docker image
       env: 
-        #BUILD_ID: ${{ $(date +%s) }}
-        REGISTRY_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
+        BUILD_ID: $GITHUB_RUN_ID
+        PACKAGES_WORKFLOW_TOKEN: ${{ secrets.PACKAGES_WORKFLOW_TOKEN }}
         MAJOR: 1
         MINOR: 0
         PATCH: 0
       run: |
         export BUILD_ID=$(date +%s)
-        docker login docker.pkg.github.com --username LytvyniukDima --password $REGISTRY_TOKEN
+        docker login docker.pkg.github.com --username LytvyniukDima --password $PACKAGES_WORKFLOW_TOKEN
         docker build . --file Dockerfile -t englishlearning-tasks:$MAJOR.$MINOR.$PATCH-$BUILD_ID
         docker tag englishlearning-tasks:$MAJOR.$MINOR.$PATCH-$BUILD_ID docker.pkg.github.com/lytvyniukdima/englishlearning.taskservice/englishlearning-tasks:latest
         docker tag englishlearning-tasks:$MAJOR.$MINOR.$PATCH-$BUILD_ID docker.pkg.github.com/lytvyniukdima/englishlearning.taskservice/englishlearning-tasks:$MAJOR.$MINOR.$PATCH-$BUILD_ID
         docker push docker.pkg.github.com/lytvyniukdima/englishlearning.taskservice/englishlearning-tasks:latest
         docker push docker.pkg.github.com/lytvyniukdima/englishlearning.taskservice/englishlearning-tasks:$MAJOR.$MINOR.$PATCH-$BUILD_ID
-
