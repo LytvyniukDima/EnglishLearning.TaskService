@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Build and Publish the Docker image
       env: 
-        BUILD_ID: $GITHUB_RUN_ID
+        BUILD_ID: ${{ GITHUB_RUN_ID }}
         PACKAGES_WORKFLOW_TOKEN: ${{ secrets.PACKAGES_WORKFLOW_TOKEN }}
         MAJOR: 1
         MINOR: 1
