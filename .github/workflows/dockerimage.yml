@@ -18,7 +18,7 @@ jobs:
         PATCH: 0
       run: |
         docker login docker.pkg.github.com --username LytvyniukDima --password $PACKAGES_WORKFLOW_TOKEN
-        docker build . --file Dockerfile -t englishlearning-tasks:$MAJOR.$MINOR.$PATCH-$GITHUB_RUN_ID
+        docker build --file Dockerfile -t englishlearning-tasks:$MAJOR.$MINOR.$PATCH-$GITHUB_RUN_ID --build-arg NUGET_PASS=$PACKAGES_WORKFLOW_TOKEN .
         docker tag englishlearning-tasks:$MAJOR.$MINOR.$PATCH-$GITHUB_RUN_ID docker.pkg.github.com/lytvyniukdima/englishlearning.taskservice/englishlearning-tasks:latest
         docker tag englishlearning-tasks:$MAJOR.$MINOR.$PATCH-$GITHUB_RUN_ID docker.pkg.github.com/lytvyniukdima/englishlearning.taskservice/englishlearning-tasks:$MAJOR.$MINOR.$PATCH-$GITHUB_RUN_ID
         docker push docker.pkg.github.com/lytvyniukdima/englishlearning.taskservice/englishlearning-tasks:latest
