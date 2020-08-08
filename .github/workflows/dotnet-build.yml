@@ -24,13 +24,13 @@ jobs:
         source-url: https://nuget.pkg.github.com/LytvyniukDima/index.json
       env:
         NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    - name: Test
+      run: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput="./coverage.opencover.xml"
     - name: SonarInit
       run: |
         dotnet tool restore
         dotnet sonarscanner begin /k:"$PROJECT_NAME" /d:sonar.host.url="$SONAR_SERVER_URL" /d:sonar.login="$SONAR_SERVER_TOKEN" /d:sonar.cs.opencover.reportsPaths="./coverage.opencover.xml"
     - name: Build
       run: dotnet build -c Release
-    - name: Test
-      run: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput="./coverage.opencover.xml"
     - name: SonnarEnd
       run: dotnet sonarscanner end /d:sonar.login=${{env.SONAR_SERVER_TOKEN}}
