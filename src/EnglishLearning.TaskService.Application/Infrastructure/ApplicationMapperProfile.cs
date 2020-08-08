@@ -14,6 +14,7 @@ namespace EnglishLearning.TaskService.Application.Infrastructure
             CreateMap<EnglishTaskModel, EnglishTask>();
             CreateMap<EnglishTask, EnglishTaskModel>();
             
+            CreateMap<EnglishTask, EnglishTaskInfoModel>();
             CreateMap<EnglishTaskInfo, EnglishTaskInfoModel>();
 
             CreateMap<UserInformation, UserInformationModel>();

@@ -80,7 +80,7 @@ namespace EnglishLearning.TaskService.Application.Services
                 return null;
             }
 
-            var englishTaskModel = _mapper.Map<EnglishTask, EnglishTaskInfoModel>(englishTask);
+            var englishTaskModel = _mapper.Map<EnglishTaskInfoModel>(englishTask);
 
             return englishTaskModel;
         }
