@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
@@ -6,6 +7,7 @@ using EnglishLearning.TaskService.Application.Models.Filtering;
 using EnglishLearning.TaskService.Common.Models;
 using EnglishLearning.TaskService.Web.Infrastructure;
 using EnglishLearning.TaskService.Web.ViewModels;
+using EnglishLearning.Utilities.Linq.Extensions;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EnglishLearning.TaskService.Web.Controllers
@@ -35,15 +37,15 @@ namespace EnglishLearning.TaskService.Web.Controllers
         {
             Dictionary<TaskType, int> filterOptions = await _filterOptionsService.GetTaskTypeFilterOptions();
 
-            return Ok(filterOptions);
+            return Ok(filterOptions.ConvertToStringKeyDictionary());
         }
         
         [HttpGet("englishLevel")]
         public async Task<IActionResult> GetEnglishLevelFilterOptions()
         {
             Dictionary<EnglishLevel, int> filterOptions = await _filterOptionsService.GetEnglishLevelFilterOptions();
-
-            return Ok(filterOptions);
+            
+            return Ok(filterOptions.ConvertToStringKeyDictionary());
         }
         
         [HttpGet("fullFilter")]

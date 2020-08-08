@@ -6,6 +6,7 @@
     <PackageReference Include="EnglishLearning.Utilities.Identity.Abstractions">
       <Version>1.2.0-151161799</Version>
     </PackageReference>
+    <PackageReference Include="EnglishLearning.Utilities.Linq" Version="1.2.0-200402207"/>
     <PackageReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
   <ItemGroup>

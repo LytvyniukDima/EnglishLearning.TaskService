@@ -51,7 +51,7 @@ namespace EnglishLearning.TaskService.Web.Controllers
                 return NotFound();
             }
 
-            var englishTaskModel = _mapper.Map<EnglishTaskModel, EnglishTaskInfoViewModel>(englishTask);
+            var englishTaskModel = _mapper.Map<EnglishTaskInfoViewModel>(englishTask);
             
             return Ok(englishTaskModel);
         }
