@@ -15,13 +15,7 @@ namespace EnglishLearning.TaskService.Persistence.Configuration
         {
             services
                 .AddMongoConfiguration(configuration)
-                .AddMongoContext(options =>
-                {
-                    options.CollectionSettings(settings =>
-                    { 
-                        settings.GuidRepresentation = GuidRepresentation.Standard;
-                    });
-                })
+                .AddMongoContext()
                 .AddMongoCollectionNamesProvider(x =>
                 {
                     x.Add<EnglishTask>("EnglishTasks");
