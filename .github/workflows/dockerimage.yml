@@ -14,7 +14,7 @@ jobs:
       env: 
         PACKAGES_WORKFLOW_TOKEN: ${{ secrets.PACKAGES_WORKFLOW_TOKEN }}
         MAJOR: 1
-        MINOR: 1
+        MINOR: 2
         PATCH: 0
       run: |
         docker login docker.pkg.github.com --username LytvyniukDima --password $PACKAGES_WORKFLOW_TOKEN
