@@ -10,6 +10,7 @@ using EnglishLearning.TaskService.Common.Models;
 using EnglishLearning.TaskService.Persistence.Abstract;
 using EnglishLearning.TaskService.Persistence.Entities;
 using FluentAssertions;
+using MongoDB.Bson;
 using NSubstitute;
 using Xunit;
 
@@ -204,8 +205,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
                 EnglishLevel = EnglishLevel.Advanced,
                 Count = 10,
                 Example = "example",
-                Content = "text",
-                Answer = "answer",
+                Content = new BsonDocument(),
             },
             new EnglishTask
             {
@@ -214,8 +214,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
                 EnglishLevel = EnglishLevel.PreIntermediate,
                 Count = 8,
                 Example = "example",
-                Content = "text",
-                Answer = "answer",
+                Content = new BsonDocument(),
             },
             new EnglishTask
             {
@@ -224,8 +223,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
                 EnglishLevel = EnglishLevel.Intermediate,
                 Count = 9,
                 Example = "example",
-                Content = "text",
-                Answer = "answer",
+                Content = new BsonDocument(),
             },
         };
 
@@ -261,7 +259,6 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
                 Count = 10,
                 Example = "example",
                 Content = "text",
-                Answer = "answer",
             },
             new EnglishTaskModel
             {
@@ -271,7 +268,6 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
                 Count = 8,
                 Example = "example",
                 Content = "text",
-                Answer = "answer",
             },
             new EnglishTaskModel
             {
@@ -281,7 +277,6 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
                 Count = 9,
                 Example = "example",
                 Content = "text",
-                Answer = "answer",
             },
         };
         
@@ -314,8 +309,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
             EnglishLevel = EnglishLevel.Advanced,
             Count = 10,
             Example = "example",
-            Content = "text",
-            Answer = "answer",
+            Content = new BsonDocument(),
         };
 
         private EnglishTaskModel defaultEnglishTaskModel = new EnglishTaskModel
@@ -326,7 +320,6 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
             Count = 10,
             Example = "example",
             Content = "text",
-            Answer = "answer",
         };
         
         private EnglishTaskCreateModel defaultEnglishTaskCreateModel = new EnglishTaskCreateModel

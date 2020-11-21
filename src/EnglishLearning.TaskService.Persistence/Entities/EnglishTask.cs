@@ -22,8 +22,6 @@ namespace EnglishLearning.TaskService.Persistence.Entities
         
         public string Example { get; set; }
 
-        public string Content { get; set; }
-        
-        public string Answer { get; set; }
+        public BsonValue Content { get; set; }
     }
 }

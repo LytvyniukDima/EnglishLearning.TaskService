@@ -17,7 +17,5 @@ namespace EnglishLearning.TaskService.Web.ViewModels
         public string Example { get; set; }
         
         public string Content { get; set; }
-        
-        public string Answer { get; set; }
     }
 }
