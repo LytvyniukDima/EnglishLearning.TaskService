@@ -204,7 +204,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
                 EnglishLevel = EnglishLevel.Advanced,
                 Count = 10,
                 Example = "example",
-                Text = "text",
+                Content = "text",
                 Answer = "answer",
             },
             new EnglishTask
@@ -214,7 +214,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
                 EnglishLevel = EnglishLevel.PreIntermediate,
                 Count = 8,
                 Example = "example",
-                Text = "text",
+                Content = "text",
                 Answer = "answer",
             },
             new EnglishTask
@@ -224,7 +224,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
                 EnglishLevel = EnglishLevel.Intermediate,
                 Count = 9,
                 Example = "example",
-                Text = "text",
+                Content = "text",
                 Answer = "answer",
             },
         };
@@ -260,7 +260,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
                 EnglishLevel = EnglishLevel.Advanced,
                 Count = 10,
                 Example = "example",
-                Text = "text",
+                Content = "text",
                 Answer = "answer",
             },
             new EnglishTaskModel
@@ -270,7 +270,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
                 EnglishLevel = EnglishLevel.PreIntermediate,
                 Count = 8,
                 Example = "example",
-                Text = "text",
+                Content = "text",
                 Answer = "answer",
             },
             new EnglishTaskModel
@@ -280,7 +280,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
                 EnglishLevel = EnglishLevel.Intermediate,
                 Count = 9,
                 Example = "example",
-                Text = "text",
+                Content = "text",
                 Answer = "answer",
             },
         };
@@ -314,7 +314,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
             EnglishLevel = EnglishLevel.Advanced,
             Count = 10,
             Example = "example",
-            Text = "text",
+            Content = "text",
             Answer = "answer",
         };
 
@@ -325,7 +325,7 @@ namespace EnglishLearning.TaskService.Application.Tests.Services
             EnglishLevel = EnglishLevel.Advanced,
             Count = 10,
             Example = "example",
-            Text = "text",
+            Content = "text",
             Answer = "answer",
         };
         
