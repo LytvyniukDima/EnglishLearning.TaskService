@@ -1,6 +1,8 @@
 ﻿using EnglishLearning.TaskService.Application.Abstract;
+using EnglishLearning.TaskService.Application.Abstract.TextAnalyze;
 using EnglishLearning.TaskService.Application.Infrastructure;
 using EnglishLearning.TaskService.Application.Services;
+using EnglishLearning.TaskService.Application.Services.TextAnalyze;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EnglishLearning.TaskService.Application.Configuration
@@ -17,6 +19,7 @@ namespace EnglishLearning.TaskService.Application.Configuration
             services.AddTransient<IEnglishTaskFilterOptionsService, EnglishTaskFilterOptionsService>();
             services.AddTransient<IStoredTaskInformationAggregateService, StoredTaskInformationAggregateService>();
             services.AddTransient<IUserFilterService, UserFilterService>();
+            services.AddTransient<IParsedSentService, ParsedSentService>();
             
             return services;
         }

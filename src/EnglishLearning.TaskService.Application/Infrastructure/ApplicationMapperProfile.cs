@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.TaskService.Application.Models.Filtering;
+using EnglishLearning.TaskService.Application.Models.TextAnalyze;
 using EnglishLearning.TaskService.Persistence.Entities;
+using EnglishLearning.TaskService.Persistence.Entities.TextAnalyze;
 using MongoDB.Bson;
 using MongoDB.Bson.IO;
 using MongoDB.Bson.Serialization;
@@ -32,6 +34,11 @@ namespace EnglishLearning.TaskService.Application.Infrastructure
 
             CreateMap<PerEnglishLevelTaskInformation, PerEnglishLevelTaskInformationModel>();
             CreateMap<PerEnglishLevelTaskInformationModel, PerEnglishLevelTaskInformation>();
+
+            CreateMap<ParsedSentModel, ParsedSent>();
+            CreateMap<ParsedSent, ParsedSentModel>();
+            CreateMap<SentTokenModel, SentToken>();
+            CreateMap<SentToken, SentTokenModel>();
         }
     }
 }
