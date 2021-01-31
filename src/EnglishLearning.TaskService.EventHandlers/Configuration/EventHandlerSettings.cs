@@ -1,5 +1,6 @@
 ﻿using EnglishLearning.TaskService.EventHandlers.Handlers;
 using EnglishLearning.TaskService.EventHandlers.Infrastructure;
+using EnglishLearning.Utilities.MessageBrokers.Contracts.TextAnalyze;
 using EnglishLearning.Utilities.MessageBrokers.Contracts.Users;
 using EnglishLearning.Utilities.MessageBrokers.Kafka.Configuration;
 using Microsoft.Extensions.Configuration;
@@ -12,6 +13,8 @@ namespace EnglishLearning.TaskService.EventHandlers.Configuration
         public static IServiceCollection AddEventHandlerConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddMessageHandler<UserCreatedEvent, UserMessageHandler>();
+            services.AddMessageHandler<GrammarTextAnalyzedEvent, TextAnalyzeMessageHandler>();
+            
             services.AddSingleton<EventHandlerMapper>();
 
             services.AddMessageBroker(configuration);
@@ -24,6 +27,11 @@ namespace EnglishLearning.TaskService.EventHandlers.Configuration
             services.AddKafka(configuration, x =>
             {
                 x.AddConsumer(options => options.AddTopic<UserCreatedEvent>());
+                x.AddConsumer(options =>
+                {
+                    options.AddTopic<GrammarTextAnalyzedEvent>();
+                    options.UseJsonSerializer<GrammarTextAnalyzedEvent>();
+                });
                 x.UseProtoBufAsDefaultSerializer();
             });
 
