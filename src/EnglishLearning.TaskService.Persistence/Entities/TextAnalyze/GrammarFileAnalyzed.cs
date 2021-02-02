@@ -21,5 +21,7 @@ namespace EnglishLearning.TaskService.Persistence.Entities.TextAnalyze
         public DateTime CreatedTime { get; set; }
         
         public IReadOnlyList<string> Path { get; set; }
+        
+        public int SentCount { get; set; }
     }
 }

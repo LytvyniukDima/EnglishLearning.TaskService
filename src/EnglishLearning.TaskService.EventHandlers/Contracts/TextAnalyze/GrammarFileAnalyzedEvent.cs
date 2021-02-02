@@ -20,5 +20,8 @@ namespace EnglishLearning.TaskService.EventHandlers.Contracts.TextAnalyze
         
         [JsonPropertyName("path")]
         public IReadOnlyCollection<string> Path { get; set; }
+        
+        [JsonPropertyName("sentCount")]
+        public int SentCount { get; set; }
     }
 }
