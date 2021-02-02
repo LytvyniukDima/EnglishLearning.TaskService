@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract.TextAnalyze;
@@ -26,6 +27,27 @@ namespace EnglishLearning.TaskService.Application.Services.TextAnalyze
             var entities = _mapper.Map<IReadOnlyList<ParsedSent>>(sents);
 
             return _parsedSentRepository.AddManyAsync(entities);
+        }
+
+        public async Task<IReadOnlyList<ParsedSentModel>> GetAllAsync()
+        {
+            var entities = await _parsedSentRepository.GetAllAsync();
+
+            return _mapper.Map<IReadOnlyList<ParsedSentModel>>(entities);
+        }
+
+        public async Task<IReadOnlyList<ParsedSentModel>> GetAllByAnalyzeId(Guid analyzeId)
+        {
+            var entities = await _parsedSentRepository.FindAllAsync(x => x.AnalyzeId == analyzeId);
+
+            return _mapper.Map<IReadOnlyList<ParsedSentModel>>(entities);
+        }
+
+        public async Task<ParsedSentModel> GetById(string id)
+        {
+            var entity = await _parsedSentRepository.FindAsync(x => x.Id == id);
+
+            return _mapper.Map<ParsedSentModel>(entity);
         }
     }
 }
