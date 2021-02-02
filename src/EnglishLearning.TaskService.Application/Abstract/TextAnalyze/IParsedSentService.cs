@@ -6,6 +6,6 @@ namespace EnglishLearning.TaskService.Application.Abstract.TextAnalyze
 {
     public interface IParsedSentService
     {
-        Task AddSentsAsync(IReadOnlyCollection<ParsedSentModel> sents);
+        Task AddSentsAsync(IReadOnlyList<ParsedSentModel> sents);
     }
 }

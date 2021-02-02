@@ -13,6 +13,6 @@ namespace EnglishLearning.TaskService.Application.Models.TextAnalyze
         
         public string SentType { get; set; }
         
-        public IReadOnlyCollection<SentTokenModel> Tokens { get; set; }
+        public IReadOnlyList<SentTokenModel> Tokens { get; set; }
     }
 }

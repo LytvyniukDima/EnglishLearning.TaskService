@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.TaskService.Application.Models.TextAnalyze;
-using EnglishLearning.Utilities.MessageBrokers.Contracts.TextAnalyze;
+using EnglishLearning.TaskService.EventHandlers.Contracts.TextAnalyze;
 using EnglishLearning.Utilities.MessageBrokers.Contracts.Users;
 
 namespace EnglishLearning.TaskService.EventHandlers.Infrastructure
@@ -16,6 +16,8 @@ namespace EnglishLearning.TaskService.EventHandlers.Infrastructure
                     m => m.MapFrom(s => s.UserEnglishTaskPreferences.GrammarParts));
 
             CreateMap<SentTokenContract, SentTokenModel>();
+
+            CreateMap<GrammarFileAnalyzedEvent, GrammarFileAnalyzedModel>();
         }
     }
 }

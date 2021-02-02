@@ -2,7 +2,7 @@
 using System.Linq;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Models.TextAnalyze;
-using EnglishLearning.Utilities.MessageBrokers.Contracts.TextAnalyze;
+using EnglishLearning.TaskService.EventHandlers.Contracts.TextAnalyze;
 
 namespace EnglishLearning.TaskService.EventHandlers.Infrastructure
 {
@@ -17,7 +17,7 @@ namespace EnglishLearning.TaskService.EventHandlers.Infrastructure
 
         public IMapper Mapper { get; }
 
-        public IReadOnlyCollection<ParsedSentModel> MapEventToParsedModels(GrammarTextAnalyzedEvent grammarEvent)
+        public IReadOnlyList<ParsedSentModel> MapEventToParsedModels(GrammarTextAnalyzedEvent grammarEvent)
         {
             return grammarEvent.Sents.Select(x =>
                 {
@@ -26,7 +26,7 @@ namespace EnglishLearning.TaskService.EventHandlers.Infrastructure
                         AnalyzeId = grammarEvent.AnalyzeId,
                         Sent = x.Sent,
                         SentType = x.SentType,
-                        Tokens = Mapper.Map<IReadOnlyCollection<SentTokenModel>>(x.Tokens),
+                        Tokens = Mapper.Map<IReadOnlyList<SentTokenModel>>(x.Tokens),
                     };
                 })
                 .ToList();

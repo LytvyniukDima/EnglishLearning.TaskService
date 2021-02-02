@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System;
 using EnglishLearning.TaskService.Persistence.Abstract;
 using EnglishLearning.TaskService.Persistence.Entities.TextAnalyze;
 using EnglishLearning.Utilities.Persistence.Mongo.Contexts;
@@ -7,9 +6,9 @@ using EnglishLearning.Utilities.Persistence.Mongo.Repositories;
 
 namespace EnglishLearning.TaskService.Persistence.Repositories
 {
-    internal class ParsedSentRepository : BaseMongoRepository<ParsedSent, string>, IParsedSentRepository
+    public class GrammarFileAnalyzedRepository : BaseMongoRepository<GrammarFileAnalyzed, Guid>, IGrammarFileAnalyzedRepository
     {
-        public ParsedSentRepository(MongoContext mongoContext)
+        public GrammarFileAnalyzedRepository(MongoContext mongoContext)
             : base(mongoContext)
         {
         }

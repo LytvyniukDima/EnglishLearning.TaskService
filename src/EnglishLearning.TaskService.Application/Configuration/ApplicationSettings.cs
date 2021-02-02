@@ -20,6 +20,7 @@ namespace EnglishLearning.TaskService.Application.Configuration
             services.AddTransient<IStoredTaskInformationAggregateService, StoredTaskInformationAggregateService>();
             services.AddTransient<IUserFilterService, UserFilterService>();
             services.AddTransient<IParsedSentService, ParsedSentService>();
+            services.AddTransient<IGrammarFileAnalyzedService, GrammarFileAnalyzedService>();
             
             return services;
         }

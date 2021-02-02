@@ -21,11 +21,11 @@ namespace EnglishLearning.TaskService.Application.Services.TextAnalyze
             _mapper = applicationMapper.Mapper;
         }
 
-        public Task AddSentsAsync(IReadOnlyCollection<ParsedSentModel> sents)
+        public Task AddSentsAsync(IReadOnlyList<ParsedSentModel> sents)
         {
-            var entities = _mapper.Map<IReadOnlyCollection<ParsedSent>>(sents);
+            var entities = _mapper.Map<IReadOnlyList<ParsedSent>>(sents);
 
-            return _parsedSentRepository.AddAsync(entities);
+            return _parsedSentRepository.AddManyAsync(entities);
         }
     }
 }
