@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.TaskService.Application.Models.Filtering;
+using EnglishLearning.TaskService.Application.Models.TextAnalyze;
 using EnglishLearning.TaskService.Web.ViewModels;
 using EnglishLearning.TaskService.Web.ViewModels.Parameters;
+using EnglishLearning.TaskService.Web.ViewModels.TextAnalyze;
 using EnglishLearning.Utilities.Linq.Extensions;
 
 namespace EnglishLearning.TaskService.Web.Infrastructure
@@ -26,6 +28,10 @@ namespace EnglishLearning.TaskService.Web.Infrastructure
                 .ForMember(
                     x => x.TaskTypeFilterOptions,
                     opt => opt.MapFrom(x => x.TaskTypeFilterOptions.ConvertToStringKeyDictionary()));
+
+            CreateMap<GrammarFileAnalyzedModel, GrammarFileAnalyzedViewModel>();
+            CreateMap<ParsedSentModel, ParsedSentViewModel>();
+            CreateMap<SentTokenModel, SentTokenViewModel>();
         }
     }
 }

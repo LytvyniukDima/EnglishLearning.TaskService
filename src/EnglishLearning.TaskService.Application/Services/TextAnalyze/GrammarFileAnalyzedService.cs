@@ -40,7 +40,7 @@ namespace EnglishLearning.TaskService.Application.Services.TextAnalyze
 
         public async Task<GrammarFileAnalyzedModel> GetByIdAsync(Guid id)
         {
-            var entity = await _grammarFileAnalyzedRepository.FindAsync(x => x.Id == id);
+            var entity = await _grammarFileAnalyzedRepository.FindAsync(x => x.Id.Equals(id));
 
             return _mapper.Map<GrammarFileAnalyzedModel>(entity);
         }
