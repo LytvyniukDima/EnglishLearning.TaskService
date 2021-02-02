@@ -9,8 +9,6 @@ namespace EnglishLearning.TaskService.Application.Abstract.TextAnalyze
     {
         Task AddSentsAsync(IReadOnlyList<ParsedSentModel> sents);
 
-        Task<IReadOnlyList<ParsedSentModel>> GetAllAsync();
-
         Task<IReadOnlyList<ParsedSentModel>> GetAllByAnalyzeId(Guid analyzeId);
 
         Task<ParsedSentModel> GetById(string id);

@@ -29,13 +29,6 @@ namespace EnglishLearning.TaskService.Application.Services.TextAnalyze
             return _parsedSentRepository.AddManyAsync(entities);
         }
 
-        public async Task<IReadOnlyList<ParsedSentModel>> GetAllAsync()
-        {
-            var entities = await _parsedSentRepository.GetAllAsync();
-
-            return _mapper.Map<IReadOnlyList<ParsedSentModel>>(entities);
-        }
-
         public async Task<IReadOnlyList<ParsedSentModel>> GetAllByAnalyzeId(Guid analyzeId)
         {
             var entities = await _parsedSentRepository.FindAllAsync(x => x.AnalyzeId == analyzeId);
