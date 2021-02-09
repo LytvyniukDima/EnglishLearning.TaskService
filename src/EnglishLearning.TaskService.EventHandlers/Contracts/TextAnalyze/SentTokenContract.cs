@@ -15,5 +15,8 @@ namespace EnglishLearning.TaskService.EventHandlers.Contracts.TextAnalyze
         
         [JsonPropertyName("dep")]
         public string Dep { get; set; }
+        
+        [JsonPropertyName("lemma")]
+        public string Lemma { get; set; }
     }
 }

@@ -9,5 +9,7 @@
         public string Tag { get; set; }
         
         public string Dep { get; set; }
+        
+        public string Lemma { get; set; }
     }
 }
