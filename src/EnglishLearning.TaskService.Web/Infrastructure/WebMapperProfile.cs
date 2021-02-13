@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.TaskService.Application.Models.Filtering;
+using EnglishLearning.TaskService.Application.Models.TaskGeneration;
 using EnglishLearning.TaskService.Application.Models.TextAnalyze;
 using EnglishLearning.TaskService.Web.ViewModels;
 using EnglishLearning.TaskService.Web.ViewModels.Parameters;
@@ -32,6 +33,8 @@ namespace EnglishLearning.TaskService.Web.Infrastructure
             CreateMap<GrammarFileAnalyzedModel, GrammarFileAnalyzedViewModel>();
             CreateMap<ParsedSentModel, ParsedSentViewModel>();
             CreateMap<SentTokenModel, SentTokenViewModel>();
+
+            CreateMap<GenerateTaskViewModel, GenerateTaskModel>();
         }
     }
 }
