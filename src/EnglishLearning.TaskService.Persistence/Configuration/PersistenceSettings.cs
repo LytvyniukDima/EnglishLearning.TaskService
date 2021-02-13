@@ -37,6 +37,7 @@ namespace EnglishLearning.TaskService.Persistence.Configuration
                     x.Add<ParsedSent>("ParsedSents");
                     x.Add<GrammarFileAnalyzed>("GrammarFileAnalyzed");
                     x.Add<TaskItem>("TaskItems");
+                    x.Add<TaskGeneration>("TaskGenerations");
                 });
             
             services.AddTransient<IEnglishTaskRepository, EnglishTaskMongoDbRepository>();
@@ -45,6 +46,7 @@ namespace EnglishLearning.TaskService.Persistence.Configuration
             services.AddTransient<IParsedSentRepository, ParsedSentRepository>();
             services.AddTransient<IGrammarFileAnalyzedRepository, GrammarFileAnalyzedRepository>();
             services.AddTransient<ITaskItemRepository, TaskItemRepository>();
+            services.AddTransient<ITaskGenerationRepository, TaskGenerationRepository>();
             
             return services;
         }
