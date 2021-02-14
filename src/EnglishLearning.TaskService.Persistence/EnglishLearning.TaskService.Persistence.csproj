@@ -4,7 +4,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="EnglishLearning.Utilities.Linq">
-      <Version>1.3.0-359873750</Version>
+      <Version>1.3.0-564331744</Version>
     </PackageReference>
     <PackageReference Include="EnglishLearning.Utilities.Persistence.Mongo">
       <Version>1.3.0-564030567</Version>
