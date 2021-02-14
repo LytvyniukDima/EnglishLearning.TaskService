@@ -9,6 +9,8 @@ namespace EnglishLearning.TaskService.Application.Models
         
         public string TaskGenerationId { get; set; }
         
+        public string SourceSentId { get; set; }
+        
         public string GrammarPart { get; set; }
         
         public TaskType TaskType { get; set; }

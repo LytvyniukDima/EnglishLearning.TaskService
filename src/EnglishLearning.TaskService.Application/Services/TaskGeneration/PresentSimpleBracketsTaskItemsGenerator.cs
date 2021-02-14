@@ -51,6 +51,7 @@ namespace EnglishLearning.TaskService.Application.Services.TaskGeneration
             return new CreateTaskItemModel
             {
                 TaskGenerationId = generationId,
+                SourceSentId = parsedSent.Id,
                 GrammarPart = generateTaskModel.GrammarPart,
                 SentType = parsedSent.SentType,
                 TaskType = TaskType.SimpleBrackets,

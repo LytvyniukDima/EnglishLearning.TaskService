@@ -12,6 +12,8 @@ namespace EnglishLearning.TaskService.Persistence.Entities
         
         public string TaskGenerationId { get; set; }
         
+        public string SourceSentId { get; set; }
+        
         public string GrammarPart { get; set; }
         
         [BsonRepresentation(BsonType.String)] 
