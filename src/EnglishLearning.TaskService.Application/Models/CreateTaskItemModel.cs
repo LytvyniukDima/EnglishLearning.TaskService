@@ -1,20 +1,14 @@
 ﻿using EnglishLearning.TaskService.Common.Models;
-using EnglishLearning.Utilities.Persistence.Interfaces;
 using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
 
-namespace EnglishLearning.TaskService.Persistence.Entities
+namespace EnglishLearning.TaskService.Application.Models
 {
-    public class TaskItem : IEntity<string>
+    public class CreateTaskItemModel
     {
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
-        
         public string TaskGenerationId { get; set; }
         
         public string GrammarPart { get; set; }
         
-        [BsonRepresentation(BsonType.String)] 
         public TaskType TaskType { get; set; }
 
         public string SentType { get; set; }

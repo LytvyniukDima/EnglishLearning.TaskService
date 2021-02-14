@@ -11,7 +11,8 @@ namespace EnglishLearning.TaskService.Persistence.Entities
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
         
-        public string SourceId { get; set; }
+        [BsonGuidRepresentation(GuidRepresentation.Standard)]
+        public Guid AnalyzeId { get; set; }
         
         public string Name { get; set; }
         

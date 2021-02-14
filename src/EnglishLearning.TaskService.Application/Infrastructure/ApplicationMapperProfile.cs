@@ -41,6 +41,10 @@ namespace EnglishLearning.TaskService.Application.Infrastructure
 
             CreateMap<GrammarFileAnalyzed, GrammarFileAnalyzedModel>();
             CreateMap<GrammarFileAnalyzedModel, GrammarFileAnalyzed>();
+
+            CreateMap<TaskItemModel, TaskItem>();
+            CreateMap<TaskItem, TaskItemModel>();
+            CreateMap<CreateTaskItemModel, TaskItem>();
         }
     }
 }

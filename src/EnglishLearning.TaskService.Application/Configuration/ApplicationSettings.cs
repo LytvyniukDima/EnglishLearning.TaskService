@@ -23,9 +23,13 @@ namespace EnglishLearning.TaskService.Application.Configuration
             services.AddTransient<IUserFilterService, UserFilterService>();
             services.AddTransient<IParsedSentService, ParsedSentService>();
             services.AddTransient<IGrammarFileAnalyzedService, GrammarFileAnalyzedService>();
-
+            services.AddTransient<ITaskItemService, TaskItemService>();
+            
             services.AddTransient<ITaskGenerationService, TaskGenerationService>();
             
+            services.AddTransient<ITaskItemsGeneratorFactory, TaskItemsGeneratorFactory>();
+            services.AddTransient<PresentSimpleBracketsTaskItemsGenerator>();
+
             return services;
         }
     }

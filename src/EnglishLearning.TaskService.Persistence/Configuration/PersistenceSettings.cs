@@ -29,6 +29,14 @@ namespace EnglishLearning.TaskService.Persistence.Configuration
                                 Builders<GrammarFileAnalyzed>.IndexKeys.Ascending(x => x.Name),
                                 new CreateIndexOptions { Unique = true }));
                     });
+                    
+                    options.HasIndex<TaskGeneration>(index =>
+                    {
+                        index.CreateOne(
+                            new CreateIndexModel<TaskGeneration>(
+                                Builders<TaskGeneration>.IndexKeys.Ascending(x => x.Name),
+                                new CreateIndexOptions { Unique = true }));
+                    });
                 })
                 .AddMongoCollectionNamesProvider(x =>
                 {

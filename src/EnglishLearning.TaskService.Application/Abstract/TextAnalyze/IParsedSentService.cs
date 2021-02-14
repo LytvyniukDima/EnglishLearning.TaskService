@@ -12,5 +12,7 @@ namespace EnglishLearning.TaskService.Application.Abstract.TextAnalyze
         Task<IReadOnlyList<ParsedSentModel>> GetAllByAnalyzeId(Guid analyzeId);
 
         Task<ParsedSentModel> GetById(string id);
+
+        Task<IReadOnlyList<ParsedSentModel>> GetAllByAnalyzeAndGrammarPartAsync(Guid analyzeId, string grammarPart);
     }
 }
