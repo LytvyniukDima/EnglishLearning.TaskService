@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using EnglishLearning.TaskService.Application.Abstract.TaskGeneration;
+using EnglishLearning.TaskService.Application.Constants;
 using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.TaskService.Application.Models.TaskGeneration;
 using EnglishLearning.TaskService.Application.Models.TextAnalyze;
@@ -81,6 +82,7 @@ namespace EnglishLearning.TaskService.Application.Services.TaskGeneration
                 .Select(x => x.Word);
             var endItems = parsedSent.Tokens
                 .Skip(verbIndex + 1)
+                .SkipLast(1)
                 .Select(x => x.Word);
 
             var allTaskTokens = startItems
@@ -89,11 +91,13 @@ namespace EnglishLearning.TaskService.Application.Services.TaskGeneration
                 .ToList();
 
             var sent = string.Join(' ', allTaskTokens);
+            sent = $"{sent}{parsedSent.Tokens[^1].Word}";
+            
             var bracketsLine = new SimpleBracketsLineModel()
             {
                 Content = sent,
                 Option = verbToken.Lemma,
-                Answer = new[] { verbToken.Word },
+                Answer = new[] { MapTokenToAnswer(verbToken) },
             };
 
             return new SimpleBracketsTaskModel()
@@ -105,6 +109,17 @@ namespace EnglishLearning.TaskService.Application.Services.TaskGeneration
         private SimpleBracketsTaskModel GenerateFromPresentSimpleQuestion(ParsedSentModel parsedSent)
         {
             return new SimpleBracketsTaskModel();
+        }
+
+        private string MapTokenToAnswer(SentTokenModel sentToken)
+        {
+            if (sentToken.Lemma == "be"
+                && ToBeMaps.PresentToBeMap.TryGetValue(sentToken.Word, out var mappedValue))
+            {
+                return mappedValue;
+            }
+
+            return sentToken.Word;
         }
     }
 }
