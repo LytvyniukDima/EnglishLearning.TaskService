@@ -50,7 +50,7 @@ namespace EnglishLearning.TaskService.Application.Services.TextAnalyze
             var sentTypes = GrammarParts.GrammarPartSentTypesMap[grammarPart];
 
             var entities = await _parsedSentRepository
-                .FindAllAsync(x => sentTypes.Contains(x.SentType));
+                .FindAllAsync(x => x.AnalyzeId == analyzeId && sentTypes.Contains(x.SentType));
 
             return _mapper.Map<IReadOnlyList<ParsedSentModel>>(entities);
         }

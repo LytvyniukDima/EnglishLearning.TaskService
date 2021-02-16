@@ -7,6 +7,7 @@ using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.TaskService.Application.Models.TaskGeneration;
 using EnglishLearning.TaskService.Application.Models.TextAnalyze;
 using EnglishLearning.TaskService.Common.Models;
+using EnglishLearning.TaskService.Persistence.Entities.TextAnalyze;
 using EnglishLearning.Utilities.Linq.Extensions;
 using MongoDB.Bson;
 using static EnglishLearning.TaskService.Application.Constants.TaskGenerationConstants;
@@ -108,7 +109,57 @@ namespace EnglishLearning.TaskService.Application.Services.TaskGeneration
         
         private SimpleBracketsTaskModel GenerateFromPresentSimpleQuestion(ParsedSentModel parsedSent)
         {
-            return new SimpleBracketsTaskModel();
+            var toBeStart = parsedSent.Tokens[0].Lemma == "be";
+            var tokensWithoutFirst = parsedSent.Tokens.Skip(1).ToList();
+            var subjectTokens = GetSubject(tokensWithoutFirst);
+
+            IReadOnlyList<SentTokenModel> verbTokens = Array.Empty<SentTokenModel>();
+            if (!toBeStart)
+            {
+                var verbIndex = tokensWithoutFirst
+                    .FindIndexOf(x => x.Pos == GrammarTags.VERB);
+
+                if (verbIndex != -1)
+                {
+                    verbTokens = tokensWithoutFirst
+                        .Skip(subjectTokens.Count)
+                        .Take(verbIndex - subjectTokens.Count + 1)
+                        .ToList();   
+                }
+            }
+
+            var optionPart = new List<string>();
+            optionPart.Add(parsedSent.Tokens[0].Lemma);
+            optionPart.Add(string.Join(' ', subjectTokens.Select(x => x.Word)));
+            optionPart.AddRange(verbTokens.Select(x => x.Word));
+
+            var mainGroupLen = 1 + subjectTokens.Count + verbTokens.Count;
+            var answerGroup = parsedSent.Tokens
+                .Take(mainGroupLen)
+                .Select(x => x.Word)
+                .ToList();
+            var regularGroup = parsedSent.Tokens
+                .Skip(mainGroupLen)
+                .SkipLast(1)
+                .Select(x => x.Word)
+                .ToList();
+            
+            var optionStr = string.Join('/', optionPart).ToLower();
+            var answerStr = string.Join(' ', answerGroup);
+            var regularGroupStr = string.Join(' ', regularGroup);
+            regularGroupStr = $"{OptionString} {regularGroupStr}{tokensWithoutFirst[^1].Word}";
+
+            var line = new SimpleBracketsLineModel()
+            {
+                Answer = new[] { answerStr },
+                Content = regularGroupStr,
+                Option = optionStr,
+            };
+            
+            return new SimpleBracketsTaskModel
+            {
+                Lines = new[] { line },
+            };
         }
 
         private string MapTokenToAnswer(SentTokenModel sentToken)
@@ -120,6 +171,16 @@ namespace EnglishLearning.TaskService.Application.Services.TaskGeneration
             }
 
             return sentToken.Word;
+        }
+
+        private IReadOnlyList<SentTokenModel> GetSubject(IReadOnlyList<SentTokenModel> tokens)
+        {
+            if (tokens[0].Pos == GrammarTags.DET)
+            {
+                return tokens.Take(2).ToList();
+            }
+
+            return tokens.Take(1).ToList();
         }
     }
 }
