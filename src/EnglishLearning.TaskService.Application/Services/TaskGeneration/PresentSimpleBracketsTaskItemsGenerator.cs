@@ -7,7 +7,6 @@ using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.TaskService.Application.Models.TaskGeneration;
 using EnglishLearning.TaskService.Application.Models.TextAnalyze;
 using EnglishLearning.TaskService.Common.Models;
-using EnglishLearning.TaskService.Persistence.Entities.TextAnalyze;
 using EnglishLearning.Utilities.Linq.Extensions;
 using MongoDB.Bson;
 using static EnglishLearning.TaskService.Application.Constants.TaskGenerationConstants;
@@ -63,7 +62,58 @@ namespace EnglishLearning.TaskService.Application.Services.TaskGeneration
 
         private SimpleBracketsTaskModel GenerateFromPresentSimpleNegative(ParsedSentModel parsedSent)
         {
-            return new SimpleBracketsTaskModel();
+            var subjectTokens = GetSubject(parsedSent.Tokens);
+            var auxToken = parsedSent.Tokens[subjectTokens.Count];
+            var isTobeAux = auxToken.Lemma == "be";
+
+            IReadOnlyCollection<SentTokenModel> verbTokens = Array.Empty<SentTokenModel>();
+            if (!isTobeAux)
+            {
+                var verbIndex = parsedSent.Tokens
+                    .FindIndexOf(x => x.Tag == GrammarTags.VB);
+
+                verbTokens = parsedSent.Tokens
+                    .Skip(subjectTokens.Count + 2)
+                    .Take(verbIndex - subjectTokens.Count - 1)
+                    .ToList();
+            }
+
+            var firstContentPart = subjectTokens
+                .Select(x => x.Word)
+                .ToList();
+            var endPart = parsedSent.Tokens
+                .Skip(subjectTokens.Count + 2 + verbTokens.Count)
+                .SkipLast(1)
+                .Select(x => x.Word)
+                .ToList();
+
+            var firstPartStr = string.Join(' ', firstContentPart);
+            var endPartStr = string.Join(' ', endPart);
+            var content = $"{firstPartStr} {OptionString} {endPartStr}{parsedSent.Tokens.Last().Word}";
+
+            var verbStr = isTobeAux ? "be" : string.Join(' ', verbTokens.Select(x => x.Lemma));
+            var option = $"not {verbStr}";
+
+            var auxWord = MapVerbTokenWithoutShortForm(auxToken);
+            var verbAnswer = string.Join(' ', verbTokens.Select(x => x.Word).ToList());
+            var answerShort = $"{auxWord}n't {verbAnswer}";
+            var answerLong = $"{auxWord} not {verbAnswer}";
+
+            var line = new SimpleBracketsLineModel
+            {
+                Answer = new[]
+                {
+                    answerShort,
+                    answerLong,
+                },
+                Content = content,
+                Option = option,
+            };
+            
+            return new SimpleBracketsTaskModel
+            {
+                Lines = new[] { line },
+            };
         }
 
         private SimpleBracketsTaskModel GenerateFromPresentSimplePositive(ParsedSentModel parsedSent)
@@ -98,7 +148,7 @@ namespace EnglishLearning.TaskService.Application.Services.TaskGeneration
             {
                 Content = sent,
                 Option = verbToken.Lemma,
-                Answer = new[] { MapTokenToAnswer(verbToken) },
+                Answer = new[] { MapVerbTokenWithoutShortForm(verbToken) },
             };
 
             return new SimpleBracketsTaskModel()
@@ -117,7 +167,7 @@ namespace EnglishLearning.TaskService.Application.Services.TaskGeneration
             if (!toBeStart)
             {
                 var verbIndex = tokensWithoutFirst
-                    .FindIndexOf(x => x.Pos == GrammarTags.VERB);
+                    .FindIndexOf(x => x.Tag == GrammarTags.VB);
 
                 if (verbIndex != -1)
                 {
@@ -129,7 +179,7 @@ namespace EnglishLearning.TaskService.Application.Services.TaskGeneration
             }
 
             var optionPart = new List<string>();
-            optionPart.Add(parsedSent.Tokens[0].Lemma);
+            optionPart.Add(parsedSent.Tokens[0].Lemma.ToLower());
             optionPart.Add(string.Join(' ', subjectTokens.Select(x => x.Word)));
             optionPart.AddRange(verbTokens.Select(x => x.Word));
 
@@ -144,7 +194,7 @@ namespace EnglishLearning.TaskService.Application.Services.TaskGeneration
                 .Select(x => x.Word)
                 .ToList();
             
-            var optionStr = string.Join('/', optionPart).ToLower();
+            var optionStr = string.Join('/', optionPart);
             var answerStr = string.Join(' ', answerGroup);
             var regularGroupStr = string.Join(' ', regularGroup);
             regularGroupStr = $"{OptionString} {regularGroupStr}{tokensWithoutFirst[^1].Word}";
@@ -162,7 +212,7 @@ namespace EnglishLearning.TaskService.Application.Services.TaskGeneration
             };
         }
 
-        private string MapTokenToAnswer(SentTokenModel sentToken)
+        private string MapVerbTokenWithoutShortForm(SentTokenModel sentToken)
         {
             if (sentToken.Lemma == "be"
                 && ToBeMaps.PresentToBeMap.TryGetValue(sentToken.Word, out var mappedValue))

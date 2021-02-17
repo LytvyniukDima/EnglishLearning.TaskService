@@ -4,7 +4,7 @@
     {
         public const string VBP = nameof(VBP);
         public const string VBZ = nameof(VBZ);
-        public const string VERB = nameof(VERB);
+        public const string VB = nameof(VB);
         
         public const string DET = nameof(DET);
         public const string NOUN = nameof(NOUN);
