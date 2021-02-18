@@ -1,9 +1,9 @@
 ﻿using EnglishLearning.TaskService.Common.Models;
 using MongoDB.Bson;
 
-namespace EnglishLearning.TaskService.Application.Models
+namespace EnglishLearning.TaskService.Web.ViewModels
 {
-    public class TaskItemModel
+    public class TaskItemViewModel
     {
         public string Id { get; set; }
         

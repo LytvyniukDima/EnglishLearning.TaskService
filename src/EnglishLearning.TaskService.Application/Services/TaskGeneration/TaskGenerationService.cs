@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
@@ -55,6 +56,20 @@ namespace EnglishLearning.TaskService.Application.Services.TaskGeneration
                 parsedSents);
 
             await _taskItemService.AddManyAsync(taskItems);
+        }
+
+        public async Task<IReadOnlyList<TaskGenerationModel>> GetAllAsync()
+        {
+            var entities = await _taskGenerationRepository.GetAllAsync();
+
+            return _mapper.Map<IReadOnlyList<TaskGenerationModel>>(entities);
+        }
+
+        public async Task<TaskGenerationModel> GetByIdAsync(string id)
+        {
+            var entity = await _taskGenerationRepository.FindAsync(x => x.Id == id);
+
+            return _mapper.Map<TaskGenerationModel>(entity);
         }
 
         private Persistence.Entities.TaskGeneration CreateTaskGenerationEntity(GenerateTaskModel generateTaskModel)

@@ -7,5 +7,7 @@ namespace EnglishLearning.TaskService.Application.Abstract
     public interface ITaskItemService
     {
         Task AddManyAsync(IReadOnlyList<CreateTaskItemModel> taskItems);
+
+        Task<IReadOnlyList<TaskItemModel>> GetAllAsync();
     }
 }

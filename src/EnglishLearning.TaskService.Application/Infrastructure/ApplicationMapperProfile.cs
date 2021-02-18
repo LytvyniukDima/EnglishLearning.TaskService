@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.TaskService.Application.Models.Filtering;
+using EnglishLearning.TaskService.Application.Models.TaskGeneration;
 using EnglishLearning.TaskService.Application.Models.TextAnalyze;
 using EnglishLearning.TaskService.Persistence.Entities;
 using EnglishLearning.TaskService.Persistence.Entities.TextAnalyze;
@@ -41,10 +42,11 @@ namespace EnglishLearning.TaskService.Application.Infrastructure
 
             CreateMap<GrammarFileAnalyzed, GrammarFileAnalyzedModel>();
             CreateMap<GrammarFileAnalyzedModel, GrammarFileAnalyzed>();
-
-            CreateMap<TaskItemModel, TaskItem>();
-            CreateMap<TaskItem, TaskItemModel>();
+            
             CreateMap<CreateTaskItemModel, TaskItem>();
+
+            CreateMap<TaskGenerationModel, TaskGeneration>();
+            CreateMap<TaskGeneration, TaskGenerationModel>();
         }
     }
 }
