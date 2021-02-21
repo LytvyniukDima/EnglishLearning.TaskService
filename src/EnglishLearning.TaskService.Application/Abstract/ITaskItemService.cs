@@ -10,5 +10,7 @@ namespace EnglishLearning.TaskService.Application.Abstract
         Task AddManyAsync(IReadOnlyList<CreateTaskItemModel> taskItems);
 
         Task<IReadOnlyList<TaskItemModel>> GetAsync(TaskItemsFilterModel filter);
+
+        Task<TaskItemsFilterModel> GetFilterOptionsAsync();
     }
 }

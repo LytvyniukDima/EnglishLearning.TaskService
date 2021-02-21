@@ -50,6 +50,7 @@ namespace EnglishLearning.TaskService.Application.Infrastructure
             CreateMap<TaskGeneration, TaskGenerationModel>();
 
             CreateMap<TaskItemsFilterModel, TaskItemsFilter>();
+            CreateMap<TaskItemsFilter, TaskItemsFilterModel>();
         }
     }
 }

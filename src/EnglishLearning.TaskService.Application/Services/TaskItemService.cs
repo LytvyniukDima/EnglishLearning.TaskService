@@ -52,6 +52,13 @@ namespace EnglishLearning.TaskService.Application.Services
                 .ToList();
         }
 
+        public async Task<TaskItemsFilterModel> GetFilterOptionsAsync()
+        {
+            var persistenceFilter = await _taskItemRepository.GetAvailableFilters();
+
+            return _mapper.Map<TaskItemsFilterModel>(persistenceFilter);
+        }
+
         private TaskItemModel MapTaskItemModel(
             TaskItem taskItem,
             IReadOnlyDictionary<string, Persistence.Entities.TaskGeneration> taskGenerationMap)

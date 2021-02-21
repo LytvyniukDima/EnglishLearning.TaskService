@@ -8,5 +8,7 @@ namespace EnglishLearning.TaskService.Persistence.Abstract
     public interface ITaskItemRepository : IBaseRepository<TaskItem, string>
     {
         Task<IReadOnlyList<TaskItem>> FindAllByFilters(TaskItemsFilter filter);
+
+        Task<TaskItemsFilter> GetAvailableFilters();
     }
 }

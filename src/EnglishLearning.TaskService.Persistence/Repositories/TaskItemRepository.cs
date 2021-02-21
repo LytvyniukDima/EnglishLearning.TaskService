@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using EnglishLearning.TaskService.Persistence.Abstract;
 using EnglishLearning.TaskService.Persistence.Entities;
@@ -21,6 +22,43 @@ namespace EnglishLearning.TaskService.Persistence.Repositories
             var itemsFilter = BuildFilter(filter);
 
             return await _collection.Find(itemsFilter).ToListAsync();
+        }
+
+        public async Task<TaskItemsFilter> GetAvailableFilters()
+        {
+            var taskItemInfoProjection = Builders<TaskItem>
+                .Projection
+                .Expression(x => new TaskItemInfo
+                {
+                    Id = x.Id,
+                    GrammarPart = x.GrammarPart,
+                    SentType = x.SentType,
+                    TaskType = x.TaskType,
+                });
+
+            var items = await _collection.Find(_ => true)
+                .Project(taskItemInfoProjection)
+                .ToListAsync();
+
+            var grammarParts = items
+                .Select(x => x.GrammarPart)
+                .Distinct()
+                .ToArray();
+            var sentTypes = items
+                .Select(x => x.SentType)
+                .Distinct()
+                .ToArray();
+            var taskTypes = items
+                .Select(x => x.TaskType)
+                .Distinct()
+                .ToArray();
+
+            return new TaskItemsFilter
+            {
+                GrammarPart = grammarParts,
+                SentType = sentTypes,
+                TaskType = taskTypes,
+            };
         }
 
         private FilterDefinition<TaskItem> BuildFilter(TaskItemsFilter filter)
