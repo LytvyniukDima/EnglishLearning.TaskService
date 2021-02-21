@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
@@ -7,7 +6,8 @@ using EnglishLearning.TaskService.Application.Infrastructure;
 using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.TaskService.Persistence.Abstract;
 using EnglishLearning.TaskService.Persistence.Entities;
-using MongoDB.Bson;
+using EnglishLearning.Utilities.Linq.Extensions;
+using EnglishLearning.Utilities.Persistence.Mongo.Extensions;
 
 namespace EnglishLearning.TaskService.Application.Services
 {
@@ -36,28 +36,41 @@ namespace EnglishLearning.TaskService.Application.Services
 
             var taskContent = taskItems
                 .Select(x => x.Content)
-                .ToArray();
+                .ToBsonArray();
 
-            var contentArray = ToBsonArray(taskContent);
-            
             var englishTask = new EnglishTask
             {
                 GrammarPart = createModel.GrammarPart,
                 TaskType = createModel.TaskType,
                 EnglishLevel = createModel.EnglishLevel,
                 Count = taskItems.Count,
-                Content = contentArray,
+                Content = taskContent,
             };
 
             await _englishTaskRepository.AddAsync(englishTask);
         }
 
-        private BsonArray ToBsonArray(IEnumerable<BsonValue> values)
+        public async Task CreateFromRandomItemsAsync(EnglishTaskFromRandomItemsCreateModel createModel)
         {
-            var array = new BsonArray();
-            array.AddRange(values);
+            var taskItems = await _taskItemRepository
+                .FindAllAsync(x => x.GrammarPart == createModel.GrammarPart && x.TaskType == createModel.TaskType);
 
-            return array;
+            var randomItems = taskItems.GetRandomCountOfElements(createModel.ItemsCount);
+
+            var taskContent = randomItems
+                .Select(x => x.Content)
+                .ToBsonArray();
+
+            var englishTask = new EnglishTask
+            {
+                GrammarPart = createModel.GrammarPart,
+                TaskType = createModel.TaskType,
+                EnglishLevel = createModel.EnglishLevel,
+                Count = taskItems.Count,
+                Content = taskContent,
+            };
+
+            await _englishTaskRepository.AddAsync(englishTask);
         }
     }
 }
