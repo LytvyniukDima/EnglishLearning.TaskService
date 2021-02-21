@@ -2,8 +2,10 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
+using EnglishLearning.TaskService.Application.Models.Filtering;
 using EnglishLearning.TaskService.Web.Infrastructure;
 using EnglishLearning.TaskService.Web.ViewModels;
+using EnglishLearning.TaskService.Web.ViewModels.Parameters;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EnglishLearning.TaskService.Web.Controllers
@@ -22,9 +24,11 @@ namespace EnglishLearning.TaskService.Web.Controllers
         }
         
         [HttpGet]
-        public async Task<IActionResult> GetAllItems()
+        public async Task<IActionResult> GetItems([FromQuery] TaskItemsParameters parameters)
         {
-            var items = await _taskItemService.GetAllAsync();
+            var applicationFilter = _mapper.Map<TaskItemsFilterModel>(parameters);
+            
+            var items = await _taskItemService.GetAsync(applicationFilter);
             var viewModels = _mapper.Map<IReadOnlyList<TaskItemViewModel>>(items);
 
             return Ok(viewModels);

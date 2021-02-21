@@ -3,6 +3,7 @@ using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.TaskService.Application.Models.Filtering;
 using EnglishLearning.TaskService.Application.Models.TaskGeneration;
 using EnglishLearning.TaskService.Application.Models.TextAnalyze;
+using EnglishLearning.TaskService.Persistence;
 using EnglishLearning.TaskService.Persistence.Entities;
 using EnglishLearning.TaskService.Persistence.Entities.TextAnalyze;
 using MongoDB.Bson;
@@ -47,6 +48,8 @@ namespace EnglishLearning.TaskService.Application.Infrastructure
 
             CreateMap<TaskGenerationModel, TaskGeneration>();
             CreateMap<TaskGeneration, TaskGenerationModel>();
+
+            CreateMap<TaskItemsFilterModel, TaskItemsFilter>();
         }
     }
 }

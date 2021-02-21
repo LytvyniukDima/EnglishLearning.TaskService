@@ -3,10 +3,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
-using EnglishLearning.TaskService.Application.Abstract.TaskGeneration;
 using EnglishLearning.TaskService.Application.Infrastructure;
 using EnglishLearning.TaskService.Application.Models;
-using EnglishLearning.TaskService.Application.Models.TaskGeneration;
+using EnglishLearning.TaskService.Application.Models.Filtering;
+using EnglishLearning.TaskService.Persistence;
 using EnglishLearning.TaskService.Persistence.Abstract;
 using EnglishLearning.TaskService.Persistence.Entities;
 using MongoDB.Bson;
@@ -39,9 +39,11 @@ namespace EnglishLearning.TaskService.Application.Services
             return _taskItemRepository.AddManyAsync(entities);
         }
 
-        public async Task<IReadOnlyList<TaskItemModel>> GetAllAsync()
+        public async Task<IReadOnlyList<TaskItemModel>> GetAsync(TaskItemsFilterModel filter)
         {
-            var entities = await _taskItemRepository.GetAllAsync();
+            var persistenceFilter = _mapper.Map<TaskItemsFilter>(filter);
+            
+            var entities = await _taskItemRepository.FindAllByFilters(persistenceFilter);
             var taskGenerationMap = (await _taskGenerationRepository.GetAllAsync())
                 .ToDictionary(x => x.Id);
 

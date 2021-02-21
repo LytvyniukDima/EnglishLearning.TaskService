@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EnglishLearning.TaskService.Application.Models;
+using EnglishLearning.TaskService.Application.Models.Filtering;
 
 namespace EnglishLearning.TaskService.Application.Abstract
 {
@@ -8,6 +9,6 @@ namespace EnglishLearning.TaskService.Application.Abstract
     {
         Task AddManyAsync(IReadOnlyList<CreateTaskItemModel> taskItems);
 
-        Task<IReadOnlyList<TaskItemModel>> GetAllAsync();
+        Task<IReadOnlyList<TaskItemModel>> GetAsync(TaskItemsFilterModel filter);
     }
 }

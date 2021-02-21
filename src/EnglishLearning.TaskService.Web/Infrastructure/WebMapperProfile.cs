@@ -37,6 +37,8 @@ namespace EnglishLearning.TaskService.Web.Infrastructure
             CreateMap<GenerateTaskViewModel, GenerateTaskModel>();
 
             CreateMap<TaskItemModel, TaskItemViewModel>();
+
+            CreateMap<TaskItemsParameters, TaskItemsFilterModel>();
         }
     }
 }

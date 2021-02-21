@@ -25,5 +25,17 @@ namespace EnglishLearning.TaskService.Common.Models
                 }
             },
         };
+
+        public static readonly IReadOnlyList<string> AvailableGrammarParts = new[]
+        {
+            GrammarParts.Suffixes,
+            GrammarParts.Test,
+            GrammarParts.FuturePlans,
+            GrammarParts.PossessiveAdjectives,
+            GrammarParts.PresentPerfect,
+            GrammarParts.PresentSimple,
+            GrammarParts.QuestionTags,
+            GrammarParts.PresentSimpleAndPresentContinuous,
+        };
     }
 }
