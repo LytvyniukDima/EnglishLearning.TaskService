@@ -17,11 +17,16 @@ namespace EnglishLearning.TaskService.Web.Controllers
     public class EnglishTaskController : Controller
     {
         private readonly IEnglishTaskService _englishTaskService;
+        private readonly IEnglishTaskCreateService _englishTaskCreateService;
         private readonly IMapper _mapper;
 
-        public EnglishTaskController(IEnglishTaskService englishTaskService, WebMapper englishTaskWebMapper)
+        public EnglishTaskController(
+            IEnglishTaskService englishTaskService,
+            IEnglishTaskCreateService englishTaskCreateService,
+            WebMapper englishTaskWebMapper)
         {
             _englishTaskService = englishTaskService;
+            _englishTaskCreateService = englishTaskCreateService;
             _mapper = englishTaskWebMapper.Mapper;
         }
         
@@ -55,6 +60,17 @@ namespace EnglishLearning.TaskService.Web.Controllers
             var englishTaskCreateModel = _mapper.Map<EnglishTaskCreateModel>(englishTaskCreateViewModel);
             
             await _englishTaskService.CreateEnglishTaskAsync(englishTaskCreateModel);
+
+            return Ok();
+        }
+        
+        [EnglishLearningAuthorize(AuthorizeRole.Admin)]
+        [HttpPost("from-items")]
+        public async Task<IActionResult> CreateFromItems([FromBody] EnglishTaskFromItemsCreateViewModel createModel)
+        {
+            var applicationModel = _mapper.Map<EnglishTaskFromItemsCreateModel>(createModel);
+
+            await _englishTaskCreateService.CreateFromItemsAsync(applicationModel);
 
             return Ok();
         }

@@ -11,6 +11,8 @@ namespace EnglishLearning.TaskService.Application.Abstract
 
         Task<IReadOnlyList<TaskItemModel>> GetAsync(TaskItemsFilterModel filter);
 
+        Task<IReadOnlyList<TaskItemModel>> GetByIds(IReadOnlyList<string> ids);
+        
         Task<TaskItemsFilterModel> GetFilterOptionsAsync();
     }
 }

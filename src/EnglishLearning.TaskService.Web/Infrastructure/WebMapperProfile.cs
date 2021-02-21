@@ -19,6 +19,7 @@ namespace EnglishLearning.TaskService.Web.Infrastructure
             CreateMap<EnglishTaskInfoModel, EnglishTaskInfoViewModel>();
             CreateMap<EnglishTaskModel, EnglishTaskViewModel>();
             CreateMap<EnglishTaskModel, EnglishTaskInfoViewModel>();
+            CreateMap<EnglishTaskFromItemsCreateViewModel, EnglishTaskFromItemsCreateModel>();
             
             CreateMap<BaseFilterParameters, BaseFilterModel>();
 
