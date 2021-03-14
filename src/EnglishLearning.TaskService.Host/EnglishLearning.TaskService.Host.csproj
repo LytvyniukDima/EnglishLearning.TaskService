@@ -2,15 +2,13 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="EnglishLearning.Utilities.General">
       <Version>1.3.0-359873741</Version>
     </PackageReference>
     <PackageReference Include="EnglishLearning.Utilities.Identity">
-      <Version>1.3.0-483289075</Version>
+      <Version>1.3.0-649788145</Version>
     </PackageReference>
     <PackageReference Include="EnglishLearning.Utilities.Persistence.Redis">
       <Version>1.3.0-586955897</Version>
