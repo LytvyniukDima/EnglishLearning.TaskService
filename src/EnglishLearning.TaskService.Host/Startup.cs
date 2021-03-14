@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 using EnglishLearning.TaskService.Application.Configuration;
 using EnglishLearning.TaskService.BackgroundJobs.Configuration;
 using EnglishLearning.TaskService.EventHandlers.Configuration;
+using EnglishLearning.TaskService.ExternalServices.Configuration;
 using EnglishLearning.TaskService.Host.Infrastructure;
 using EnglishLearning.TaskService.Persistence.Configuration;
 using EnglishLearning.TaskService.Web.Configuration;
@@ -53,7 +54,8 @@ namespace EnglishLearning.TaskService.Host
                 .ApplicationConfiguration()
                 .WebConfiguration()
                 .BackgroundJobsConfiguration(Configuration)
-                .AddEventHandlerConfiguration(Configuration);
+                .AddEventHandlerConfiguration(Configuration)
+                .AddExternalServices();
 
             services
                 .AddRedis(Configuration)

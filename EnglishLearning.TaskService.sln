@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.TaskService
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.TaskService.Persistence", "src\EnglishLearning.TaskService.Persistence\EnglishLearning.TaskService.Persistence.csproj", "{65C873BE-A9A4-4555-AA16-9C9B22956800}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishLearning.TaskService.ExternalServices", "src\EnglishLearning.TaskService.ExternalServices\EnglishLearning.TaskService.ExternalServices.csproj", "{D3D19795-B626-49E6-8501-7D62B8D14905}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -130,6 +132,18 @@ Global
 		{65C873BE-A9A4-4555-AA16-9C9B22956800}.Release|x64.Build.0 = Release|Any CPU
 		{65C873BE-A9A4-4555-AA16-9C9B22956800}.Release|x86.ActiveCfg = Release|Any CPU
 		{65C873BE-A9A4-4555-AA16-9C9B22956800}.Release|x86.Build.0 = Release|Any CPU
+		{D3D19795-B626-49E6-8501-7D62B8D14905}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3D19795-B626-49E6-8501-7D62B8D14905}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3D19795-B626-49E6-8501-7D62B8D14905}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D3D19795-B626-49E6-8501-7D62B8D14905}.Debug|x64.Build.0 = Debug|Any CPU
+		{D3D19795-B626-49E6-8501-7D62B8D14905}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D3D19795-B626-49E6-8501-7D62B8D14905}.Debug|x86.Build.0 = Debug|Any CPU
+		{D3D19795-B626-49E6-8501-7D62B8D14905}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3D19795-B626-49E6-8501-7D62B8D14905}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3D19795-B626-49E6-8501-7D62B8D14905}.Release|x64.ActiveCfg = Release|Any CPU
+		{D3D19795-B626-49E6-8501-7D62B8D14905}.Release|x64.Build.0 = Release|Any CPU
+		{D3D19795-B626-49E6-8501-7D62B8D14905}.Release|x86.ActiveCfg = Release|Any CPU
+		{D3D19795-B626-49E6-8501-7D62B8D14905}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4E8F4B7D-54D6-4094-B127-1F697DA8CDA6} = {F9559C6E-9B70-4552-B400-96B192D25BF6}
