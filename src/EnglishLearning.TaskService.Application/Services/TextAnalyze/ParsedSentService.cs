@@ -32,16 +32,12 @@ namespace EnglishLearning.TaskService.Application.Services.TextAnalyze
 
         public async Task AddSentsAsync(IReadOnlyList<ParsedSentModel> sents)
         {
-            var entities = _mapper.Map<IReadOnlyList<ParsedSent>>(sents);
-            foreach (var entity in entities)
+            foreach (var sent in sents)
             {
-                var words = entity.Tokens
-                    .Select(x => x.Word)
-                    .ToList();
-
-                entity.EnglishLevel = await _levelAnalyseService.GetSentLevelAsync(words);
+                sent.EnglishLevel = await _levelAnalyseService.GetSentLevelAsync(sent);
             }
-            
+         
+            var entities = _mapper.Map<IReadOnlyList<ParsedSent>>(sents);
             await _parsedSentRepository.AddManyAsync(entities);
         }
 
