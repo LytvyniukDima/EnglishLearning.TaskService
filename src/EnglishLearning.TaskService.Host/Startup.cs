@@ -4,6 +4,7 @@ using EnglishLearning.TaskService.Application.Configuration;
 using EnglishLearning.TaskService.BackgroundJobs.Configuration;
 using EnglishLearning.TaskService.EventHandlers.Configuration;
 using EnglishLearning.TaskService.ExternalServices.Configuration;
+using EnglishLearning.TaskService.Host.Configuration;
 using EnglishLearning.TaskService.Host.Infrastructure;
 using EnglishLearning.TaskService.Persistence.Configuration;
 using EnglishLearning.TaskService.Web.Configuration;
@@ -55,7 +56,8 @@ namespace EnglishLearning.TaskService.Host
                 .WebConfiguration()
                 .BackgroundJobsConfiguration(Configuration)
                 .AddEventHandlerConfiguration(Configuration)
-                .AddExternalServices();
+                .AddExternalServices()
+                .AddEnglishLearningHttp(Configuration);
 
             services
                 .AddRedis(Configuration)

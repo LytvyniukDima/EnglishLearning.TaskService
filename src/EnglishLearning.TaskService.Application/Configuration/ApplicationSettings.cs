@@ -25,6 +25,7 @@ namespace EnglishLearning.TaskService.Application.Configuration
             services.AddTransient<IGrammarFileAnalyzedService, GrammarFileAnalyzedService>();
             services.AddTransient<ITaskItemService, TaskItemService>();
             services.AddTransient<IEnglishTaskCreateService, EnglishTaskCreateService>();
+            services.AddTransient<IEnglishLevelAnalyseService, EnglishLevelAnalyseService>();
             
             services.AddTransient<ITaskGenerationService, TaskGenerationService>();
             

@@ -19,9 +19,8 @@ namespace EnglishLearning.TaskService.Host.Configuration
                 .AddHttpClient<WordMetadataClient>(c =>
                 {
                     c.BaseAddress = dictionaryAddress;
-                })
-                .AddHttpMessageHandler<JwtInfoHeaderHandler>();
-            
+                });
+
             return services;
         }
     }

@@ -16,19 +16,33 @@ namespace EnglishLearning.TaskService.Application.Services.TextAnalyze
     {
         private readonly IParsedSentRepository _parsedSentRepository;
 
+        private readonly IEnglishLevelAnalyseService _levelAnalyseService;
+        
         private readonly IMapper _mapper;
 
-        public ParsedSentService(IParsedSentRepository parsedSentRepository, ApplicationMapper applicationMapper)
+        public ParsedSentService(
+            IParsedSentRepository parsedSentRepository,
+            IEnglishLevelAnalyseService levelAnalyseService,
+            ApplicationMapper applicationMapper)
         {
             _parsedSentRepository = parsedSentRepository;
+            _levelAnalyseService = levelAnalyseService;
             _mapper = applicationMapper.Mapper;
         }
 
-        public Task AddSentsAsync(IReadOnlyList<ParsedSentModel> sents)
+        public async Task AddSentsAsync(IReadOnlyList<ParsedSentModel> sents)
         {
             var entities = _mapper.Map<IReadOnlyList<ParsedSent>>(sents);
+            foreach (var entity in entities)
+            {
+                var words = entity.Tokens
+                    .Select(x => x.Word)
+                    .ToList();
 
-            return _parsedSentRepository.AddManyAsync(entities);
+                entity.EnglishLevel = await _levelAnalyseService.GetSentLevelAsync(words);
+            }
+            
+            await _parsedSentRepository.AddManyAsync(entities);
         }
 
         public async Task<IReadOnlyList<ParsedSentModel>> GetAllByAnalyzeId(Guid analyzeId)
