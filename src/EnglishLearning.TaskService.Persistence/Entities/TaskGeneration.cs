@@ -20,6 +20,9 @@ namespace EnglishLearning.TaskService.Persistence.Entities
         public TaskType TaskType { get; set; }
         
         public string GrammarPart { get; set; }
+
+        [BsonRepresentation(BsonType.String)]
+        public EnglishLevel EnglishLevel { get; set; }
         
         public DateTime CreatedDateTime { get; set; }
     }

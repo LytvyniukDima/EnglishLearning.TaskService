@@ -21,6 +21,9 @@ namespace EnglishLearning.TaskService.Persistence.Entities
 
         public string SentType { get; set; }
         
+        [BsonRepresentation(BsonType.String)]
+        public EnglishLevel EnglishLevel { get; set; }
+        
         public BsonValue Content { get; set; }
     }
 }

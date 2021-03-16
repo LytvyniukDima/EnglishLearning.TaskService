@@ -80,6 +80,7 @@ namespace EnglishLearning.TaskService.Application.Services.TaskGeneration
                 GrammarPart = generateTaskModel.GrammarPart,
                 Name = generateTaskModel.Name,
                 TaskType = generateTaskModel.TaskType,
+                EnglishLevel = generateTaskModel.EnglishLevel,
                 CreatedDateTime = DateTime.UtcNow,
             };
         }

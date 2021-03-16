@@ -15,6 +15,8 @@ namespace EnglishLearning.TaskService.Application.Models.TaskGeneration
         
         public string GrammarPart { get; set; }
         
+        public EnglishLevel EnglishLevel { get; set; }
+        
         public DateTime CreatedDateTime { get; set; }
     }
 }

@@ -56,6 +56,7 @@ namespace EnglishLearning.TaskService.Application.Services.TaskGeneration
                 GrammarPart = generateTaskModel.GrammarPart,
                 SentType = parsedSent.SentType,
                 TaskType = TaskType.SimpleBrackets,
+                EnglishLevel = parsedSent.EnglishLevel,
                 Content = bracketsModel.ToBsonDocument(),
             };
         }

@@ -10,6 +10,8 @@ namespace EnglishLearning.TaskService.Web.ViewModels
         
         public TaskType TaskType { get; set; }
         
+        public EnglishLevel EnglishLevel { get; set; }
+        
         public string Name { get; set; }
     }
 }

@@ -15,6 +15,8 @@ namespace EnglishLearning.TaskService.Application.Models
 
         public string SentType { get; set; }
         
+        public EnglishLevel EnglishLevel { get; set; }
+        
         public BsonValue Content { get; set; }
     }
 }

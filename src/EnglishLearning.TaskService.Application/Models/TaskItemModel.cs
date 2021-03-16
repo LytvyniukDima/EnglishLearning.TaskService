@@ -1,5 +1,4 @@
 ﻿using EnglishLearning.TaskService.Common.Models;
-using MongoDB.Bson;
 
 namespace EnglishLearning.TaskService.Application.Models
 {
@@ -18,6 +17,8 @@ namespace EnglishLearning.TaskService.Application.Models
         public TaskType TaskType { get; set; }
 
         public string SentType { get; set; }
+        
+        public EnglishLevel EnglishLevel { get; set; }
         
         public string Content { get; set; }
     }

@@ -85,6 +85,7 @@ namespace EnglishLearning.TaskService.Application.Services
                 SourceSentId = taskItem.SourceSentId,
                 TaskGenerationId = taskItem.TaskGenerationId,
                 TaskType = taskItem.TaskType,
+                EnglishLevel = taskItem.EnglishLevel,
                 Content = taskItem.Content.ToJson(null, null, null, default(BsonSerializationArgs)),
             };
         }

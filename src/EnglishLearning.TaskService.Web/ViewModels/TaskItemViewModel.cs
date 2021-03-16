@@ -19,6 +19,8 @@ namespace EnglishLearning.TaskService.Web.ViewModels
 
         public string SentType { get; set; }
         
+        public EnglishLevel EnglishLevel { get; set; }
+        
         public string Content { get; set; }
     }
 }

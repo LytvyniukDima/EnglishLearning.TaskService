@@ -34,6 +34,7 @@ namespace EnglishLearning.TaskService.Persistence.Repositories
                     GrammarPart = x.GrammarPart,
                     SentType = x.SentType,
                     TaskType = x.TaskType,
+                    EnglishLevel = x.EnglishLevel,
                 });
 
             var items = await _collection.Find(_ => true)
@@ -52,12 +53,17 @@ namespace EnglishLearning.TaskService.Persistence.Repositories
                 .Select(x => x.TaskType)
                 .Distinct()
                 .ToArray();
-
+            var englishLevels = items
+                .Select(x => x.EnglishLevel)
+                .Distinct()
+                .ToArray();
+            
             return new TaskItemsFilter
             {
                 GrammarPart = grammarParts,
                 SentType = sentTypes,
                 TaskType = taskTypes,
+                EnglishLevel = englishLevels,
             };
         }
 
@@ -86,6 +92,11 @@ namespace EnglishLearning.TaskService.Persistence.Repositories
                 itemsFilter &= filterBuilder.In(x => x.SentType, filter.SentType);
             }
 
+            if (!filter.EnglishLevel.IsNullOrEmpty())
+            {
+                itemsFilter &= filterBuilder.In(x => x.EnglishLevel, filter.EnglishLevel);
+            }
+            
             return itemsFilter;
         }
     }
