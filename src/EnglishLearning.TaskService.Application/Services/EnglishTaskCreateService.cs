@@ -55,7 +55,9 @@ namespace EnglishLearning.TaskService.Application.Services
             var taskItems = await _taskItemRepository
                 .FindAllAsync(x => x.GrammarPart == createModel.GrammarPart && x.TaskType == createModel.TaskType);
 
-            var randomItems = taskItems.GetRandomCountOfElements(createModel.ItemsCount);
+            var randomItems = taskItems
+                .GetRandomCountOfElements(createModel.ItemsCount)
+                .ToList();
 
             var taskContent = randomItems
                 .Select(x => x.Content)
@@ -66,7 +68,7 @@ namespace EnglishLearning.TaskService.Application.Services
                 GrammarPart = createModel.GrammarPart,
                 TaskType = createModel.TaskType,
                 EnglishLevel = createModel.EnglishLevel,
-                Count = taskItems.Count,
+                Count = randomItems.Count,
                 Content = taskContent,
             };
 
