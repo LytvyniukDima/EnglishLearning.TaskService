@@ -1,5 +1,9 @@
 ﻿using System.Threading.Tasks;
+using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
+using EnglishLearning.TaskService.Application.Models;
+using EnglishLearning.TaskService.Web.Infrastructure;
+using EnglishLearning.TaskService.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EnglishLearning.TaskService.Web.Controllers
@@ -9,9 +13,29 @@ namespace EnglishLearning.TaskService.Web.Controllers
     {
         private readonly IParsedSentToAudioService _parsedSentToAudioService;
 
-        public AudioTaskController(IParsedSentToAudioService parsedSentToAudioService)
+        private readonly IAudioTaskService _audioTaskService;
+        
+        private readonly IMapper _mapper;
+
+        public AudioTaskController(
+            IParsedSentToAudioService parsedSentToAudioService,
+            IAudioTaskService audioTaskService,
+            WebMapper webMapper)
         {
             _parsedSentToAudioService = parsedSentToAudioService;
+            _audioTaskService = audioTaskService;
+            _mapper = webMapper.Mapper;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetAudioTask([FromBody] AudioTaskQueryViewModel queryModel)
+        {
+            var applicationQuery = _mapper.Map<AudioTaskQueryModel>(queryModel);
+            var task = await _audioTaskService.CreateAudioTaskAsync(applicationQuery);
+
+            var webModel = _mapper.Map<AudioTaskViewModel>(task);
+
+            return Ok(webModel);
         }
         
         [HttpGet("sent/{id}")]
