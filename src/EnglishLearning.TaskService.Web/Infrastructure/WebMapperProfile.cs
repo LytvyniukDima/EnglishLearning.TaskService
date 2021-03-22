@@ -45,6 +45,8 @@ namespace EnglishLearning.TaskService.Web.Infrastructure
 
             CreateMap<AudioTaskQueryViewModel, AudioTaskQueryModel>();
             CreateMap<AudioTaskModel, AudioTaskViewModel>();
+
+            CreateMap<CreateRandomTaskViewModel, CreateRandomTaskModel>();
         }
     }
 }

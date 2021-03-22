@@ -8,5 +8,7 @@ namespace EnglishLearning.TaskService.Application.Abstract
         Task CreateFromItemsAsync(EnglishTaskFromItemsCreateModel createModel);
 
         Task CreateFromRandomItemsAsync(EnglishTaskFromRandomItemsCreateModel createModel);
+
+        Task<EnglishTaskModel> CreateRandomTaskAsync(CreateRandomTaskModel createModel);
     }
 }

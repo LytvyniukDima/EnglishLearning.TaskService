@@ -85,7 +85,17 @@ namespace EnglishLearning.TaskService.Web.Controllers
 
             return Ok();
         }
+        
+        [HttpPost("random")]
+        public async Task<IActionResult> CreateRandomTask([FromBody] CreateRandomTaskViewModel createModel)
+        {
+            var applicationModel = _mapper.Map<CreateRandomTaskModel>(createModel);
 
+            var task = await _englishTaskCreateService.CreateRandomTaskAsync(applicationModel);
+
+            return Ok(task);
+        }
+        
         [EnglishLearningAuthorize(AuthorizeRole.Admin)]
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(string id, [FromBody] EnglishTaskCreateViewModel englishTaskCreateViewModel)
