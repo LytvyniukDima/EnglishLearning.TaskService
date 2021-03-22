@@ -11,6 +11,7 @@ using EnglishLearning.TaskService.Web.Configuration;
 using EnglishLearning.Utilities.General.Extensions;
 using EnglishLearning.Utilities.Identity.Configuration;
 using EnglishLearning.Utilities.Persistence.Redis.Configuration;
+using EnglishLearning.Utilities.Speech.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -57,7 +58,8 @@ namespace EnglishLearning.TaskService.Host
                 .BackgroundJobsConfiguration(Configuration)
                 .AddEventHandlerConfiguration(Configuration)
                 .AddExternalServices()
-                .AddEnglishLearningHttp(Configuration);
+                .AddEnglishLearningHttp(Configuration)
+                .AddEnglishLearningSpeech(Configuration);
 
             services
                 .AddRedis(Configuration)

@@ -32,6 +32,8 @@ namespace EnglishLearning.TaskService.Application.Configuration
             services.AddTransient<ITaskItemsGeneratorFactory, TaskItemsGeneratorFactory>();
             services.AddTransient<PresentSimpleBracketsTaskItemsGenerator>();
 
+            services.AddTransient<IParsedSentToAudioService, ParsedSentToAudioService>();
+            
             return services;
         }
     }
