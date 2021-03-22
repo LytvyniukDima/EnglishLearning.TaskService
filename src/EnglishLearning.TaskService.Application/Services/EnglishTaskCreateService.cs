@@ -1,9 +1,11 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
 using EnglishLearning.TaskService.Application.Infrastructure;
 using EnglishLearning.TaskService.Application.Models;
+using EnglishLearning.TaskService.Common.Models;
 using EnglishLearning.TaskService.Persistence.Abstract;
 using EnglishLearning.TaskService.Persistence.Entities;
 using EnglishLearning.Utilities.Linq.Extensions;
@@ -52,12 +54,22 @@ namespace EnglishLearning.TaskService.Application.Services
 
         public async Task CreateFromRandomItemsAsync(EnglishTaskFromRandomItemsCreateModel createModel)
         {
+            var englishLevels = new List<EnglishLevel>() { createModel.EnglishLevel };
+            if (createModel.EnglishLevel == EnglishLevel.Intermediate)
+            {
+                englishLevels.Add(EnglishLevel.PreIntermediate);
+                englishLevels.Add(EnglishLevel.Elementary);
+            }
+            
             var taskItems = await _taskItemRepository
                 .FindAllAsync(x => 
                     x.GrammarPart == createModel.GrammarPart 
-                    && x.TaskType == createModel.TaskType
-                    && x.EnglishLevel <= createModel.EnglishLevel);
-
+                    && x.TaskType == createModel.TaskType);
+            
+            taskItems = taskItems
+                .Where(x => englishLevels.Contains(x.EnglishLevel))
+                .ToList();
+            
             var randomItems = taskItems
                 .GetRandomCountOfElements(createModel.ItemsCount)
                 .ToList();
