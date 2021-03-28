@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using EnglishLearning.TaskService.Application.Abstract;
 using EnglishLearning.TaskService.Application.Models.Filtering;
+using EnglishLearning.TaskService.Common.Models;
 using EnglishLearning.TaskService.Web.Infrastructure;
 using EnglishLearning.TaskService.Web.ViewModels;
 using EnglishLearning.TaskService.Web.ViewModels.Parameters;
@@ -44,6 +46,17 @@ namespace EnglishLearning.TaskService.Web.Controllers
             var viewModel = _mapper.Map<TaskItemsParameters>(applicationFilter);
 
             return Ok(viewModel);
+        }
+        
+        [EnglishLearningAuthorize(AuthorizeRole.Admin)]
+        [HttpGet("filter-options/task-type")]
+        public async Task<IActionResult> GetFilterOptions([FromQuery] EnglishLevel? level)
+        {
+            var options = await _taskItemService.GetTaskTypeFilterOptionsAsync(level);
+            var webOptions = options
+                .ToDictionary(kv => kv.Key.ToString(), kv => kv.Value);
+
+            return Ok(webOptions);
         }
     }
 }

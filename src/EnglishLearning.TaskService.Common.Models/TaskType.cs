@@ -8,5 +8,6 @@
         CorrectOrder,
         DivisionBySlash,
         CorrectOption,
+        Audio,
     }
 }

@@ -6,6 +6,7 @@ using EnglishLearning.TaskService.Application.Abstract;
 using EnglishLearning.TaskService.Application.Infrastructure;
 using EnglishLearning.TaskService.Application.Models;
 using EnglishLearning.TaskService.Application.Models.Filtering;
+using EnglishLearning.TaskService.Common.Models;
 using EnglishLearning.TaskService.Persistence;
 using EnglishLearning.TaskService.Persistence.Abstract;
 using EnglishLearning.TaskService.Persistence.Entities;
@@ -68,6 +69,24 @@ namespace EnglishLearning.TaskService.Application.Services
             var persistenceFilter = await _taskItemRepository.GetAvailableFilters();
 
             return _mapper.Map<TaskItemsFilterModel>(persistenceFilter);
+        }
+
+        public async Task<IReadOnlyDictionary<TaskType, int>> GetTaskTypeFilterOptionsAsync(EnglishLevel? level)
+        {
+            IReadOnlyList<TaskItem> items;
+            
+            if (level.HasValue)
+            {
+                items = await _taskItemRepository.FindAllAsync(x => x.EnglishLevel == level.Value);
+            }
+            else
+            {
+                items = await _taskItemRepository.GetAllAsync();
+            }
+            
+            return items
+                .ToLookup(x => x.TaskType)
+                .ToDictionary(l => l.Key, l => l.Count());
         }
 
         private TaskItemModel MapTaskItemModel(
