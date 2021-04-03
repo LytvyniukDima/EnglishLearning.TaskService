@@ -26,7 +26,6 @@ namespace EnglishLearning.TaskService.Web.Controllers
             _mapper = webMapper.Mapper;
         }
         
-        [EnglishLearningAuthorize(AuthorizeRole.Admin)]
         [HttpGet]
         public async Task<IActionResult> GetItems([FromQuery] TaskItemsParameters parameters)
         {
@@ -38,7 +37,6 @@ namespace EnglishLearning.TaskService.Web.Controllers
             return Ok(viewModels);
         }
         
-        [EnglishLearningAuthorize(AuthorizeRole.Admin)]
         [HttpGet("filter-options")]
         public async Task<IActionResult> GetFilterOptions()
         {
@@ -48,7 +46,6 @@ namespace EnglishLearning.TaskService.Web.Controllers
             return Ok(viewModel);
         }
         
-        [EnglishLearningAuthorize(AuthorizeRole.Admin)]
         [HttpGet("filter-options/task-type")]
         public async Task<IActionResult> GetFilterOptions([FromQuery] EnglishLevel? level)
         {
